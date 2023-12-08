@@ -11,6 +11,9 @@
 		80E5E48D2B1D4089002A4D54 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5E48C2B1D4089002A4D54 /* ContentView.swift */; };
 		80E5E48F2B1D408B002A4D54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80E5E48E2B1D408B002A4D54 /* Assets.xcassets */; };
 		80E5E4922B1D408B002A4D54 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80E5E4912B1D408B002A4D54 /* Preview Assets.xcassets */; };
+		80E5E49A2B1D417A002A4D54 /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5E4992B1D417A002A4D54 /* SideBar.swift */; };
+		80E5E49C2B1D4186002A4D54 /* Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5E49B2B1D4186002A4D54 /* Editor.swift */; };
+		80E5E49E2B1D4190002A4D54 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5E49D2B1D4190002A4D54 /* Previewer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		80E5E48E2B1D408B002A4D54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80E5E4912B1D408B002A4D54 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		80E5E4932B1D408B002A4D54 /* Simplex.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Simplex.entitlements; sourceTree = "<group>"; };
+		80E5E4992B1D417A002A4D54 /* SideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBar.swift; sourceTree = "<group>"; };
+		80E5E49B2B1D4186002A4D54 /* Editor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Editor.swift; sourceTree = "<group>"; };
+		80E5E49D2B1D4190002A4D54 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,9 @@
 			children = (
 				80E5E48A2B1D4089002A4D54 /* SimplexApp.swift */,
 				80E5E48C2B1D4089002A4D54 /* ContentView.swift */,
+				80E5E4992B1D417A002A4D54 /* SideBar.swift */,
+				80E5E49B2B1D4186002A4D54 /* Editor.swift */,
+				80E5E49D2B1D4190002A4D54 /* Previewer.swift */,
 				80E5E48E2B1D408B002A4D54 /* Assets.xcassets */,
 				80E5E4932B1D408B002A4D54 /* Simplex.entitlements */,
 				80E5E4902B1D408B002A4D54 /* Preview Content */,
@@ -140,7 +149,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				80E5E48D2B1D4089002A4D54 /* ContentView.swift in Sources */,
+				80E5E49A2B1D417A002A4D54 /* SideBar.swift in Sources */,
+				80E5E49C2B1D4186002A4D54 /* Editor.swift in Sources */,
 				80E5E48B2B1D4089002A4D54 /* SimplexApp.swift in Sources */,
+				80E5E49E2B1D4190002A4D54 /* Previewer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
