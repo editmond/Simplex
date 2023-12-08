@@ -6,25 +6,26 @@
 //
 
 import SwiftUI
-
+let iconSize: CGFloat = 30
 struct SideBar: View {
     var body: some View {
-        VStack{
-            Image(systemName: "globe")
-                            .imageScale(.large)
-                            .foregroundStyle(.tint)
-            Image(systemName: "globe")
-                            .imageScale(.large)
-                            .foregroundStyle(.tint)
-            Image(systemName: "globe")
-                            .imageScale(.large)
-                            .foregroundStyle(.tint)
-            Image(systemName: "globe")
-                            .imageScale(.large)
-                            .foregroundStyle(.tint)
-            Image(systemName: "globe")
-                            .imageScale(.large)
-                            .foregroundStyle(.tint)
+        VStack(){
+            Image(systemName: "play.circle")
+                .font(.system(size: iconSize))
+                .foregroundStyle(.tint)
+            Image(systemName: "folder")
+                .font(.system(size: iconSize))
+                .foregroundStyle(.tint)
+            Spacer()
+            Image(systemName: "music.note")
+                .font(.system(size: iconSize))
+                .foregroundStyle(.tint)
+            Image(systemName: "doc.text")
+                .font(.system(size: iconSize))
+                .foregroundStyle(.tint)
+            Image(systemName: "gearshape")
+                .font(.system(size: iconSize))
+                .foregroundStyle(.tint)
         }
     }
 }
