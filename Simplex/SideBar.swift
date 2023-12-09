@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-let iconSize: CGFloat = 30
 struct SideBar: View {
     var body: some View {
         VStack(){

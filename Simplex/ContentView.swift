@@ -13,7 +13,7 @@ struct ContentView: View {
             SideBar()
             MyTextEditor()
             Previewer()
-        }.padding()
+            }.padding()
     }
 }
 
