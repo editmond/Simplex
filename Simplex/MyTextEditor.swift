@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct MyTextEditor: View {
-    @State private var fullText: String = "This is some editable text..."
+    @EnvironmentObject var guiVars: GUIVariables
+    @State var someText = "heelo"
     var body: some View {
-        TextEditor(text: $fullText)
-            .foregroundColor(Color.gray)
-            .font(.custom("HelveticaNeue", size: 13))
-            .scrollContentBackground(.hidden)
-            .background(.accent.gradient)
+        VStack{
+            TextEditor(text: $guiVars.fullText)
+                .foregroundColor(Color.gray)
+                .font(.custom("HelveticaNeue", size: 13))
+                .scrollContentBackground(.hidden)
+            Button{
+                try? safeShell("say Hello World!")
+                someText = "asldkjflakdsj"
+            } label: {
+                Text(someText)
+            }
+        }
     }
 }
 

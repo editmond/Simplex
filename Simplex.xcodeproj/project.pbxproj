@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		808E616A2B240BDE0085E6FD /* GUIVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E61692B240BDE0085E6FD /* GUIVariables.swift */; };
+		808E616A2B240BDE0085E6FD /* SharedStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E61692B240BDE0085E6FD /* SharedStuff.swift */; };
 		809603C42B22AA9B00076173 /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809603C32B22AA9B00076173 /* MyTextField.swift */; };
 		80E5E48B2B1D4089002A4D54 /* SimplexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5E48A2B1D4089002A4D54 /* SimplexApp.swift */; };
 		80E5E48D2B1D4089002A4D54 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5E48C2B1D4089002A4D54 /* ContentView.swift */; };
@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		808E61692B240BDE0085E6FD /* GUIVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GUIVariables.swift; sourceTree = "<group>"; };
+		808E61692B240BDE0085E6FD /* SharedStuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStuff.swift; sourceTree = "<group>"; };
 		809603C32B22AA9B00076173 /* MyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
 		80E5E4872B1D4089002A4D54 /* Simplex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E5E48A2B1D4089002A4D54 /* SimplexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplexApp.swift; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				80E5E48A2B1D4089002A4D54 /* SimplexApp.swift */,
-				808E61692B240BDE0085E6FD /* GUIVariables.swift */,
+				808E61692B240BDE0085E6FD /* SharedStuff.swift */,
 				80E5E48C2B1D4089002A4D54 /* ContentView.swift */,
 				80E5E4992B1D417A002A4D54 /* SideBar.swift */,
 				809603C32B22AA9B00076173 /* MyTextField.swift */,
@@ -158,7 +158,7 @@
 				80E5E49A2B1D417A002A4D54 /* SideBar.swift in Sources */,
 				80E5E49C2B1D4186002A4D54 /* MyTextEditor.swift in Sources */,
 				809603C42B22AA9B00076173 /* MyTextField.swift in Sources */,
-				808E616A2B240BDE0085E6FD /* GUIVariables.swift in Sources */,
+				808E616A2B240BDE0085E6FD /* SharedStuff.swift in Sources */,
 				80E5E48B2B1D4089002A4D54 /* SimplexApp.swift in Sources */,
 				80E5E49E2B1D4190002A4D54 /* Previewer.swift in Sources */,
 			);

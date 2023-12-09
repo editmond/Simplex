@@ -8,12 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var guiVars: GUIVariables
     var body: some View {
         HStack{
             SideBar()
             MyTextEditor()
             Previewer()
-            }.padding()
+            VStack{
+                Button(){
+                    guiVars.iconSize += 5
+                } label: {
+                    Image(systemName: "plus")
+                }
+                Button(){
+                    guiVars.iconSize -= 5
+                } label: {
+                    Image(systemName: "minus")
+                }
+            }
+        }.padding()
     }
 }
 
