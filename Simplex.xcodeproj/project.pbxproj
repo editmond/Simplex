@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80875DFC2B246F3200DD0994 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80875DFB2B246F3200DD0994 /* Background.swift */; };
+		80875DFE2B24769B00DD0994 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80875DFD2B24769B00DD0994 /* test.swift */; };
 		808E616A2B240BDE0085E6FD /* SharedStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E61692B240BDE0085E6FD /* SharedStuff.swift */; };
-		809603C42B22AA9B00076173 /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809603C32B22AA9B00076173 /* MyTextField.swift */; };
 		80E5E48B2B1D4089002A4D54 /* SimplexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5E48A2B1D4089002A4D54 /* SimplexApp.swift */; };
 		80E5E48D2B1D4089002A4D54 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5E48C2B1D4089002A4D54 /* ContentView.swift */; };
 		80E5E48F2B1D408B002A4D54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80E5E48E2B1D408B002A4D54 /* Assets.xcassets */; };
@@ -19,8 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		80875DFB2B246F3200DD0994 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		80875DFD2B24769B00DD0994 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		808E61692B240BDE0085E6FD /* SharedStuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStuff.swift; sourceTree = "<group>"; };
-		809603C32B22AA9B00076173 /* MyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
 		80E5E4872B1D4089002A4D54 /* Simplex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E5E48A2B1D4089002A4D54 /* SimplexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplexApp.swift; sourceTree = "<group>"; };
 		80E5E48C2B1D4089002A4D54 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,10 +65,11 @@
 			isa = PBXGroup;
 			children = (
 				80E5E48A2B1D4089002A4D54 /* SimplexApp.swift */,
+				80875DFB2B246F3200DD0994 /* Background.swift */,
 				808E61692B240BDE0085E6FD /* SharedStuff.swift */,
+				80875DFD2B24769B00DD0994 /* test.swift */,
 				80E5E48C2B1D4089002A4D54 /* ContentView.swift */,
 				80E5E4992B1D417A002A4D54 /* SideBar.swift */,
-				809603C32B22AA9B00076173 /* MyTextField.swift */,
 				80E5E49B2B1D4186002A4D54 /* MyTextEditor.swift */,
 				80E5E49D2B1D4190002A4D54 /* Previewer.swift */,
 				80E5E48E2B1D408B002A4D54 /* Assets.xcassets */,
@@ -157,8 +160,9 @@
 				80E5E48D2B1D4089002A4D54 /* ContentView.swift in Sources */,
 				80E5E49A2B1D417A002A4D54 /* SideBar.swift in Sources */,
 				80E5E49C2B1D4186002A4D54 /* MyTextEditor.swift in Sources */,
-				809603C42B22AA9B00076173 /* MyTextField.swift in Sources */,
+				80875DFC2B246F3200DD0994 /* Background.swift in Sources */,
 				808E616A2B240BDE0085E6FD /* SharedStuff.swift in Sources */,
+				80875DFE2B24769B00DD0994 /* test.swift in Sources */,
 				80E5E48B2B1D4089002A4D54 /* SimplexApp.swift in Sources */,
 				80E5E49E2B1D4190002A4D54 /* Previewer.swift in Sources */,
 			);

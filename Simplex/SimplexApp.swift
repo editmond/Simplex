@@ -10,11 +10,14 @@ import SwiftUI
 @main
 struct SimplexApp: App {
     var body: some Scene {
-        WindowGroup {
+        WindowGroup(id: "MainWindow"){
             ZStack{
-                Color.pink.ignoresSafeArea()
+                Background()
+                    .environmentObject(GUIVariables())
+                    .environmentObject(FunctionalVariables())
                 ContentView()
                     .environmentObject(GUIVariables())
+                    .environmentObject(FunctionalVariables())
             }
             .accentColor(Color.black)
         }

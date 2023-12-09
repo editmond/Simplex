@@ -9,7 +9,13 @@ import Foundation
 import SwiftUI
 class GUIVariables: ObservableObject{
     @Published var iconSize: CGFloat = 50
+    @Published var backgroundColour: Color = Color(hue: 0.1639, saturation: 0.5, brightness: 0.95)
     @Published var fullText: String = "This is some editable text..."
+}
+
+class FunctionalVariables: ObservableObject{
+    @Published var UpperSideBarActions: [Any] = [test().self]
+    @Published var LowerSideBarActions: [Any] = []
 }
 
 //From user3064009 ~~~ https://stackoverflow.com/questions/26971240/how-do-i-run-a-terminal-command-in-a-swift-script-e-g-xcodebuild

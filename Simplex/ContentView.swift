@@ -12,8 +12,11 @@ struct ContentView: View {
     var body: some View {
         HStack{
             SideBar()
+            Divider()
             MyTextEditor()
+            Divider()
             Previewer()
+            Divider()
             VStack{
                 Button(){
                     guiVars.iconSize += 5

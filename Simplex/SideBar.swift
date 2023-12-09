@@ -8,6 +8,7 @@
 import SwiftUI
 struct SideBar: View {
     @EnvironmentObject var guiVars: GUIVariables
+    @EnvironmentObject var funcVars: FunctionalVariables
     var body: some View {
         VStack(){
             Image(systemName: "play.circle")
