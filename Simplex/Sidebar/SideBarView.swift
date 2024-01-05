@@ -7,10 +7,16 @@
 
 import SwiftUI
 struct SideBar: View {
+    @Environment(\.openWindow) var openWindow
+    
     @EnvironmentObject var guiVars: GUIVariables
-    @EnvironmentObject var funcVars: FunctionalVariables
+    @EnvironmentObject var sideVars: SidebarVariables
+    
     var body: some View {
         VStack(){
+            ForEach(sideVars.UpperSideBarViews, \.self){ iconView in
+                self.iconView()
+            }
             Image(systemName: "play.circle")
                 .font(.system(size: guiVars.iconSize))
                 .foregroundStyle(.tint)

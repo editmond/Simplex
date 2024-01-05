@@ -13,9 +13,13 @@ class GUIVariables: ObservableObject{
     @Published var fullText: String = "This is some editable text..."
 }
 
-class FunctionalVariables: ObservableObject{
-    @Published var UpperSideBarActions: [Any] = [test().self]
+class SidebarVariables: ObservableObject{
+    @Published var UpperSideBarViews: [Any] = [test().self]
     @Published var LowerSideBarActions: [Any] = []
+}
+
+class EditorVariables: ObservableObject{
+    
 }
 
 //From user3064009 ~~~ https://stackoverflow.com/questions/26971240/how-do-i-run-a-terminal-command-in-a-swift-script-e-g-xcodebuild

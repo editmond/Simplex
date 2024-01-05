@@ -18,6 +18,8 @@ struct MyTextEditor: View {
                 .scrollContentBackground(.hidden)
             Button{
                 try? safeShell("say Hello World!")
+                try? safeShell("cd ~/Desktop")
+                try? safeShell("mkdir heelo")
                 someText = "asldkjflakdsj"
             } label: {
                 Text(someText)

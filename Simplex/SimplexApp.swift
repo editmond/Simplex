@@ -14,10 +14,10 @@ struct SimplexApp: App {
             ZStack{
                 Background()
                     .environmentObject(GUIVariables())
-                    .environmentObject(FunctionalVariables())
+                    .environmentObject(SidebarVariables())
                 ContentView()
                     .environmentObject(GUIVariables())
-                    .environmentObject(FunctionalVariables())
+                    .environmentObject(SidebarVariables())
             }
             .accentColor(Color.black)
         }
