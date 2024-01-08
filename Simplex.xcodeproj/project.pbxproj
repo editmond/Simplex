@@ -17,6 +17,7 @@
 		80E5E49A2B1D417A002A4D54 /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5E4992B1D417A002A4D54 /* SideBarView.swift */; };
 		80E5E49C2B1D4186002A4D54 /* MyTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5E49B2B1D4186002A4D54 /* MyTextEditor.swift */; };
 		80E5E49E2B1D4190002A4D54 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5E49D2B1D4190002A4D54 /* Previewer.swift */; };
+		80F0F7052B4BC66500BD6279 /* SidebarFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F0F7042B4BC66500BD6279 /* SidebarFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		80E5E4992B1D417A002A4D54 /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
 		80E5E49B2B1D4186002A4D54 /* MyTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextEditor.swift; sourceTree = "<group>"; };
 		80E5E49D2B1D4190002A4D54 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
+		80F0F7042B4BC66500BD6279 /* SidebarFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				80E5E4992B1D417A002A4D54 /* SideBarView.swift */,
+				80F0F7042B4BC66500BD6279 /* SidebarFunctions.swift */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80F0F7052B4BC66500BD6279 /* SidebarFunctions.swift in Sources */,
 				80E5E48D2B1D4089002A4D54 /* ContentView.swift in Sources */,
 				80E5E49A2B1D417A002A4D54 /* SideBarView.swift in Sources */,
 				80E5E49C2B1D4186002A4D54 /* MyTextEditor.swift in Sources */,

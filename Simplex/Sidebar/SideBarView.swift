@@ -14,25 +14,29 @@ struct SideBar: View {
     
     var body: some View {
         VStack(){
-            ForEach(sideVars.UpperSideBarViews, \.self){ iconView in
-                self.iconView()
+            
+            //Dynamically adding the buttons from the list of icons in SharedStuff
+            var referenceNum = 1...sideVars.UpperSideBarIcons.count
+            ForEach(Array(zip(sideVars.UpperSideBarIcons, referenceNum)), id: \.0){ (icon, num) in
+                    Image(systemName: icon)
+                        .font(.system(size: guiVars.iconSize))
+                        .foregroundStyle(.tint)
+                        .onTapGesture{
+                            UpperSidebarActor(actionNum: num)
+                        }
             }
-            Image(systemName: "play.circle")
-                .font(.system(size: guiVars.iconSize))
-                .foregroundStyle(.tint)
-            Image(systemName: "folder")
-                .font(.system(size: guiVars.iconSize))
-                .foregroundStyle(.tint)
+            
             Spacer()
-            Image(systemName: "music.note")
-                .font(.system(size: guiVars.iconSize))
-                .foregroundStyle(.tint)
-            Image(systemName: "doc.text")
-                .font(.system(size: guiVars.iconSize))
-                .foregroundStyle(.tint)
-            Image(systemName: "gearshape")
-                .font(.system(size: guiVars.iconSize))
-                .foregroundStyle(.tint)
+            
+            var lowerReferenceNum = 1...sideVars.LowerSidebarIcons.count
+            ForEach(Array(zip(sideVars.LowerSidebarIcons, lowerReferenceNum)), id: \.0){ (icon, num) in
+                    Image(systemName: icon)
+                        .font(.system(size: guiVars.iconSize))
+                        .foregroundStyle(.tint)
+                        .onTapGesture{
+                            LowerSidebarActor(actionNum: num)
+                        }
+            }
         }
     }
 }

@@ -14,12 +14,15 @@ class GUIVariables: ObservableObject{
 }
 
 class SidebarVariables: ObservableObject{
-    @Published var UpperSideBarViews: [Any] = [test().self]
-    @Published var LowerSideBarActions: [Any] = []
+    //The icons in the top half of the sidebar. Only use system icons (for now)
+    @Published var UpperSideBarIcons: [String] = ["play.circle", "folder"]
+    
+    //The icons in the bottom half of the sidebar. Only use system icons (for now)
+    @Published var LowerSidebarIcons: [String] = ["music.note", "doc.text", "gearshape"]
 }
 
 class EditorVariables: ObservableObject{
-    
+    @Published var sourceFilePath: String = "./yes"
 }
 
 //From user3064009 ~~~ https://stackoverflow.com/questions/26971240/how-do-i-run-a-terminal-command-in-a-swift-script-e-g-xcodebuild
