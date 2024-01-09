@@ -9,6 +9,12 @@ import SwiftUI
 
 @main
 struct SimplexApp: App {
+    //initialisation code
+    init(){
+        print("Initialising")
+    }
+    
+    //the main scene
     var body: some Scene {
         WindowGroup(id: "MainWindow"){
             ZStack{

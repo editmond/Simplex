@@ -9,7 +9,10 @@ import Foundation
 import SwiftUI
 class GUIVariables: ObservableObject{
     @Published var iconSize: CGFloat = 50
-    @Published var backgroundColour: Color = Color(hue: 0.1639, saturation: 0.5, brightness: 0.95)
+   
+    //Background colour variable
+    @Published var backgroundColour: Color = Color(hue: 240/360, saturation: 0.2, brightness: 0.9)
+    
     @Published var fullText: String = "This is some editable text..."
 }
 
