@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct Previewer: View {
-    @EnvironmentObject var guiVars: GUIVariables
+    @EnvironmentObject var editorVars: EditorVariables
     var body: some View {
-        Text(guiVars.fullText)
+        Text(editorVars.fullText)
     }
 }
 

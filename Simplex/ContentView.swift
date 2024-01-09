@@ -10,13 +10,18 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var guiVars: GUIVariables
     var body: some View {
-        HStack{
+        HStack{ // All elements of the main window are arranged horizontally from each other
+            
             SideBar()
             Divider()
+            
             MyTextEditor()
             Divider()
+            
             Previewer()
             Divider()
+            
+            //This is a test of the editable GUI variables concept. is temporary
             VStack{
                 Button(){
                     guiVars.iconSize += 5

@@ -16,7 +16,7 @@ struct SideBar: View {
         VStack(){
             
             //Dynamically adding the buttons from the list of icons in SharedStuff
-            let referenceNum = 1...sideVars.UpperSideBarIcons.count
+            let referenceNum = 0...sideVars.UpperSideBarIcons.count
             ForEach(Array(zip(sideVars.UpperSideBarIcons, referenceNum)), id: \.0){ (icon, num) in
                     Image(systemName: icon)
                         .font(.system(size: guiVars.iconSize))
@@ -28,7 +28,7 @@ struct SideBar: View {
             
             Spacer()
             
-            let lowerReferenceNum = 1...sideVars.LowerSidebarIcons.count
+            let lowerReferenceNum = 0...sideVars.LowerSidebarIcons.count
             ForEach(Array(zip(sideVars.LowerSidebarIcons, lowerReferenceNum)), id: \.0){ (icon, num) in
                     Image(systemName: icon)
                         .font(.system(size: guiVars.iconSize))

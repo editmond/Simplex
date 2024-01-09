@@ -21,9 +21,11 @@ struct SimplexApp: App {
                 Background()
                     .environmentObject(GUIVariables())
                     .environmentObject(SidebarVariables())
+                    .environmentObject(EditorVariables())
                 ContentView()
                     .environmentObject(GUIVariables())
                     .environmentObject(SidebarVariables())
+                    .environmentObject(EditorVariables())
             }
             .accentColor(Color.black)
         }

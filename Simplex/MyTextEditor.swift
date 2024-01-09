@@ -9,10 +9,11 @@ import SwiftUI
 
 struct MyTextEditor: View {
     @EnvironmentObject var guiVars: GUIVariables
+    @EnvironmentObject var editorVars: EditorVariables
     @State var someText = "heelo"
     var body: some View {
         VStack{
-            TextEditor(text: $guiVars.fullText)
+            TextEditor(text: $editorVars.fullText)
                 .foregroundColor(Color.gray)
                 .font(.custom("HelveticaNeue", size: 13))
                 .scrollContentBackground(.hidden)

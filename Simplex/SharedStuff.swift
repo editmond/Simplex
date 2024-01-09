@@ -13,7 +13,6 @@ class GUIVariables: ObservableObject{
     //Background colour variable
     @Published var backgroundColour: Color = Color(hue: 240/360, saturation: 0.2, brightness: 0.9)
     
-    @Published var fullText: String = "This is some editable text..."
 }
 
 class SidebarVariables: ObservableObject{
@@ -25,7 +24,8 @@ class SidebarVariables: ObservableObject{
 }
 
 class EditorVariables: ObservableObject{
-    @Published var sourceFilePath: String = "./yes"
+    @Published var fullText: String = "This is some editable text..."
+    @Published var sourceFilePath: String = "yes.txt"
 }
 
 //From user3064009 ~~~ https://stackoverflow.com/questions/26971240/how-do-i-run-a-terminal-command-in-a-swift-script-e-g-xcodebuild
