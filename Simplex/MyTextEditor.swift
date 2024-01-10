@@ -18,6 +18,11 @@ struct MyTextEditor: View {
                 .font(.custom("HelveticaNeue", size: 13))
                 .scrollContentBackground(.hidden)
                 .background(guiVars.backgroundColour)
+            Button(){
+                print(editorVars.fullText)
+            } label: {
+                Text("OUTPUT")
+            }
         }
     }
 }

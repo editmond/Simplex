@@ -8,10 +8,10 @@
 import Foundation
 
 //This is the function that chooses which actions correpsond to which icon
-func UpperSidebarActor(actionNum: Int) -> Void{
+func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: String) -> Void{
     switch actionNum{
     case 0: //Play icon
-        writeToFile()
+        writeToFile(writeOutText: writeOutText, sourceFilePath: sourceFilePath)
     default:
         try? safeShell("say \(actionNum)")
     }
@@ -33,12 +33,11 @@ func getDocumentsDirectory() -> URL {
 }
 
 //Writes the text editor string into the specified file
-func writeToFile() -> Void{
-    var editorVars = EditorVariables()
-    var filename = getDocumentsDirectory().appendingPathComponent(editorVars.sourceFilePath)
-    print(editorVars.fullText)
+func writeToFile(writeOutText: String, sourceFilePath: String) -> Void{
+    var filename = getDocumentsDirectory().appendingPathComponent(sourceFilePath)
+    print(writeOutText)
     do {
-        try editorVars.fullText.write(to: filename, atomically: true, encoding: String.Encoding.utf8)
+        try writeOutText.write(to: filename, atomically: true, encoding: String.Encoding.utf8)
     } catch {
         print("\(error)")
     }

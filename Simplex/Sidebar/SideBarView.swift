@@ -11,6 +11,7 @@ struct SideBar: View {
     
     @EnvironmentObject var guiVars: GUIVariables
     @EnvironmentObject var sideVars: SidebarVariables
+    @EnvironmentObject var editorVars: EditorVariables
     
     var body: some View {
         VStack(){
@@ -22,7 +23,7 @@ struct SideBar: View {
                         .font(.system(size: guiVars.iconSize))
                         .foregroundStyle(.tint)
                         .onTapGesture{
-                            UpperSidebarActor(actionNum: num)
+                            UpperSidebarActor(actionNum: num, writeOutText: editorVars.fullText, sourceFilePath: editorVars.sourceFilePath)
                         }
             }
             
