@@ -21,6 +21,11 @@ func LowerSidebarActor(actionNum: Int) -> Void{
     switch actionNum{
     case 0:
         try? safeShell("say \(actionNum)")
+    case 1:
+        print("a")
+    case 2: //Gear icon
+//        SimplexApp.openThisWindow(id: "settings")
+        print("something")
     default:
         try? safeShell("say \(actionNum)")
     }
@@ -34,7 +39,7 @@ func getDocumentsDirectory() -> URL {
 
 //Writes the text editor string into the specified file
 func writeToFile(writeOutText: String, sourceFilePath: String) -> Void{
-    var filename = getDocumentsDirectory().appendingPathComponent(sourceFilePath)
+    let filename = getDocumentsDirectory().appendingPathComponent(sourceFilePath)
     print(writeOutText)
     do {
         try writeOutText.write(to: filename, atomically: true, encoding: String.Encoding.utf8)

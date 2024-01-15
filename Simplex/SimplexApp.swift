@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct SimplexApp: App {
+    @Environment(\.openWindow) var openWindow
     //initialisation code
     init(){
         print("Initialising")
+        
     }
     
     //the main scene
@@ -29,5 +31,11 @@ struct SimplexApp: App {
             }
             .accentColor(Color.black)
         }
+        Window("Settings", id: "settings"){
+            SettingsView()
+        }
+    }
+    func openThisWindow(windowId: String) -> Void{
+        openWindow(id: windowId)
     }
 }
