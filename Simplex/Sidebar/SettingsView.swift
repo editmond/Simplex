@@ -20,7 +20,7 @@ struct SettingsView: View {
                         Label("Runtime", systemImage: "hammer")
                 }
             }
-            .navigationTitle("Learn")
+            .navigationTitle("Settings")
         }
     }
 }
@@ -31,13 +31,16 @@ struct GUISettingsView: View {
         VStack{
             Text("Gui Settings")
         }
-        .navigationTitle("GUI")
+        .navigationTitle("Settings - GUI")
     }
 }
 
 struct RuntimeSettingsView: View {
     var body: some View {
-        Text("Runtime Settings")
+        VStack{
+            Text("Runtime Settings")
+        }
+        .navigationTitle("Settings - Runtime")
     }
 }
 

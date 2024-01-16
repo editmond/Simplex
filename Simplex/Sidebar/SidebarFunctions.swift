@@ -17,6 +17,7 @@ func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: Str
     }
 }
 
+//return of string is used for id in openWindow(id: id)
 func LowerSidebarActor(actionNum: Int) -> String{
     switch actionNum{
     case 0:

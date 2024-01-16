@@ -35,7 +35,7 @@ struct SideBar: View {
                         .font(.system(size: guiVars.iconSize))
                         .foregroundStyle(.tint)
                         .onTapGesture{
-                            var windowID = LowerSidebarActor(actionNum: num)
+                            let windowID = LowerSidebarActor(actionNum: num)
                             if (windowID != ""){
                                 openWindow(id: windowID)
                             }
