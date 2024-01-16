@@ -24,12 +24,12 @@ struct ContentView: View {
             //This is a test of the editable GUI variables concept. is temporary
             VStack{
                 Button(){
-                    guiVars.iconSize += 5
+                    guiVars.backgroundHue += 0.01
                 } label: {
                     Image(systemName: "plus")
                 }
                 Button(){
-                    guiVars.iconSize -= 5
+                    guiVars.backgroundHue -= 0.01
                 } label: {
                     Image(systemName: "minus")
                 }

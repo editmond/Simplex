@@ -19,23 +19,27 @@ struct SimplexApp: App {
     //the main scene
     var body: some Scene {
         WindowGroup(id: "MainWindow"){
-            ZStack{
-                Background()
-                    .environmentObject(GUIVariables())
-                    .environmentObject(SidebarVariables())
-                    .environmentObject(EditorVariables())
-                ContentView()
-                    .environmentObject(GUIVariables())
-                    .environmentObject(SidebarVariables())
-                    .environmentObject(EditorVariables())
-            }
-            .accentColor(Color.black)
+            MainView()
+                .environmentObject(GUIVariables())
+                .environmentObject(SidebarVariables())
+                .environmentObject(EditorVariables())
         }
         Window("Settings", id: "settings"){
             SettingsView()
         }
     }
-    func openThisWindow(windowId: String) -> Void{
-        openWindow(id: windowId)
+}
+
+struct MainView: View {
+    init(){
+        //load things that need to access environment objects here
+        print("Initialised Main View!")
+    }
+    var body: some View{
+        ZStack{
+            Background()
+            ContentView()
+        }
+        .accentColor(Color.black)
     }
 }

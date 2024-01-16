@@ -9,9 +9,21 @@ import Foundation
 import SwiftUI
 class GUIVariables: ObservableObject{
     @Published var iconSize: CGFloat = 50
+    
+    
+    @Published var backgroundHue: Double = 0
+    @Published var backgroundSaturation: Double = 0.2
+    @Published var backgroundBrightness: Double = 0.9
+    func getBackgroundColour(brightnessMultiplier: Double) -> Color{
+        var usedBackgroundHue = backgroundHue
+        if (usedBackgroundHue >= 1){
+            usedBackgroundHue -= 1
+        }
+        return Color(hue: usedBackgroundHue, saturation: backgroundSaturation, brightness: backgroundBrightness*brightnessMultiplier)
+    }
    
-    //Background colour variable
-    @Published var backgroundColour: Color = Color(hue: 240/360, saturation: 0.2, brightness: 0.9)
+    //UNUSED Background colour variable
+    //@Published var backgroundColour: Color = Color(hue: 240/360, saturation: 0.2, brightness: 0.9)
     
 }
 

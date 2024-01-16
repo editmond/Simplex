@@ -17,7 +17,7 @@ func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: Str
     }
 }
 
-func LowerSidebarActor(actionNum: Int) -> Void{
+func LowerSidebarActor(actionNum: Int) -> String{
     switch actionNum{
     case 0:
         try? safeShell("say \(actionNum)")
@@ -25,10 +25,11 @@ func LowerSidebarActor(actionNum: Int) -> Void{
         print("a")
     case 2: //Gear icon
 //        SimplexApp.openThisWindow(id: "settings")
-        print("something")
+        return "settings" //the window id for settings
     default:
         try? safeShell("say \(actionNum)")
     }
+    return ""
 }
 
 //By Paul Hudson 28/05/2019 from https://www.hackingwithswift.com/example-code/strings/how-to-save-a-string-to-a-file-on-disk-with-writeto
