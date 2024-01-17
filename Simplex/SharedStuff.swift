@@ -14,17 +14,19 @@ class GUIVariables: ObservableObject{
     @Published var backgroundHue: Double = 0
     @Published var backgroundSaturation: Double = 0.2
     @Published var backgroundBrightness: Double = 0.9
-    func getBackgroundColour(brightnessMultiplier: Double) -> Color{
+    //function overloading
+    
+    func getBackgroundColour(brightnessMultiplier: Double, saturationMultiplier: Double) -> Color{
         
         var usedBackgroundHue = backgroundHue
-        var usedBackgroundSat = backgroundSaturation
+        var usedBackgroundSat = backgroundSaturation*saturationMultiplier
         var usedBackgroundBright = backgroundBrightness*brightnessMultiplier
        
         //to allow for rotating around hues without going over the bound of 0 to 1
-        if (usedBackgroundHue > 1){
+        while (usedBackgroundHue > 1){
             usedBackgroundHue -= 1
         }
-        if (usedBackgroundHue < 0){
+        while (usedBackgroundHue < 0){
             usedBackgroundHue += 1
         }
         
@@ -35,6 +37,14 @@ class GUIVariables: ObservableObject{
         if (usedBackgroundBright < 0){
             usedBackgroundBright = 0
         }
+        //to limit the saturation to domain 0 to 1
+        if (usedBackgroundSat > 1){
+            usedBackgroundSat = 1
+        }
+        if (usedBackgroundSat < 0){
+            usedBackgroundSat = 0
+        }
+        
         return Color(hue: usedBackgroundHue, saturation: usedBackgroundSat, brightness: usedBackgroundBright)
     }
    

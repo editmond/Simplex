@@ -13,16 +13,21 @@ struct SettingsView: View {
     @EnvironmentObject var guiVars: GUIVariables
     var body: some View {
         NavigationView {
-            List {
-                NavigationLink(destination: GUISettingsView()) {
-                    Label("GUI", systemImage: "paintbrush.pointed")
-                }
-                NavigationLink(destination: RuntimeSettingsView()) {
-                    Label("Runtime", systemImage: "hammer")
+            ZStack{
+                guiVars.getBackgroundColour(brightnessMultiplier: 1, saturationMultiplier: 0.5)
+                VStack{
+                    Spacer()
+                    List {
+                        NavigationLink(destination: GUISettingsView()) {
+                            Label("GUI", systemImage: "paintbrush.pointed")
+                        }
+                        NavigationLink(destination: RuntimeSettingsView()) {
+                            Label("Runtime", systemImage: "hammer")
+                        }
+                    }
+                    .navigationTitle("Settings")
                 }
             }
-            .foregroundStyle(guiVars.getBackgroundColour(brightnessMultiplier: 0.9))
-            .navigationTitle("Settings")
         }
     }
 }

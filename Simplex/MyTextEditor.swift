@@ -17,7 +17,7 @@ struct MyTextEditor: View {
                 .foregroundColor(Color.gray)
                 .font(.custom("HelveticaNeue", size: 13))
                 .scrollContentBackground(.hidden)
-                .background(guiVars.getBackgroundColour(brightnessMultiplier: 1.1))
+                .background(guiVars.getBackgroundColour(brightnessMultiplier: 1.1, saturationMultiplier: 1))
 //            Button(){
 //                print(editorVars.fullText)
 //            } label: {
