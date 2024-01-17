@@ -10,6 +10,9 @@ import SwiftUI
 @main
 struct SimplexApp: App {
     @Environment(\.openWindow) var openWindow
+    @StateObject var guiObject = GUIVariables()
+    @StateObject var sidebarObject = SidebarVariables()
+    @StateObject var editorObject = EditorVariables()
     //initialisation code
     init(){
         print("Initialising")
@@ -20,12 +23,18 @@ struct SimplexApp: App {
     var body: some Scene {
         WindowGroup(id: "MainWindow"){
             MainView()
-                .environmentObject(GUIVariables())
-                .environmentObject(SidebarVariables())
-                .environmentObject(EditorVariables())
+                .environmentObject(guiObject)
+                .environmentObject(sidebarObject)
+                .environmentObject(editorObject)
         }
         Window("Settings", id: "settings"){
-            SettingsView()
+            ZStack{
+                Background()
+                SettingsView()
+            }
+            .environmentObject(guiObject)
+            .environmentObject(sidebarObject)
+            .environmentObject(editorObject)
         }
     }
 }

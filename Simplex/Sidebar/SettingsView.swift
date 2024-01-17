@@ -10,16 +10,18 @@ import SwiftUI
 
 struct SettingsView: View {
 
+    @EnvironmentObject var guiVars: GUIVariables
     var body: some View {
         NavigationView {
             List {
                 NavigationLink(destination: GUISettingsView()) {
-                        Label("GUI", systemImage: "paintbrush.pointed")
+                    Label("GUI", systemImage: "paintbrush.pointed")
                 }
                 NavigationLink(destination: RuntimeSettingsView()) {
-                        Label("Runtime", systemImage: "hammer")
+                    Label("Runtime", systemImage: "hammer")
                 }
             }
+            .foregroundStyle(guiVars.getBackgroundColour(brightnessMultiplier: 0.9))
             .navigationTitle("Settings")
         }
     }

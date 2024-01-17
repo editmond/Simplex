@@ -38,6 +38,7 @@ func getDocumentsDirectory() -> URL {
     let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
     return paths[0]
 }
+//~~~
 
 //Writes the text editor string into the specified file
 func writeToFile(writeOutText: String, sourceFilePath: String) -> Void{
