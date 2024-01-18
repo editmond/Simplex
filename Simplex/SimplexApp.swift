@@ -35,6 +35,7 @@ struct SimplexApp: App {
             .environmentObject(sidebarObject)
             .environmentObject(editorObject)
         }
+        .keyboardShortcut(",")
         Window("Files", id: "files"){
             ZStack{
                 Background()
