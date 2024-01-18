@@ -18,6 +18,9 @@ struct SettingsView: View {
                 VStack{
                     Spacer()
                     List {
+                        NavigationLink(destination: GeneralSettingsView()) {
+                            Label("General", systemImage: "gear")
+                        }
                         NavigationLink(destination: GUISettingsView()) {
                             Label("GUI", systemImage: "paintbrush.pointed")
                         }
@@ -48,6 +51,24 @@ struct RuntimeSettingsView: View {
             Text("Runtime Settings")
         }
         .navigationTitle("Settings - Runtime")
+    }
+}
+
+struct GeneralSettingsView: View{
+    @EnvironmentObject var editorVars: EditorVariables
+    var body: some View{
+        Grid{
+            //the rest could be programmatically generated based on the required input
+            GridRow{
+                Text("Source File Path:")
+                    .padding()
+                TextField("Source File Path", text: $editorVars.sourceFilePath)
+                    .disableAutocorrection(true)
+                    .padding()
+            }
+        }
+        .navigationTitle("Settings - General")
+        .textFieldStyle(.roundedBorder)
     }
 }
 
