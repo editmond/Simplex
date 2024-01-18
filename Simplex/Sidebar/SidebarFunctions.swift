@@ -54,3 +54,15 @@ func writeToFile(writeOutText: String, sourceFilePath: String) -> Void{
     }
     print("Write Completed")
 }
+
+//Writes the text editor string into the specified file
+func readFromFile(sourceFilePath: String) -> String{
+    let filename = getDocumentsDirectory().appendingPathComponent(sourceFilePath)
+    var text = ""
+    do {
+        text = try String(contentsOf: filename, encoding: .utf8)
+    } catch {
+        print("\(error)")
+    }
+    return text
+}

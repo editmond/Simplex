@@ -35,7 +35,7 @@
 		80E5E4912B1D408B002A4D54 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		80E5E4932B1D408B002A4D54 /* Simplex.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Simplex.entitlements; sourceTree = "<group>"; };
 		80E5E4992B1D417A002A4D54 /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
-		80E5E49B2B1D4186002A4D54 /* MyTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextEditor.swift; sourceTree = "<group>"; };
+		80E5E49B2B1D4186002A4D54 /* MyTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextEditor.swift; sourceTree = "<group>"; usesTabs = 1; };
 		80E5E49D2B1D4190002A4D54 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		80F0F7042B4BC66500BD6279 /* SidebarFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
