@@ -16,7 +16,6 @@ struct SimplexApp: App {
     //initialisation code
     init(){
         print("Initialising")
-        
     }
     
     //the main scene
@@ -36,6 +35,16 @@ struct SimplexApp: App {
             .environmentObject(sidebarObject)
             .environmentObject(editorObject)
         }
+        Window("Files", id: "files"){
+            ZStack{
+                Background()
+                FileExplorerView()
+            }
+            .environmentObject(guiObject)
+            .environmentObject(sidebarObject)
+            .environmentObject(editorObject)
+        }
+
     }
 }
 

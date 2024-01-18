@@ -65,7 +65,7 @@ class EditorVariables: NSObject, ObservableObject{
     //The text within the text editor is stored here
     @Published var fullText: String = "This is some editable text..."
     
-    @Published var sourceFilePath: String = "yes.txt"
+    @Published var sourceFilePath: String = "testing.txt"
     
 }
 

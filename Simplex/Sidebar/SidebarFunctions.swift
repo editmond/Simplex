@@ -8,13 +8,16 @@
 import Foundation
 
 //This is the function that chooses which actions correpsond to which icon
-func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: String) -> Void{
+func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: String) -> String{
     switch actionNum{
     case 0: //Play icon
         writeToFile(writeOutText: writeOutText, sourceFilePath: sourceFilePath)
+    case 1:
+        return "files"
     default:
         try? safeShell("say \(actionNum)")
     }
+    return ""
 }
 
 //return of string is used for id in openWindow(id: id)
