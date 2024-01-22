@@ -7,12 +7,18 @@
 
 import SwiftUI
 
-struct test: View {
+struct dummyView: View {
+    @EnvironmentObject var guiVars: GUIVariables
+    @EnvironmentObject var sideVars: SidebarVariables
+    @EnvironmentObject var editorVars: EditorVariables
+    init(){
+        print("yes")
+    }
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("")
     }
 }
 
 #Preview {
-    test()
+    dummyView()
 }

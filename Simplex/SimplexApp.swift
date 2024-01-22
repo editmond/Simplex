@@ -51,11 +51,11 @@ struct SimplexApp: App {
 
 struct MainView: View {
     init(){
-        //load things that need to access environment objects here
-        print("Initialised Main View!")
+        //?
     }
     var body: some View{
         ZStack{
+            //dummyView()
             Background()
             ContentView()
         }
