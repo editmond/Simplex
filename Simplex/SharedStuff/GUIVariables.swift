@@ -52,6 +52,10 @@ class GUIVariables: ObservableObject{
     init(){
         backgroundHue = 0.5
     }
+    
+    deinit{
+        writeToFile(writeOutText: "bye bye", sourceFilePath: "foo.txt")
+    }
    
     //UNUSED Background colour variable
     //@Published var backgroundColour: Color = Color(hue: 240/360, saturation: 0.2, brightness: 0.9)

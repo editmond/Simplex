@@ -9,7 +9,9 @@ import SwiftUI
 
 @main
 struct SimplexApp: App {
-    @Environment(\.openWindow) var openWindow
+    @Environment(\.openWindow) var openWindo
+//    @Environment(\.scenePhase) private var scenePhase
+    
     @StateObject var guiObject = GUIVariables()
     @StateObject var sidebarObject = SidebarVariables()
     @StateObject var editorObject = EditorVariables()
@@ -45,7 +47,6 @@ struct SimplexApp: App {
             .environmentObject(sidebarObject)
             .environmentObject(editorObject)
         }
-
     }
 }
 

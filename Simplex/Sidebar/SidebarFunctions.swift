@@ -12,6 +12,8 @@ func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: Str
     switch actionNum{
     case 0: //Play icon
         writeToFile(writeOutText: writeOutText, sourceFilePath: sourceFilePath)
+        var shellResult = try? safeShell("python3 Documents/\(sourceFilePath)")
+        print("\(shellResult)")
     case 1:
         return "files"
     default:
@@ -36,33 +38,4 @@ func LowerSidebarActor(actionNum: Int) -> String{
     return ""
 }
 
-//By Paul Hudson 28/05/2019 from https://www.hackingwithswift.com/example-code/strings/how-to-save-a-string-to-a-file-on-disk-with-writeto
-func getDocumentsDirectory() -> URL {
-    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-    return paths[0]
-}
-//~~~
 
-//Writes the text editor string into the specified file
-func writeToFile(writeOutText: String, sourceFilePath: String) -> Void{
-    let filename = getDocumentsDirectory().appendingPathComponent(sourceFilePath)
-    print(writeOutText)
-    do {
-        try writeOutText.write(to: filename, atomically: true, encoding: String.Encoding.utf8)
-    } catch {
-        print("\(error)")
-    }
-    print("Write Completed")
-}
-
-//Writes the text editor string into the specified file
-func readFromFile(sourceFilePath: String) -> String{
-    let filename = getDocumentsDirectory().appendingPathComponent(sourceFilePath)
-    var text = ""
-    do {
-        text = try String(contentsOf: filename, encoding: .utf8)
-    } catch {
-        print("\(error)")
-    }
-    return text
-}

@@ -19,6 +19,10 @@ struct dummyView: View {
     }
 }
 
+func test(){
+    print("bye bye")
+}
+
 #Preview {
     dummyView()
 }
