@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-
+/* Deprecated
 struct SettingsView: View {
 
     @EnvironmentObject var guiVars: GUIVariables
@@ -34,7 +34,7 @@ struct SettingsView: View {
         }
     }
 }
-
+*/
 struct NoDeprecateSettingsView: View{
     
     @EnvironmentObject var guiVars: GUIVariables
