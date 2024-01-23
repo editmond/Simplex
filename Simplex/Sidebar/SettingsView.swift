@@ -12,7 +12,7 @@ struct SettingsView: View {
 
     @EnvironmentObject var guiVars: GUIVariables
     var body: some View {
-        NavigationView {
+        NavigationView{
             ZStack{
                 guiVars.getBackgroundColour(brightnessMultiplier: 1, saturationMultiplier: 0.5)
                 VStack{
@@ -31,6 +31,29 @@ struct SettingsView: View {
                     .navigationTitle("Settings")
                 }
             }
+        }
+    }
+}
+
+struct NoDeprecateSettingsView: View{
+    
+    @EnvironmentObject var guiVars: GUIVariables
+    var body: some View{
+        NavigationSplitView{
+            List {
+                NavigationLink(destination: GeneralSettingsView()) {
+                    Label("General", systemImage: "gear")
+                }
+                NavigationLink(destination: GUISettingsView()) {
+                    Label("GUI", systemImage: "paintbrush.pointed")
+                }
+                NavigationLink(destination: RuntimeSettingsView()) {
+                    Label("Runtime", systemImage: "hammer")
+                }
+            }
+            .navigationTitle("Settings")
+        } detail: {
+            GeneralSettingsView()
         }
     }
 }
@@ -67,7 +90,7 @@ struct GeneralSettingsView: View{
                     .padding()
             }
         }
-        .navigationTitle("Settings - General")
+        .navigationTitle("Settings")
         .textFieldStyle(.roundedBorder)
     }
 }

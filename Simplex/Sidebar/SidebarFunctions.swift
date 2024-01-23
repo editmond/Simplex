@@ -12,8 +12,8 @@ func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: Str
     switch actionNum{
     case 0: //Play icon
         writeToFile(writeOutText: writeOutText, sourceFilePath: sourceFilePath)
-        var shellResult = try? safeShell("python3 Documents/\(sourceFilePath)")
-        print("\(shellResult)")
+        let shellResult = try? safeShell("python3 Documents/\(sourceFilePath)")
+        print("\(shellResult ?? "")")
     case 1:
         return "files"
     default:

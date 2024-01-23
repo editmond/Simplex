@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		800C5F0A2B5F8170000C7FFF /* textSanitising.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C5F092B5F8170000C7FFF /* textSanitising.swift */; };
+		800C5F0C2B5F83A4000C7FFF /* writeRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C5F0B2B5F83A4000C7FFF /* writeRead.swift */; };
 		80335CEE2B5E2D85009E5188 /* EditorVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80335CED2B5E2D85009E5188 /* EditorVariables.swift */; };
 		80335CF02B5E2DB6009E5188 /* safeShell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80335CEF2B5E2DB6009E5188 /* safeShell.swift */; };
 		80335CF22B5E2DE0009E5188 /* SidebarVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80335CF12B5E2DE0009E5188 /* SidebarVariables.swift */; };
-		80335CF42B5F712F009E5188 /* readWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80335CF32B5F712F009E5188 /* readWrite.swift */; };
 		80875DFC2B246F3200DD0994 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80875DFB2B246F3200DD0994 /* Background.swift */; };
 		80875DFE2B24769B00DD0994 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80875DFD2B24769B00DD0994 /* test.swift */; };
 		808E616A2B240BDE0085E6FD /* GUIVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E61692B240BDE0085E6FD /* GUIVariables.swift */; };
@@ -29,10 +29,10 @@
 
 /* Begin PBXFileReference section */
 		800C5F092B5F8170000C7FFF /* textSanitising.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textSanitising.swift; sourceTree = "<group>"; };
+		800C5F0B2B5F83A4000C7FFF /* writeRead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = writeRead.swift; sourceTree = "<group>"; };
 		80335CED2B5E2D85009E5188 /* EditorVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorVariables.swift; sourceTree = "<group>"; };
 		80335CEF2B5E2DB6009E5188 /* safeShell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = safeShell.swift; sourceTree = "<group>"; };
 		80335CF12B5E2DE0009E5188 /* SidebarVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarVariables.swift; sourceTree = "<group>"; };
-		80335CF32B5F712F009E5188 /* readWrite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = readWrite.swift; sourceTree = "<group>"; };
 		80335CF52B5F7286009E5188 /* TestingArea.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestingArea.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		80875DFB2B246F3200DD0994 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		80875DFD2B24769B00DD0994 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
@@ -65,8 +65,8 @@
 		800C5F082B5F8147000C7FFF /* FileHandling */ = {
 			isa = PBXGroup;
 			children = (
-				80335CF32B5F712F009E5188 /* readWrite.swift */,
 				800C5F092B5F8170000C7FFF /* textSanitising.swift */,
+				800C5F0B2B5F83A4000C7FFF /* writeRead.swift */,
 			);
 			path = FileHandling;
 			sourceTree = "<group>";
@@ -215,13 +215,13 @@
 				80E5E49C2B1D4186002A4D54 /* MyTextEditor.swift in Sources */,
 				80B9B11A2B58E8A800ED418B /* FileExplorerView.swift in Sources */,
 				80875DFC2B246F3200DD0994 /* Background.swift in Sources */,
+				800C5F0C2B5F83A4000C7FFF /* writeRead.swift in Sources */,
 				8098709C2B4F93FF00ECA693 /* SettingsView.swift in Sources */,
 				808E616A2B240BDE0085E6FD /* GUIVariables.swift in Sources */,
 				80875DFE2B24769B00DD0994 /* test.swift in Sources */,
 				80E5E48B2B1D4089002A4D54 /* SimplexApp.swift in Sources */,
 				80335CF22B5E2DE0009E5188 /* SidebarVariables.swift in Sources */,
 				800C5F0A2B5F8170000C7FFF /* textSanitising.swift in Sources */,
-				80335CF42B5F712F009E5188 /* readWrite.swift in Sources */,
 				80E5E49E2B1D4190002A4D54 /* Previewer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

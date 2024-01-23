@@ -31,7 +31,8 @@ struct SimplexApp: App {
         Window("Settings", id: "settings"){
             ZStack{
                 Background()
-                SettingsView()
+//                SettingsView()
+                NoDeprecateSettingsView()
             }
             .environmentObject(guiObject)
             .environmentObject(sidebarObject)
@@ -47,6 +48,7 @@ struct SimplexApp: App {
             .environmentObject(sidebarObject)
             .environmentObject(editorObject)
         }
+        .keyboardShortcut("o")
     }
 }
 

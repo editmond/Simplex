@@ -1,5 +1,5 @@
 //
-//  fileFunctions.swift
+// writeRead
 //  Simplex
 //
 //  Created by Edmond Cheng on 23/1/2024.
