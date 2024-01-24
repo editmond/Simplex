@@ -8,28 +8,17 @@
 import SwiftUI
 
 struct FileExplorerView: View {
+    @State var availableItems: [String] = listDirectory()
     var body: some View {
-        Text(listDirectory())
-    }
-}
-
-func listDirectory() -> String{
-    let fm = FileManager.default
-//                let path = Bundle.main.resourcePath!
-    let path = "\(NSHomeDirectory())/Documents"
-    var outputString: String = ""
-    do {
-        print("Accessing \(path)")
-        let items = try fm.contentsOfDirectory(atPath: path)
-
-        for item in items {
-            print("Found \(item)")
-            outputString = "\(outputString)\n\(item)"
+        VStack{
+            Text("Home")
+                .padding(.bottom)
+                .font(.largeTitle)
+            ForEach(availableItems, id: \.self){ item in
+                Text(item)
+            }
         }
-    } catch {
-        // failed to read directory – bad permissions, perhaps?
     }
-    return outputString
 }
 
 #Preview {

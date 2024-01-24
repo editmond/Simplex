@@ -50,6 +50,15 @@ class GUIVariables: ObservableObject{
         return Color(hue: usedBackgroundHue, saturation: usedBackgroundSat, brightness: usedBackgroundBright)
     }
     init(){
+        let homeItems = listDirectory()
+        if !homeItems.contains("Settings_Data"){
+            _ = createMyDir(dirPath: "/Settings_Data")
+        }
+        let settingsFiles = listDirectory(fromHomePath: "/Settings_Data")
+        for item in settingsFiles{
+            print(item)
+        }
+//        readFromFile(sourceFilePath: "asdf.txt")
         backgroundHue = 0.5
     }
     

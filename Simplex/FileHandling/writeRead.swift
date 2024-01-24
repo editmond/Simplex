@@ -34,7 +34,7 @@ func readFromFile(sourceFilePath: String) -> String{
     var text = ""
     do {
         text = try String(contentsOf: filename, encoding: .utf8)
-    } catch {
+    }catch {
         print("\(error)")
     }
     return text

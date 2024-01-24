@@ -96,5 +96,5 @@ struct GeneralSettingsView: View{
 }
 
 #Preview {
-    SettingsView()
+   NoDeprecateSettingsView()
 }
