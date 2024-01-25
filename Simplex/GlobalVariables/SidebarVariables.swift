@@ -8,11 +8,17 @@
 import SwiftUI
 
 class SidebarVariables: ObservableObject{
-    @Published var hasLoaded = false
+//    @Published var hasLoaded = false
     
     //The icons in the top half of the sidebar. Only use system icons (for now)
     @Published var UpperSideBarIcons: [String] = ["play.circle", "folder"]
     
     //The icons in the bottom half of the sidebar. Only use system icons (for now)
     @Published var LowerSidebarIcons: [String] = ["music.note", "doc.text", "gearshape"]
+    
+    init(){
+        let loadedSettings = loadSettings(settingsFile: "Sidebar_Settings.txt")
+        
+        print("Sidebar Settings found: \n\(loadedSettings)")
+    }
 }

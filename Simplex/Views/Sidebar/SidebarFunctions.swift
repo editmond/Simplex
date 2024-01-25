@@ -12,30 +12,37 @@ func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: Str
     switch actionNum{
     case 0: //Play icon
         writeToFile(writeOutText: writeOutText, sourceFilePath: sourceFilePath)
+        
+        //CHANGE LATER - runs python3 in the source file
         let shellResult = try? safeShell("python3 Documents/\(sourceFilePath)")
         print("\(shellResult ?? "")")
     case 1:
-        return "files"
+        return "files" // return the files window id
+        
     default:
-        try? safeShell("say \(actionNum)")
+        try? safeShell("say \(actionNum)") // CHANGE LATER - a stub
+        
     }
-    return ""
+    return "" //return nothing if no window id requried
 }
 
 //return of string is used for id in openWindow(id: id)
 func LowerSidebarActor(actionNum: Int) -> String{
     switch actionNum{
     case 0:
-        try? safeShell("say \(actionNum)")
+        try? safeShell("say \(actionNum)") // CHANGE LATER - a stub
+        
     case 1:
-        print("a")
+        print("a") // CHANGE LATER - a stub
+        
     case 2: //Gear icon
 //        SimplexApp.openThisWindow(id: "settings")
         return "settings" //the window id for settings
+        
     default:
-        try? safeShell("say \(actionNum)")
+        try? safeShell("say \(actionNum)") // CHANGE LATER - a stub
     }
-    return ""
+    return "" //return nothing if no window id is required
 }
 
 

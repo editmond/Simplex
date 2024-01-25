@@ -28,9 +28,10 @@ func writeToFile(writeOutText: String, sourceFilePath: String) -> Void{
     print("Write Completed")
 }
 
-//Writes the text editor string into the specified file
+//Writes the text editor string into the specified file. File path is starting from document dir
 func readFromFile(sourceFilePath: String) -> String{
     let filename = getDocumentsDirectory().appendingPathComponent(sourceFilePath)
+    print("Reading \(filename)")
     var text = ""
     do {
         text = try String(contentsOf: filename, encoding: .utf8)

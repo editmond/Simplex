@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 class GUIVariables: ObservableObject{
-    @Published var hasLoaded = false
+//    @Published var hasLoaded = false
     
     @Published var iconSize: CGFloat = 50
     
@@ -50,16 +50,23 @@ class GUIVariables: ObservableObject{
         return Color(hue: usedBackgroundHue, saturation: usedBackgroundSat, brightness: usedBackgroundBright)
     }
     init(){
-        let homeItems = listDirectory()
-        if !homeItems.contains("Settings_Data"){
-            _ = createMyDir(dirPath: "/Settings_Data")
-        }
-        let settingsFiles = listDirectory(fromHomePath: "/Settings_Data")
-        for item in settingsFiles{
-            print(item)
-        }
-//        readFromFile(sourceFilePath: "asdf.txt")
-        backgroundHue = 0.5
+        
+        let loadedSettings = loadSettings(settingsFile: "GUI_Settings.txt")
+        
+        print("GUI Settings found: \n\(loadedSettings)")
+        
+//        print("\(loadedSettings["backgroundHue", default: ["0.5"]])")
+        var temp = loadedSettings["backgroundHue", default: ["0.5"]]
+        backgroundHue = Double(temp[0]) ?? 0.0
+        
+        temp = loadedSettings["backgroundSat", default: ["0.2"]]
+        backgroundSaturation = Double(temp[0]) ?? 0.0
+        
+        temp = loadedSettings["backgroundBright", default: ["0.9"]]
+        backgroundBrightness = Double(temp[0]) ?? 0.0
+        
+        temp = loadedSettings["iconSize", default: ["50"]]
+        iconSize = CGFloat(Int(temp[0]) ?? 50)
     }
     
     deinit{

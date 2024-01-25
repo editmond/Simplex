@@ -14,10 +14,12 @@ struct MyTextEditor: View {
     var body: some View {
         VStack{
             TextEditor(text: $editorVars.fullText)
-                .foregroundColor(Color.gray)
-//				.font(.custom("HelveticaNeue", size: 13))
+                .foregroundColor(Color.black)
+				.font(.custom("HelveticaNeue", size: 13))
                 .scrollContentBackground(.hidden)
                 .background(guiVars.getBackgroundColour(brightnessMultiplier: 1.1, saturationMultiplier: 1))
+			
+			//for debugging remove at some point
             Button(){
 				print(readFromFile(sourceFilePath: editorVars.sourceFilePath))
             } label: {

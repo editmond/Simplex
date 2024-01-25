@@ -9,7 +9,7 @@ import Foundation
 
 func createMyDir(dirPath: String) -> Bool{
     let fm = FileManager.default
-    let path = "\(NSHomeDirectory())\(dirPath)"
+    let path = "\(NSHomeDirectory())/\(dirPath)"
     do {
         print("Accessing \(path)")
         try fm.createDirectory(atPath: path, withIntermediateDirectories: true)

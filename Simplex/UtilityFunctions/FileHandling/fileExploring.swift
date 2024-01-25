@@ -32,7 +32,7 @@ func listDirectory() -> Array<String>{
 func listDirectory(fromHomePath: String) -> Array<String>{
     let fm = FileManager.default
 //                let path = Bundle.main.resourcePath!
-    let path = "\(NSHomeDirectory())\(fromHomePath)"
+    let path = "\(NSHomeDirectory())/\(fromHomePath)"
 //    var outputString: String = ""
     var availableItems = [String]()
     do {
