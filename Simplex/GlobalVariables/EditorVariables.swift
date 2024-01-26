@@ -15,9 +15,23 @@ class EditorVariables: ObservableObject{
     
     @Published var sourceFilePath: String = "testing.txt"
     
-    init(){
-        let loadedSettings = loadSettings(settingsFile: "Editor_Settings.txt")
-        
-        print("Editor Settings found: \n\(loadedSettings)")
+    @Published var shellCommand: String = "python3"
+    @Published var shellOptions: String = ""
+    
+    init(doLoad: Bool){
+        if doLoad{
+            let loadedSettings = loadSettings(settingsFile: "Editor_Settings.txt")
+            
+            print("Editor Settings found: \n\(loadedSettings)")
+            
+            var temp = loadedSettings["sourceFilePath", default: ["untitled.txt"]]
+            sourceFilePath = temp[0]
+            
+            temp = loadedSettings["shellCommand", default: ["echo"]]
+            shellCommand = temp[0]
+            
+            temp = loadedSettings["shellOptions", default: [""]]
+            shellCommand = temp[0]
+        }
     }
 }

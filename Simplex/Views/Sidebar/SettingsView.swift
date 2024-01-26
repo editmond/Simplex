@@ -38,6 +38,7 @@ struct SettingsView: View {
 struct NoDeprecateSettingsView: View{
     
     @EnvironmentObject var guiVars: GUIVariables
+    @StateObject var tempGuiVars = GUIVariables(doLoad: false)
     var body: some View{
         NavigationSplitView{
             List {
@@ -54,6 +55,14 @@ struct NoDeprecateSettingsView: View{
             .navigationTitle("Settings")
         } detail: {
             GeneralSettingsView()
+            Button(){
+                //apply settings
+                tempGuiVars.iconSize += 10
+            } label: {
+                Text("Apply")
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+            .padding()
         }
     }
 }
@@ -88,6 +97,21 @@ struct GeneralSettingsView: View{
                 TextField("Source File Path", text: $editorVars.sourceFilePath)
                     .disableAutocorrection(true)
                     .padding()
+            }
+            GridRow{
+                Text("Some filler")
+            }
+            GridRow{
+                Text("Some filler")
+            }
+            GridRow{
+                Text("Some filler")
+            }
+            GridRow{
+                Text("Some filler")
+            }
+            GridRow{
+                Text("Some filler")
             }
         }
         .navigationTitle("Settings")

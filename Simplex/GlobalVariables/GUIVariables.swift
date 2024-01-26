@@ -13,7 +13,7 @@ class GUIVariables: ObservableObject{
     @Published var iconSize: CGFloat = 50
     
     
-    @Published var backgroundHue: Double = 0
+    @Published var backgroundHue: Double = 0.5
     @Published var backgroundSaturation: Double = 0.2
     @Published var backgroundBrightness: Double = 0.9
     //function overloading
@@ -49,24 +49,25 @@ class GUIVariables: ObservableObject{
         
         return Color(hue: usedBackgroundHue, saturation: usedBackgroundSat, brightness: usedBackgroundBright)
     }
-    init(){
-        
-        let loadedSettings = loadSettings(settingsFile: "GUI_Settings.txt")
-        
-        print("GUI Settings found: \n\(loadedSettings)")
-        
-//        print("\(loadedSettings["backgroundHue", default: ["0.5"]])")
-        var temp = loadedSettings["backgroundHue", default: ["0.5"]]
-        backgroundHue = Double(temp[0]) ?? 0.0
-        
-        temp = loadedSettings["backgroundSat", default: ["0.2"]]
-        backgroundSaturation = Double(temp[0]) ?? 0.0
-        
-        temp = loadedSettings["backgroundBright", default: ["0.9"]]
-        backgroundBrightness = Double(temp[0]) ?? 0.0
-        
-        temp = loadedSettings["iconSize", default: ["50"]]
-        iconSize = CGFloat(Int(temp[0]) ?? 50)
+    init(doLoad: Bool){
+        if doLoad{
+            let loadedSettings = loadSettings(settingsFile: "GUI_Settings.txt")
+            
+            print("GUI Settings found: \n\(loadedSettings)")
+            
+            //        print("\(loadedSettings["backgroundHue", default: ["0.5"]])")
+            var temp = loadedSettings["backgroundHue", default: ["0.5"]]
+            backgroundHue = Double(temp[0]) ?? 0.5
+            
+            temp = loadedSettings["backgroundSat", default: ["0.2"]]
+            backgroundSaturation = Double(temp[0]) ?? 0.2
+            
+            temp = loadedSettings["backgroundBright", default: ["0.9"]]
+            backgroundBrightness = Double(temp[0]) ?? 0.9
+            
+            temp = loadedSettings["iconSize", default: ["50"]]
+            iconSize = CGFloat(Int(temp[0]) ?? 50)
+        }
     }
     
     deinit{

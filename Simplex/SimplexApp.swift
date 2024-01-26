@@ -12,9 +12,9 @@ struct SimplexApp: App {
     @Environment(\.openWindow) var openWindo
 //    @Environment(\.scenePhase) private var scenePhase
     
-    @StateObject var guiObject = GUIVariables()
-    @StateObject var sidebarObject = SidebarVariables()
-    @StateObject var editorObject = EditorVariables()
+    @StateObject var guiObject = GUIVariables(doLoad: true)
+    @StateObject var sidebarObject = SidebarVariables(doLoad: true)
+    @StateObject var editorObject = EditorVariables(doLoad: true)
     //initialisation code
     init(){
         print("Initialising")
