@@ -9,8 +9,10 @@ import SwiftUI
 
 struct Background: View {
     @EnvironmentObject var guiVars: GUIVariables
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
-        guiVars.getBackgroundColour(brightnessMultiplier: 1, saturationMultiplier: 1).ignoresSafeArea()
+        guiVars.getBackgroundColour(brightnessMultiplier: colorScheme == .dark ? 0.7 : 1, saturationMultiplier: 1).ignoresSafeArea()
     }
 }
 

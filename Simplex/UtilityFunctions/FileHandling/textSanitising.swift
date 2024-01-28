@@ -48,12 +48,12 @@ func sanitiseText(text: String) -> String{
             
         case puncLower.value...puncUpper.value:
             //replace the offending character
-            let newChar = puncConversions["\(char)", default: "\0"]
+            let newChar = puncConversions["\(char)", default: "\0"] //removes the character if there is no replacement
             newText += newChar
             
         default:
             //replace the offending character
-            let newChar = randomConversions["\(char)", default: String(char)]
+            let newChar = randomConversions["\(char)", default: "\0"] //removes the character if there is no replacement
             newText += newChar
         }
     }

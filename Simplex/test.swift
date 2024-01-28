@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct dummyView: View {
+struct dummyView: View { //a view for testing, like the playground for functions. It is not implemented into the code unless testing.
     @EnvironmentObject var guiVars: GUIVariables
     @EnvironmentObject var sideVars: SidebarVariables
     @EnvironmentObject var editorVars: EditorVariables

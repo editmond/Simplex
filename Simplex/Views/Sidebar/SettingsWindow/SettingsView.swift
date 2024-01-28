@@ -79,6 +79,12 @@ struct NoDeprecateSettingsView: View{
                     guiVars.copyContents(GUIObj: bufferGuiVars)
                     editorVars.copyContents(EditorObj: bufferEditorVars)
                     sidebarVars.copyContents(SideObj: bufferSidebarVars)
+                    
+                    //write the new settings
+                    guiVars.writeSettings()
+                    editorVars.writeSettings()
+                    sidebarVars.writeSettings()
+                    
                 } label: {
                     Text("Apply")
                 }
@@ -92,78 +98,6 @@ struct NoDeprecateSettingsView: View{
     }
 }
         
-
-struct GUISettingsView: View {
-    @EnvironmentObject var guiVars: GUIVariables
-    var body: some View{
-        VStack{
-            Text("Gui Settings")
-                .padding()
-            
-            //temporary
-            HStack{
-                Button(){
-                    guiVars.backgroundHue += 0.01
-                } label: {
-                    Image(systemName: "plus")
-                }
-                Button(){
-                    guiVars.backgroundHue -= 0.01
-                } label: {
-                    Image(systemName: "minus")
-                }
-            }
-            Spacer()
-        }
-        .navigationTitle("Settings - GUI")
-    }
-}
-
-struct RuntimeSettingsView: View {
-    var body: some View {
-        VStack{
-            Text("Runtime Settings")
-                .padding()
-            Spacer()
-        }
-        .navigationTitle("Settings - Runtime")
-    }
-}
-
-struct GeneralSettingsView: View{
-    @EnvironmentObject var editorVars: EditorVariables
-    var body: some View{
-        Grid{
-            //the rest could be programmatically generated based on the required input
-            GridRow{
-                Text("Source File Path:")
-                    .padding()
-                TextField("Source File Path", text: $editorVars.sourceFilePath)
-                    .disableAutocorrection(true)
-                    .padding()
-            }
-            GridRow{
-                Text("Some filler")
-            }
-            GridRow{
-                Text("Some filler")
-            }
-            GridRow{
-                Text("Some filler")
-            }
-            GridRow{
-                Text("Some filler")
-            }
-            GridRow{
-                Text("Some filler")
-            }
-            Spacer()
-        }
-        .navigationTitle("Settings")
-        .textFieldStyle(.roundedBorder)
-    }
-}
-
 #Preview {
    NoDeprecateSettingsView()
 }

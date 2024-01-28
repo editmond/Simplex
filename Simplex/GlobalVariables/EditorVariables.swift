@@ -9,6 +9,7 @@ import SwiftUI
 
 class EditorVariables: ObservableObject{
 //    @Published var hasLoaded = false
+    var settingsFile = "Editor_Settings.txt"
     
     //The text within the text editor is stored here
     @Published var fullText: String = "This is some editable text..."
@@ -19,17 +20,28 @@ class EditorVariables: ObservableObject{
     @Published var shellOptions: String = ""
     
     func copyContents(EditorObj: EditorVariables){
-        fullText = EditorObj.fullText
-        
         sourceFilePath = EditorObj.sourceFilePath
         
         shellCommand = EditorObj.shellCommand
         shellOptions = EditorObj.shellOptions
     }
     
+    func writeSettings(){
+        //prepare an array for writing
+        var formattedSettings: [String:[String]] = [:]
+        
+        formattedSettings["sourceFilePath"] = [sourceFilePath]
+        
+        formattedSettings["shellCommand"] = [shellCommand]
+        formattedSettings["shellOptions"] = [shellOptions]
+        
+        //write the array into the settings file
+        saveSettings(settingVars: formattedSettings, settingsFile: settingsFile)
+    }
+    
     init(doLoad: Bool){
         if doLoad{
-            let loadedSettings = loadSettings(settingsFile: "Editor_Settings.txt")
+            let loadedSettings = loadSettings(settingsFile: settingsFile)
             
             print("Editor Settings found: \n\(loadedSettings)")
             
@@ -40,7 +52,7 @@ class EditorVariables: ObservableObject{
             shellCommand = temp[0]
             
             temp = loadedSettings["shellOptions", default: [""]]
-            shellCommand = temp[0]
+            shellOptions = temp[0]
         }
     }
 }

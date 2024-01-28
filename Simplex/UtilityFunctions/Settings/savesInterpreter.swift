@@ -18,8 +18,10 @@ func interpretSettings(fileString: String) -> [String: [String]]{
         for value in sepValues{
             arrayedValues.append(String(value))
         }
-        print(sepVar)
-        print (arrayedValues)
+        if arrayedValues.isEmpty{
+            arrayedValues.append("")
+        }
+//        print ("Found: \(arrayedValues)")
         settingsDict[String(sepVar[0])] = arrayedValues
     }
     return settingsDict

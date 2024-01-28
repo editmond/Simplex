@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct SimplexApp: App {
-    @Environment(\.openWindow) var openWindo
+    @Environment(\.openWindow) var openWindow
 //    @Environment(\.scenePhase) private var scenePhase
     
     @StateObject var guiObject = GUIVariables(doLoad: true)

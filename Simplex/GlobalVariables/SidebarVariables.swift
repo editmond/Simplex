@@ -9,6 +9,7 @@ import SwiftUI
 
 class SidebarVariables: ObservableObject{
 //    @Published var hasLoaded = false
+    var settingsFile = "Sidebar_Settings.txt"
     
     //The icons in the top half of the sidebar. Only use system icons (for now)
     @Published var UpperSideBarIcons: [String] = ["play.circle", "folder"]
@@ -22,9 +23,21 @@ class SidebarVariables: ObservableObject{
         LowerSidebarIcons = SideObj.LowerSidebarIcons
     }
     
+    func writeSettings(){
+        //prepare an array for writing
+        var formattedSettings: [String:[String]] = [:]
+        
+        formattedSettings["UpperSideBarIcons"] = UpperSideBarIcons
+        
+        formattedSettings["LowerSidebarIcons"] = LowerSidebarIcons
+        
+        //write the array into the settings file
+        saveSettings(settingVars: formattedSettings, settingsFile: settingsFile)
+    }
+    
     init(doLoad: Bool){
         if doLoad{
-            let loadedSettings = loadSettings(settingsFile: "Sidebar_Settings.txt")
+            let loadedSettings = loadSettings(settingsFile: settingsFile)
             
             print("Sidebar Settings found: \n\(loadedSettings)")
             var temp = loadedSettings["UpperSideBarIcons", default: ["play.circle", "folder"]]

@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 class GUIVariables: ObservableObject{
 //    @Published var hasLoaded = false
+    var settingsFile = "GUI_Settings.txt"
     
     @Published var iconSize: CGFloat = 50
     
@@ -57,15 +58,31 @@ class GUIVariables: ObservableObject{
         backgroundSaturation = GUIObj.backgroundSaturation
         backgroundBrightness = GUIObj.backgroundBrightness
     }
+    
+    func writeSettings(){
+        //prepare an array for writing
+        var formattedSettings: [String:[String]] = [:]
+        formattedSettings["iconSize"] = [String(Int(iconSize))]
+        
+        formattedSettings["backgroundHue"] = [String(backgroundHue)]
+        formattedSettings["backgroundSat"] = [String(backgroundSaturation)]
+        formattedSettings["backgroundBright"] = [String(backgroundBrightness)]
+        
+        //write the array into the settings file
+        saveSettings(settingVars: formattedSettings, settingsFile: settingsFile)
+    }
 
     init(doLoad: Bool){
         if doLoad{
-            let loadedSettings = loadSettings(settingsFile: "GUI_Settings.txt")
+            let loadedSettings = loadSettings(settingsFile: settingsFile)
             
             print("GUI Settings found: \n\(loadedSettings)")
             
             //        print("\(loadedSettings["backgroundHue", default: ["0.5"]])")
-            var temp = loadedSettings["backgroundHue", default: ["0.5"]]
+            var temp = loadedSettings["iconSize", default: ["50"]]
+            iconSize = CGFloat(Int(temp[0]) ?? 50)
+            
+            temp = loadedSettings["backgroundHue", default: ["0.5"]]
             backgroundHue = Double(temp[0]) ?? 0.5
             
             temp = loadedSettings["backgroundSat", default: ["0.2"]]
@@ -73,9 +90,6 @@ class GUIVariables: ObservableObject{
             
             temp = loadedSettings["backgroundBright", default: ["0.9"]]
             backgroundBrightness = Double(temp[0]) ?? 0.9
-            
-            temp = loadedSettings["iconSize", default: ["50"]]
-            iconSize = CGFloat(Int(temp[0]) ?? 50)
         }
     }
     deinit{

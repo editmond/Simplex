@@ -13,9 +13,6 @@ func loadSettings(settingsFile: String) -> [String: [String]]{
         _ = createMyDir(dirPath: "Settings_Data")
     }
     let settingsFiles = listDirectory(fromHomePath: "Settings_Data")
-    for item in settingsFiles{
-        print(item)
-    }
     var fileString: String = ""
     if settingsFiles.contains(settingsFile){
         fileString = readFromFile(sourceFilePath: "../Settings_Data/\(settingsFile)")
