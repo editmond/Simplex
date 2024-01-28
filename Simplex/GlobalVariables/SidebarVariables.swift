@@ -16,6 +16,12 @@ class SidebarVariables: ObservableObject{
     //The icons in the bottom half of the sidebar. Only use system icons (for now)
     @Published var LowerSidebarIcons: [String] = ["music.note", "doc.text", "gearshape"]
     
+    func copyContents(SideObj: SidebarVariables){
+        UpperSideBarIcons = SideObj.UpperSideBarIcons
+        
+        LowerSidebarIcons = SideObj.LowerSidebarIcons
+    }
+    
     init(doLoad: Bool){
         if doLoad{
             let loadedSettings = loadSettings(settingsFile: "Sidebar_Settings.txt")

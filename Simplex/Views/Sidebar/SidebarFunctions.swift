@@ -17,7 +17,7 @@ func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: Str
         let shellResult = try? safeShell("\(shellCommand) Documents/\(sourceFilePath)")
         print("\(shellCommand) response:\n\(shellResult ?? "")")
     case 1:
-        return "files" // return the files window id
+        return "files!" // return the files window id
         
     default:
         try? safeShell("say \(actionNum)") // CHANGE LATER - a stub
@@ -32,8 +32,8 @@ func LowerSidebarActor(actionNum: Int) -> String{
     case 0:
         try? safeShell("say \(actionNum)") // CHANGE LATER - a stub
         
-    case 1:
-        print("a") // CHANGE LATER - a stub
+    case 1: //page icon
+        return "docs" //the window id for documentation window
         
     case 2: //Gear icon
 //        SimplexApp.openThisWindow(id: "settings")

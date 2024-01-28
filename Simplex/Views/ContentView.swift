@@ -21,19 +21,19 @@ struct ContentView: View {
             Previewer()
             Divider()
             
-            //This is a test of the editable GUI variables concept. is temporary
-            VStack{
-                Button(){
-                    guiVars.backgroundHue += 0.01
-                } label: {
-                    Image(systemName: "plus")
-                }
-                Button(){
-                    guiVars.backgroundHue -= 0.01
-                } label: {
-                    Image(systemName: "minus")
-                }
-            }
+//            //This is a test of the editable GUI variables concept. is temporary
+//            VStack{
+//                Button(){
+//                    guiVars.backgroundHue += 0.01
+//                } label: {
+//                    Image(systemName: "plus")
+//                }
+//                Button(){
+//                    guiVars.backgroundHue -= 0.01
+//                } label: {
+//                    Image(systemName: "minus")
+//                }
+//            }
         }.padding()
     }
 }

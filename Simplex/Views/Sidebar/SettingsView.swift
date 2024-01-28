@@ -7,71 +7,113 @@
 
 import SwiftUI
 
-/* Deprecated
-struct SettingsView: View {
-
-    @EnvironmentObject var guiVars: GUIVariables
-    var body: some View {
-        NavigationView{
-            ZStack{
-                guiVars.getBackgroundColour(brightnessMultiplier: 1, saturationMultiplier: 0.5)
-                VStack{
-                    Spacer()
-                    List {
-                        NavigationLink(destination: GeneralSettingsView()) {
-                            Label("General", systemImage: "gear")
-                        }
-                        NavigationLink(destination: GUISettingsView()) {
-                            Label("GUI", systemImage: "paintbrush.pointed")
-                        }
-                        NavigationLink(destination: RuntimeSettingsView()) {
-                            Label("Runtime", systemImage: "hammer")
-                        }
-                    }
-                    .navigationTitle("Settings")
-                }
-            }
-        }
-    }
-}
-*/
 struct NoDeprecateSettingsView: View{
     
+    //the global variables
     @EnvironmentObject var guiVars: GUIVariables
-    @StateObject var tempGuiVars = GUIVariables(doLoad: false)
+    @EnvironmentObject var editorVars: EditorVariables
+    @EnvironmentObject var sidebarVars: SidebarVariables
+    
+    //the buffer for the globabl variables
+    @StateObject var bufferGuiVars = GUIVariables(doLoad: true)
+    @StateObject var bufferEditorVars = EditorVariables(doLoad: true)
+    @StateObject var bufferSidebarVars = SidebarVariables(doLoad: true)
+    
+    //the default objects
+    let defaultGuiObj = GUIVariables(doLoad: false)
+    let defaultEditorObj = EditorVariables(doLoad: false)
+    let defaultSideObj = SidebarVariables(doLoad: false)
+    
     var body: some View{
-        NavigationSplitView{
-            List {
-                NavigationLink(destination: GeneralSettingsView()) {
-                    Label("General", systemImage: "gear")
+        ZStack{
+            NavigationSplitView{
+                List {
+                    NavigationLink(destination: GeneralSettingsView()) {
+                        Label("General", systemImage: "gear")
+                    }
+                    NavigationLink(destination: GUISettingsView()) {
+                        Label("GUI", systemImage: "paintbrush.pointed")
+                    }
+                    NavigationLink(destination: RuntimeSettingsView()) {
+                        Label("Runtime", systemImage: "hammer")
+                    }
+                    
                 }
-                NavigationLink(destination: GUISettingsView()) {
-                    Label("GUI", systemImage: "paintbrush.pointed")
-                }
-                NavigationLink(destination: RuntimeSettingsView()) {
-                    Label("Runtime", systemImage: "hammer")
-                }
+                .navigationTitle("Settings")
+                
+            } detail: {
+                GeneralSettingsView()
             }
-            .navigationTitle("Settings")
-        } detail: {
-            GeneralSettingsView()
-            Button(){
-                //apply settings
-                tempGuiVars.iconSize += 10
-            } label: {
-                Text("Apply")
+            HStack{
+                Button(){ //Restore Default settings
+                    
+                    //copy to the global objects
+                    guiVars.copyContents(GUIObj: defaultGuiObj)
+                    editorVars.copyContents(EditorObj: defaultEditorObj)
+                    sidebarVars.copyContents(SideObj: defaultSideObj)
+                    
+                    //copy to the buffer objects
+                    bufferGuiVars.copyContents(GUIObj: defaultGuiObj)
+                    bufferEditorVars.copyContents(EditorObj: defaultEditorObj)
+                    bufferSidebarVars.copyContents(SideObj: defaultSideObj)
+                    
+                    //destory objects ~~~ may not be necessary?
+                    
+                } label: {
+                    Text("Restore Default")
+                }
+                Spacer()
+                Button(){
+                    
+                    //Reset settings to what the user had previously
+                    bufferGuiVars.copyContents(GUIObj: guiVars)
+                    bufferEditorVars.copyContents(EditorObj: editorVars)
+                    bufferSidebarVars.copyContents(SideObj: sidebarVars)
+                    
+                } label: {
+                    Text("Cancel")
+                }
+                Button(){
+                    
+                    //apply new settings
+                    guiVars.copyContents(GUIObj: bufferGuiVars)
+                    editorVars.copyContents(EditorObj: bufferEditorVars)
+                    sidebarVars.copyContents(SideObj: bufferSidebarVars)
+                } label: {
+                    Text("Apply")
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
             .padding()
         }
+        .environmentObject(bufferGuiVars)
+        .environmentObject(bufferEditorVars)
+        .environmentObject(bufferSidebarVars)
     }
 }
+        
 
 struct GUISettingsView: View {
     @EnvironmentObject var guiVars: GUIVariables
     var body: some View{
         VStack{
             Text("Gui Settings")
+                .padding()
+            
+            //temporary
+            HStack{
+                Button(){
+                    guiVars.backgroundHue += 0.01
+                } label: {
+                    Image(systemName: "plus")
+                }
+                Button(){
+                    guiVars.backgroundHue -= 0.01
+                } label: {
+                    Image(systemName: "minus")
+                }
+            }
+            Spacer()
         }
         .navigationTitle("Settings - GUI")
     }
@@ -81,6 +123,8 @@ struct RuntimeSettingsView: View {
     var body: some View {
         VStack{
             Text("Runtime Settings")
+                .padding()
+            Spacer()
         }
         .navigationTitle("Settings - Runtime")
     }
@@ -113,6 +157,7 @@ struct GeneralSettingsView: View{
             GridRow{
                 Text("Some filler")
             }
+            Spacer()
         }
         .navigationTitle("Settings")
         .textFieldStyle(.roundedBorder)

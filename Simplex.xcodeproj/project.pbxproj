@@ -17,6 +17,7 @@
 		808E616A2B240BDE0085E6FD /* GUIVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E61692B240BDE0085E6FD /* GUIVariables.swift */; };
 		8098709C2B4F93FF00ECA693 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8098709B2B4F93FE00ECA693 /* SettingsView.swift */; };
 		80B9B11A2B58E8A800ED418B /* FileExplorerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B9B1192B58E8A800ED418B /* FileExplorerView.swift */; };
+		80BE4C3F2B662C2C007BA727 /* DocumentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE4C3E2B662C2C007BA727 /* DocumentationView.swift */; };
 		80C7CC192B60D5530021CDDF /* fileExploring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7CC182B60D5530021CDDF /* fileExploring.swift */; };
 		80C7CC1B2B60DD040021CDDF /* createDirectories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7CC1A2B60DD040021CDDF /* createDirectories.swift */; };
 		80E5E48B2B1D4089002A4D54 /* SimplexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5E48A2B1D4089002A4D54 /* SimplexApp.swift */; };
@@ -44,6 +45,7 @@
 		808E61692B240BDE0085E6FD /* GUIVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GUIVariables.swift; sourceTree = "<group>"; };
 		8098709B2B4F93FE00ECA693 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		80B9B1192B58E8A800ED418B /* FileExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileExplorerView.swift; sourceTree = "<group>"; };
+		80BE4C3E2B662C2C007BA727 /* DocumentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentationView.swift; sourceTree = "<group>"; };
 		80C7CC182B60D5530021CDDF /* fileExploring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fileExploring.swift; sourceTree = "<group>"; };
 		80C7CC1A2B60DD040021CDDF /* createDirectories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createDirectories.swift; sourceTree = "<group>"; };
 		80E5E4872B1D4089002A4D54 /* Simplex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplex.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +93,7 @@
 				80F0F7042B4BC66500BD6279 /* SidebarFunctions.swift */,
 				8098709B2B4F93FE00ECA693 /* SettingsView.swift */,
 				80B9B1192B58E8A800ED418B /* FileExplorerView.swift */,
+				80BE4C3E2B662C2C007BA727 /* DocumentationView.swift */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				80E5E49C2B1D4186002A4D54 /* MyTextEditor.swift in Sources */,
 				80B9B11A2B58E8A800ED418B /* FileExplorerView.swift in Sources */,
 				80875DFC2B246F3200DD0994 /* Background.swift in Sources */,
+				80BE4C3F2B662C2C007BA727 /* DocumentationView.swift in Sources */,
 				800C5F0C2B5F83A4000C7FFF /* writeRead.swift in Sources */,
 				8098709C2B4F93FF00ECA693 /* SettingsView.swift in Sources */,
 				80F3D4B22B61DF150085F8CF /* savesInterpreter.swift in Sources */,

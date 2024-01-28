@@ -18,6 +18,15 @@ class EditorVariables: ObservableObject{
     @Published var shellCommand: String = "python3"
     @Published var shellOptions: String = ""
     
+    func copyContents(EditorObj: EditorVariables){
+        fullText = EditorObj.fullText
+        
+        sourceFilePath = EditorObj.sourceFilePath
+        
+        shellCommand = EditorObj.shellCommand
+        shellOptions = EditorObj.shellOptions
+    }
+    
     init(doLoad: Bool){
         if doLoad{
             let loadedSettings = loadSettings(settingsFile: "Editor_Settings.txt")

@@ -22,12 +22,14 @@ struct SimplexApp: App {
     
     //the main scene
     var body: some Scene {
+        
         WindowGroup(id: "MainWindow"){
             MainView()
                 .environmentObject(guiObject)
                 .environmentObject(sidebarObject)
                 .environmentObject(editorObject)
         }
+        
         Window("Settings", id: "settings"){
             ZStack{
                 Background()
@@ -39,6 +41,7 @@ struct SimplexApp: App {
             .environmentObject(editorObject)
         }
         .keyboardShortcut(",")
+        
         Window("Files", id: "files"){
             ZStack{
                 Background()
@@ -49,6 +52,28 @@ struct SimplexApp: App {
             .environmentObject(editorObject)
         }
         .keyboardShortcut("o")
+        
+        Window("Files", id: "files!"){
+            ZStack{
+                Background()
+                FileExplorerView()
+            }
+            .environmentObject(guiObject)
+            .environmentObject(sidebarObject)
+            .environmentObject(editorObject)
+        }
+        .keyboardShortcut("o")
+        
+        Window("Documentation", id: "docs"){
+            ZStack{
+                Background()
+                DocumentationView()
+            }
+            .environmentObject(guiObject)
+            .environmentObject(sidebarObject)
+            .environmentObject(editorObject)
+        }
+        .keyboardShortcut("d", modifiers: [.command, .shift])
     }
 }
 

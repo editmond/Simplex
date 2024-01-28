@@ -12,12 +12,12 @@ class GUIVariables: ObservableObject{
     
     @Published var iconSize: CGFloat = 50
     
-    
+    //the background set for colour
     @Published var backgroundHue: Double = 0.5
     @Published var backgroundSaturation: Double = 0.2
     @Published var backgroundBrightness: Double = 0.9
-    //function overloading
     
+    //returns a colour value based on the background set
     func getBackgroundColour(brightnessMultiplier: Double, saturationMultiplier: Double) -> Color{
         
         var usedBackgroundHue = backgroundHue
@@ -49,6 +49,15 @@ class GUIVariables: ObservableObject{
         
         return Color(hue: usedBackgroundHue, saturation: usedBackgroundSat, brightness: usedBackgroundBright)
     }
+    
+    func copyContents(GUIObj: GUIVariables){
+        iconSize = GUIObj.iconSize
+        
+        backgroundHue = GUIObj.backgroundHue
+        backgroundSaturation = GUIObj.backgroundSaturation
+        backgroundBrightness = GUIObj.backgroundBrightness
+    }
+
     init(doLoad: Bool){
         if doLoad{
             let loadedSettings = loadSettings(settingsFile: "GUI_Settings.txt")
@@ -69,7 +78,6 @@ class GUIVariables: ObservableObject{
             iconSize = CGFloat(Int(temp[0]) ?? 50)
         }
     }
-    
     deinit{
         writeToFile(writeOutText: "bye bye", sourceFilePath: "foo.txt")
     }
