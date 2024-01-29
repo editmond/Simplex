@@ -13,19 +13,25 @@ struct GUISettingsView: View {
         VStack{
             Text("Gui Settings")
                 .padding()
-            
-            //temporary
             HStack{
-                Button(){
-                    guiVars.backgroundHue += 0.01
-                } label: {
-                    Image(systemName: "plus")
-                }
+                Text("Background Hue: ")
+                    .padding()
+                    .bold()
+                
                 Button(){
                     guiVars.backgroundHue -= 0.01
                 } label: {
                     Image(systemName: "minus")
-                }
+                }.disabled((guiVars.backgroundHue > 0) ? false : true)
+                
+                Slider(value: $guiVars.backgroundHue, in: 0...1)
+                
+                Button(){
+                    guiVars.backgroundHue += 0.01
+                } label: {
+                    Image(systemName: "plus")
+                }.disabled((guiVars.backgroundHue < 1) ? false : true)
+                
                 Spacer()
                 RoundedRectangle(cornerRadius: 10)
                     .fill(guiVars.getBackgroundColour(brightnessMultiplier: 1, saturationMultiplier: 1))

@@ -12,7 +12,7 @@ class EditorVariables: ObservableObject{
     var settingsFile = "Editor_Settings.txt"
     
     //The text within the text editor is stored here
-    @Published var fullText: String = "This is some editable text..."
+    @Published var fullText: String = "\nThis is some editable text..."
     
     @Published var sourceFilePath: String = "testing.txt"
     

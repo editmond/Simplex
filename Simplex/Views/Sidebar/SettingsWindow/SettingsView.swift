@@ -24,6 +24,8 @@ struct NoDeprecateSettingsView: View{
     let defaultEditorObj = EditorVariables(doLoad: false)
     let defaultSideObj = SidebarVariables(doLoad: false)
     
+    @State private var showingAlert = false
+    
     var body: some View{
         ZStack{
             NavigationSplitView{
@@ -57,10 +59,16 @@ struct NoDeprecateSettingsView: View{
                     bufferEditorVars.copyContents(EditorObj: defaultEditorObj)
                     bufferSidebarVars.copyContents(SideObj: defaultSideObj)
                     
+                    //write the new settings
+                    guiVars.writeSettings()
+                    editorVars.writeSettings()
+                    sidebarVars.writeSettings()
+                    
                     //destory objects ~~~ may not be necessary?
                     
                 } label: {
                     Text("Restore Default")
+                    
                 }
                 Spacer()
                 Button(){

@@ -18,6 +18,10 @@ struct MyTextEditor: View {
 				.font(.custom("HelveticaNeue", size: 13))
                 .scrollContentBackground(.hidden)
                 .background(guiVars.getBackgroundColour(brightnessMultiplier: 1.1, saturationMultiplier: 1))
+				.overlay(
+					RoundedRectangle(cornerRadius: 10)
+						.stroke(guiVars.getBackgroundColour(brightnessMultiplier: 1.1, saturationMultiplier: 1), lineWidth: 5)
+				)
 			
 			//for debugging remove at some point
             Button(){
