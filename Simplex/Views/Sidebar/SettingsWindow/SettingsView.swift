@@ -25,6 +25,7 @@ struct NoDeprecateSettingsView: View{
     let defaultSideObj = SidebarVariables(doLoad: false)
     
     @State private var showingAlert = false
+    @State private var doAction = false
     
     var body: some View{
         ZStack{
@@ -68,7 +69,6 @@ struct NoDeprecateSettingsView: View{
                     
                 } label: {
                     Text("Restore Default")
-                    
                 }
                 Spacer()
                 Button(){
