@@ -8,14 +8,16 @@
 import Foundation
 
 //This is the function that chooses which actions correpsond to which icon
-func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: String, shellCommand: String, shellOptions: String) -> String{
+func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: String, shellCommand: String, shellOptions: String, buildScriptName: String) -> String{
     switch actionNum{
     case 0: //Play icon
         writeToFile(writeOutText: writeOutText, sourceFilePath: sourceFilePath)
         
-        //CHANGE LATER - runs python3 in the source file
-        let shellResult = try? safeShell("\(shellCommand) Documents/\(sourceFilePath)")
-        print("\(shellCommand) response:\n\(shellResult ?? "")")
+//        //CHANGE LATER - runs python3 in the source file
+//        let shellResult = try? safeShell("\(shellCommand) Documents/\(sourceFilePath)")
+//        print("\(shellCommand) response:\n\(shellResult ?? "")")
+        var output = try? safeShell("./\(buildScriptName.trimmingCharacters(in: .whitespacesAndNewlines))")
+        print(output)
     case 1:
         return "files!" // return the files window id
         

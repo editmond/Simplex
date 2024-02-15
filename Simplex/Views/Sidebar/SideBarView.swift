@@ -23,7 +23,7 @@ struct SideBar: View {
                         .font(.system(size: guiVars.iconSize))
                         .foregroundStyle(.tint)
                         .onTapGesture{
-                            let windowID = UpperSidebarActor(actionNum: num, writeOutText: editorVars.fullText, sourceFilePath: editorVars.sourceFilePath, shellCommand: editorVars.shellCommand, shellOptions: editorVars.shellOptions)
+                            let windowID = UpperSidebarActor(actionNum: num, writeOutText: editorVars.fullText, sourceFilePath: editorVars.sourceFilePath, shellCommand: editorVars.shellCommand, shellOptions: editorVars.shellOptions, buildScriptName: editorVars.buildScriptName)
                             if (windowID != ""){
                                 openWindow(id: windowID)
                             }

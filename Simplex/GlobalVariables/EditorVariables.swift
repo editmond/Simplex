@@ -16,6 +16,8 @@ class EditorVariables: ObservableObject{
     
     @Published var sourceFilePath: String = "testing.txt"
     
+    @Published var buildScriptName: String = "default.sh"
+    
     @Published var shellCommand: String = "python3"
     @Published var shellOptions: String = ""
     

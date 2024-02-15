@@ -18,6 +18,8 @@ struct SimplexApp: App {
     //initialisation code
     init(){
         print("Initialising")
+        folderCheck(folderName: "Settings_Data")
+        folderCheck(folderName: "Build_Scripts")
     }
     
     //the main scene

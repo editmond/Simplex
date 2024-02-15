@@ -8,10 +8,11 @@
 import Foundation
 
 func loadSettings(settingsFile: String) -> [String: [String]]{
-    let homeItems = listDirectory()
-    if !homeItems.contains("Settings_Data"){
-        _ = createMyDir(dirPath: "Settings_Data")
-    }
+    //this has been moved to the app initialisation
+//    let homeItems = listDirectory()
+//    if !homeItems.contains("Settings_Data"){
+//        _ = createMyDir(dirPath: "Settings_Data")
+//    }
     let settingsFiles = listDirectory(fromHomePath: "Settings_Data")
     var fileString: String = ""
     if settingsFiles.contains(settingsFile){
