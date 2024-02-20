@@ -8,13 +8,24 @@
 import SwiftUI
 
 struct RuntimeSettingsView: View {
+    @EnvironmentObject var editorVars: EditorVariables //this view accesses the buffer object
     var body: some View {
-        VStack{
-            Text("Runtime Settings")
-                .padding()
+        Grid{
+            //the rest could be programmatically generated based on the required input
+            GridRow{
+                Text("Source File Path:")
+                    .padding()
+                TextField("Source File Path", text: $editorVars.buildScriptName)
+                    .disableAutocorrection(true)
+                Text(".sh \t Do not include the .sh")
+            }
+            GridRow{
+                Text("Some filler")
+            }
             Spacer()
         }
-        .navigationTitle("Settings - Runtime")
+        .navigationTitle("Settings")
+        .textFieldStyle(.roundedBorder)
     }
 }
 #Preview {
