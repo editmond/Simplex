@@ -18,7 +18,7 @@ func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: Str
 //        print("\(shellCommand) response:\n\(shellResult ?? "")")
         var output = try? safeShell("ls")
         print(output)
-        output = try? safeShell("./Build_Scripts/\(buildScriptName).sh")
+        output = try? safeShell("~/\(NonUIVariables.appFolder)/Build_Scripts/\(buildScriptName).sh")
         print(output)
     case 1:
         return "files!" // return the files window id

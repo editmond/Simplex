@@ -17,5 +17,5 @@ func saveSettings(settingVars: [String:[String]], settingsFile: String){
         outputString += outputLine + "\n"
     }
     print(outputString)
-    writeToFile(writeOutText: outputString, sourceFilePath: "../Settings_Data/\(settingsFile)", noSanitise: true)
+    writeToFile(writeOutText: outputString, sourceFilePath: "../\(NonUIVariables.appFolder)/Settings_Data/\(settingsFile)", noSanitise: true)
 }

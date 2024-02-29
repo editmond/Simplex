@@ -15,12 +15,15 @@ struct RuntimeSettingsView: View {
             GridRow{
                 Text("Source File Path:")
                     .padding()
+                TextField("Source File Path", text: $editorVars.sourceFilePath)
+                    .disableAutocorrection(true)
+            }
+            GridRow{
+                Text("Source File Path:")
+                    .padding()
                 TextField("Source File Path", text: $editorVars.buildScriptName)
                     .disableAutocorrection(true)
                 Text(".sh \t Do not include the .sh")
-            }
-            GridRow{
-                Text("Some filler")
             }
             Spacer()
         }
