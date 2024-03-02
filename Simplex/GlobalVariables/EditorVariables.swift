@@ -21,6 +21,9 @@ class EditorVariables: ObservableObject{
     @Published var shellCommand: String = "python3"
     @Published var shellOptions: String = ""
     
+    //no need to save
+    @Published var previewText: String = ""
+    
     func copyContents(EditorObj: EditorVariables){
         sourceFilePath = EditorObj.sourceFilePath
         buildScriptName = EditorObj.buildScriptName
@@ -61,6 +64,8 @@ class EditorVariables: ObservableObject{
             
             temp = loadedSettings["shellOptions", default: [""]]
             shellOptions = temp[0]
+            
+            fullText = readFromFile(sourceFilePath: sourceFilePath)
         }
     }
 }

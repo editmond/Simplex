@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MyTextEditor: View {
+    @Environment(\.colorScheme) var colorScheme
+	
     @EnvironmentObject var guiVars: GUIVariables
     @EnvironmentObject var editorVars: EditorVariables
     @State var someText = "heelo"
@@ -17,10 +19,10 @@ struct MyTextEditor: View {
                 .foregroundColor(Color.black)
 				.font(.custom("HelveticaNeue", size: 13))
                 .scrollContentBackground(.hidden)
-                .background(guiVars.getBackgroundColour(brightnessMultiplier: 1.1, saturationMultiplier: 1))
+				.background(guiVars.getBackgroundColour(brightnessMultiplier: colorScheme == .dark ? 0.8 : 1.1, saturationMultiplier: 1))
 				.overlay(
 					RoundedRectangle(cornerRadius: 10)
-						.stroke(guiVars.getBackgroundColour(brightnessMultiplier: 1.1, saturationMultiplier: 1), lineWidth: 5)
+						.stroke(guiVars.getBackgroundColour(brightnessMultiplier: colorScheme == .dark ? 0.8 : 1.1, saturationMultiplier: 1), lineWidth: 5)
 				)
 			
 			//for debugging remove at some point

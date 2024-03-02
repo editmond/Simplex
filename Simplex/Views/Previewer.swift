@@ -10,7 +10,7 @@ import SwiftUI
 struct Previewer: View {
     @EnvironmentObject var editorVars: EditorVariables
     var body: some View {
-        Text(editorVars.fullText)
+        Text(editorVars.previewText)
     }
 }
 

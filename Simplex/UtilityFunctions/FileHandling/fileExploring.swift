@@ -10,7 +10,7 @@ import Foundation
 func listDirectory() -> Array<String>{
     let fm = FileManager.default
 //                let path = Bundle.main.resourcePath!
-    let path = "\(NSHomeDirectory())/Documents"
+    let path = "\(NSHomeDirectory())"
 //    var outputString: String = ""
     var availableItems = [String]()
     do {

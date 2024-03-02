@@ -8,7 +8,7 @@
 import Foundation
 
 //This is the function that chooses which actions correpsond to which icon
-func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: String, shellCommand: String, shellOptions: String, buildScriptName: String) -> String{
+func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: String, shellCommand: String, shellOptions: String, buildScriptName: String) -> [String]{
     switch actionNum{
     case 0: //Play icon
         writeToFile(writeOutText: writeOutText, sourceFilePath: sourceFilePath)
@@ -20,14 +20,15 @@ func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: Str
         print(output)
         output = try? safeShell("~/\(NonUIVariables.appFolder)/Build_Scripts/\(buildScriptName) \(NSHomeDirectory()+sourceFilePath)")
         print(output)
+        return ["", "\(output ?? "")"]
     case 1:
-        return "files!" // return the files window id
+        return ["files!", ""] // return the files window id
         
     default:
         try? safeShell("say \(actionNum)") // CHANGE LATER - a stub
         
     }
-    return "" //return nothing if no window id requried
+    return ["", ""] //return nothing if no window id requried
 }
 
 //return of string is used for id in openWindow(id: id)
