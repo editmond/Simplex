@@ -93,6 +93,8 @@ struct NoDeprecateSettingsView: View{
                     editorVars.writeSettings()
                     sidebarVars.writeSettings()
                     
+                    print(editorVars.buildScriptName)
+                    
                 } label: {
                     Text("Apply")
                 }

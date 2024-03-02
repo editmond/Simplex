@@ -11,8 +11,10 @@ A dictionary that stores the necessary converions to the ASCII unicode set.
 Could be made acessible to the user later.
 Form [Unicode character, ASCII character] but in the form of strings
  */
-//fun
-let randomConversions: [String: String] = ["\u{24}": "dog"]
+//for some wierd outliers
+let randomConversions: [String: String] = [
+    "\u{24}": "dog",
+]
 
 //punctation set
 let puncConversions: [String: String] = [
@@ -31,12 +33,14 @@ let puncConversions: [String: String] = [
 
 func sanitiseText(text: String) -> String{
     var newText: String = ""
+    for char in text{
+        print(String(char) + ": " + String(String(char).unicodeScalars[String(char).startIndex].value))
+    }
     for char in text.unicodeScalars{
-        
         //Define areas of unicode to check
         //Ascii bounds
-        let zero: UnicodeScalar = "0"
-        let asciiBound: Unicode.Scalar = "\u{7F}"
+        let zero: UnicodeScalar = "\u{0000}"
+        let asciiBound: Unicode.Scalar = "\u{007F}"
         //punctuation bounds
         let puncLower: Unicode.Scalar = "\u{2000}"
         let puncUpper: Unicode.Scalar = "\u{206F}"
@@ -48,12 +52,14 @@ func sanitiseText(text: String) -> String{
             
         case puncLower.value...puncUpper.value:
             //replace the offending character
-            let newChar = puncConversions["\(char)", default: "\0"] //removes the character if there is no replacement
+            let newChar = puncConversions["\(char)", default: ""] //removes the character if there is no replacement
+            print("Converted \(char)")
             newText += newChar
             
         default:
             //replace the offending character
-            let newChar = randomConversions["\(char)", default: "\0"] //removes the character if there is no replacement
+            let newChar = randomConversions["\(char)", default: ""] //removes the character if there is no replacement
+            print("Converted \(char)")
             newText += newChar
         }
     }

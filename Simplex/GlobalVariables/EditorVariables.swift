@@ -23,6 +23,7 @@ class EditorVariables: ObservableObject{
     
     func copyContents(EditorObj: EditorVariables){
         sourceFilePath = EditorObj.sourceFilePath
+        buildScriptName = EditorObj.buildScriptName
         
         shellCommand = EditorObj.shellCommand
         shellOptions = EditorObj.shellOptions
@@ -33,9 +34,11 @@ class EditorVariables: ObservableObject{
         var formattedSettings: [String:[String]] = [:]
         
         formattedSettings["sourceFilePath"] = [sourceFilePath]
+        formattedSettings["buildScriptName"] = [buildScriptName]
         
         formattedSettings["shellCommand"] = [shellCommand]
         formattedSettings["shellOptions"] = [shellOptions]
+        
         
         //write the array into the settings file
         saveSettings(settingVars: formattedSettings, settingsFile: settingsFile)
@@ -49,6 +52,9 @@ class EditorVariables: ObservableObject{
             
             var temp = loadedSettings["sourceFilePath", default: ["untitled.txt"]]
             sourceFilePath = temp[0]
+            
+            temp = loadedSettings["buildScriptName", default: ["defualt.sh"]]
+            buildScriptName = temp[0]
             
             temp = loadedSettings["shellCommand", default: ["echo"]]
             shellCommand = temp[0]
