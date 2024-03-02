@@ -93,7 +93,7 @@ class GUIVariables: ObservableObject{
         }
     }
     deinit{
-        writeToFile(writeOutText: "bye bye", sourceFilePath: "foo.txt")
+//        writeToFile(writeOutText: "bye bye", sourceFilePath: "foo.txt")
     }
    
     //UNUSED Background colour variable

@@ -16,7 +16,7 @@ func loadSettings(settingsFile: String) -> [String: [String]]{
     let settingsFiles = listDirectory(fromHomePath: NonUIVariables.appFolder+"/Settings_Data")
     var fileString: String = ""
     if settingsFiles.contains(settingsFile){
-        fileString = readFromFile(sourceFilePath: "../\(NonUIVariables.appFolder)/Settings_Data/\(settingsFile)")
+        fileString = readFromFile(sourceFilePath: "/\(NonUIVariables.appFolder)/Settings_Data/\(settingsFile)")
     } else{
         createFile(filePath: "\(NonUIVariables.appFolder)/Settings_Data/\(settingsFile)")
     }
