@@ -14,8 +14,8 @@ class EditorVariables: ObservableObject{
     //The text within the text editor is stored here
     @Published var fullText: String = "\nThis is some editable text..."
     
+    //The file that will be overwritten with user text
     @Published var sourceFilePath: String = "testing.txt"
-    
     @Published var buildScriptName: String = "default.sh"
     
     @Published var shellCommand: String = "python3"
@@ -46,6 +46,10 @@ class EditorVariables: ObservableObject{
         //write the array into the settings file
         saveSettings(settingVars: formattedSettings, settingsFile: settingsFile)
     }
+    func loadFileText(){
+        //loads the data from the source file of the previous session.
+        fullText = readFromFile(sourceFilePath: sourceFilePath)
+    }
     
     init(doLoad: Bool){
         if doLoad{
@@ -65,7 +69,9 @@ class EditorVariables: ObservableObject{
             temp = loadedSettings["shellOptions", default: [""]]
             shellOptions = temp[0]
             
+            loadFileText()
             fullText = readFromFile(sourceFilePath: sourceFilePath)
+            print("Found in source file: "+fullText)
         }
     }
 }

@@ -15,6 +15,7 @@ struct MyTextEditor: View {
     @State var someText = "heelo"
     var body: some View {
         VStack{
+			Text("Editing - " + editorVars.sourceFilePath)
             TextEditor(text: $editorVars.fullText)
                 .foregroundColor(Color.black)
 				.font(.custom("HelveticaNeue", size: 13))
@@ -26,11 +27,11 @@ struct MyTextEditor: View {
 				)
 			
 			//for debugging remove at some point
-            Button(){
-				print(readFromFile(sourceFilePath: editorVars.sourceFilePath))
-            } label: {
-                Text("OUTPUT")
-            }
+//            Button(){
+//				print(readFromFile(sourceFilePath: editorVars.sourceFilePath))
+//            } label: {
+//                Text("OUTPUT")
+//            }
         }
     }
 }

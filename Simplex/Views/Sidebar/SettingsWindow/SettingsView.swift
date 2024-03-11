@@ -13,17 +13,20 @@ struct NoDeprecateSettingsView: View{
     @EnvironmentObject var guiVars: GUIVariables
     @EnvironmentObject var editorVars: EditorVariables
     @EnvironmentObject var sidebarVars: SidebarVariables
+    @EnvironmentObject var previewerVars: PreviewerVariables
     
     //the buffer for the globabl variables
     @StateObject var bufferGuiVars = GUIVariables(doLoad: true)
     @StateObject var bufferEditorVars = EditorVariables(doLoad: true)
     @StateObject var bufferSidebarVars = SidebarVariables(doLoad: true)
+    @StateObject var bufferPreviewerVars = PreviewerVariables(doLoad: true)
     
     //the default objects
     let defaultGuiObj = GUIVariables(doLoad: false)
     let defaultEditorObj = EditorVariables(doLoad: false)
     let defaultSideObj = SidebarVariables(doLoad: false)
-    
+    var defaultPreviewerObj = PreviewerVariables(doLoad: false)
+
     @State private var showingAlert = false
     @State private var doAction = false
     
@@ -54,17 +57,23 @@ struct NoDeprecateSettingsView: View{
                     guiVars.copyContents(GUIObj: defaultGuiObj)
                     editorVars.copyContents(EditorObj: defaultEditorObj)
                     sidebarVars.copyContents(SideObj: defaultSideObj)
+                    previewerVars.copyContents(PreviewerObj: defaultPreviewerObj)
                     
                     //copy to the buffer objects
                     bufferGuiVars.copyContents(GUIObj: defaultGuiObj)
                     bufferEditorVars.copyContents(EditorObj: defaultEditorObj)
                     bufferSidebarVars.copyContents(SideObj: defaultSideObj)
+                    bufferPreviewerVars.copyContents(PreviewerObj: defaultPreviewerObj)
                     
                     //write the new settings
                     guiVars.writeSettings()
                     editorVars.writeSettings()
                     sidebarVars.writeSettings()
+                    previewerVars.writeSettings()
                     
+                    //reload the data from files in case the source has changed
+                    editorVars.loadFileText()
+
                     //destory objects ~~~ may not be necessary?
                     
                 } label: {
@@ -77,7 +86,8 @@ struct NoDeprecateSettingsView: View{
                     bufferGuiVars.copyContents(GUIObj: guiVars)
                     bufferEditorVars.copyContents(EditorObj: editorVars)
                     bufferSidebarVars.copyContents(SideObj: sidebarVars)
-                    
+                    bufferPreviewerVars.copyContents(PreviewerObj: previewerVars)
+
                 } label: {
                     Text("Cancel")
                 }
@@ -87,13 +97,16 @@ struct NoDeprecateSettingsView: View{
                     guiVars.copyContents(GUIObj: bufferGuiVars)
                     editorVars.copyContents(EditorObj: bufferEditorVars)
                     sidebarVars.copyContents(SideObj: bufferSidebarVars)
+                    previewerVars.copyContents(PreviewerObj: bufferPreviewerVars)
                     
                     //write the new settings
                     guiVars.writeSettings()
                     editorVars.writeSettings()
                     sidebarVars.writeSettings()
+                    previewerVars.writeSettings()
                     
-                    print(editorVars.buildScriptName)
+                    //reload the data from files in case the source has changed
+                    editorVars.loadFileText()
                     
                 } label: {
                     Text("Apply")
@@ -105,6 +118,7 @@ struct NoDeprecateSettingsView: View{
         .environmentObject(bufferGuiVars)
         .environmentObject(bufferEditorVars)
         .environmentObject(bufferSidebarVars)
+        .environmentObject(bufferPreviewerVars)
     }
 }
         

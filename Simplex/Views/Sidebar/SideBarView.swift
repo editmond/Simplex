@@ -12,6 +12,7 @@ struct SideBar: View {
     @EnvironmentObject var guiVars: GUIVariables
     @EnvironmentObject var sideVars: SidebarVariables
     @EnvironmentObject var editorVars: EditorVariables
+    @EnvironmentObject var previewerVars: PreviewerVariables
     
     var body: some View {
         VStack(){
@@ -29,6 +30,7 @@ struct SideBar: View {
                             }
                             if (output[1] != ""){
                                 editorVars.previewText = output[1]
+                                writeToFile(writeOutText: editorVars.previewText, sourceFilePath: previewerVars.previewReadFile)
                             }
                         }
             }

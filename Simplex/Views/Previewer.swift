@@ -9,8 +9,13 @@ import SwiftUI
 
 struct Previewer: View {
     @EnvironmentObject var editorVars: EditorVariables
+    @EnvironmentObject var previewerVars: PreviewerVariables
     var body: some View {
-        Text(editorVars.previewText)
+        ScrollView{
+            Text("\(editorVars.previewText)")
+            //AsyncImage(url: URL(string: "file://\(NSHomeDirectory())/\(previewerVars.previewReadFile)"))
+            AsyncImage(url: URL(string: "file://\(NSHomeDirectory())/fun.ppm"))
+        }
     }
 }
 

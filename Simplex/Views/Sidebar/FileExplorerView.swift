@@ -14,8 +14,11 @@ struct FileExplorerView: View {
             Text("Home")
                 .padding(.bottom)
                 .font(.largeTitle)
-            ForEach(availableItems, id: \.self){ item in
-                Text(item)
+            ScrollView{
+                ForEach(availableItems, id: \.self){ item in
+                    Text(item)
+                }
+                Spacer()
             }
         }
     }

@@ -15,6 +15,7 @@ struct SimplexApp: App {
     @StateObject var guiObject = GUIVariables(doLoad: true)
     @StateObject var sidebarObject = SidebarVariables(doLoad: true)
     @StateObject var editorObject = EditorVariables(doLoad: true)
+    @StateObject var previewerObject = PreviewerVariables(doLoad: true)
     //initialisation code
     init(){
         print("Initialising")
@@ -26,13 +27,17 @@ struct SimplexApp: App {
     //the main scene
     var body: some Scene {
         
+        //This is the main window where the user will spend most of their time
         WindowGroup(id: "MainWindow"){
             MainView()
+                //the following attaches the objects to allow views lower in the hierachy to "see" them
                 .environmentObject(guiObject)
                 .environmentObject(sidebarObject)
                 .environmentObject(editorObject)
+                .environmentObject(previewerObject)
         }
         
+        //this window contains all the GUI for editing the app settings
         Window("Settings", id: "settings"){
             ZStack{
                 Background()
@@ -42,9 +47,11 @@ struct SimplexApp: App {
             .environmentObject(guiObject)
             .environmentObject(sidebarObject)
             .environmentObject(editorObject)
+            .environmentObject(previewerObject)
         }
-        .keyboardShortcut(",")
+        .keyboardShortcut(",") //keyboard shortcut of "cmd"+"," opens the window
         
+        //this window will provide a GUI for users to browse files
         Window("Files", id: "files"){
             ZStack{
                 Background()
@@ -56,17 +63,7 @@ struct SimplexApp: App {
         }
         .keyboardShortcut("o")
         
-        Window("Files", id: "files!"){
-            ZStack{
-                Background()
-                FileExplorerView()
-            }
-            .environmentObject(guiObject)
-            .environmentObject(sidebarObject)
-            .environmentObject(editorObject)
-        }
-        .keyboardShortcut("o")
-        
+        //this window propvides an interface for browsing documentation
         Window("Documentation", id: "docs"){
             ZStack{
                 Background()

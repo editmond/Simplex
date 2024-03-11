@@ -15,6 +15,7 @@ struct GeneralSettingsView: View{
             GridRow{
                 Text("Source File Path:")
                     .padding()
+                Text("~/")
                 TextField("Source File Path", text: $editorVars.sourceFilePath)
                     .disableAutocorrection(true)
                     .padding()

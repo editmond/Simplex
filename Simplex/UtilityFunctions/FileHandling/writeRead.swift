@@ -18,7 +18,7 @@ func getDocumentsDirectory() -> URL {
 //Writes the text editor string into the specified file
 func writeToFile(writeOutText: String, sourceFilePath: String) -> Void{
 //    let filename = getDocumentsDirectory().appendingPathComponent(sourceFilePath)
-    let filename = URL(fileURLWithPath: NSHomeDirectory() + sourceFilePath)
+    let filename = URL(fileURLWithPath: NSHomeDirectory() + "/\(sourceFilePath)")
     let sanitisedText = sanitiseText(text: writeOutText)
     print(sanitisedText)
     do {
@@ -33,7 +33,7 @@ func writeToFile(writeOutText: String, sourceFilePath: String) -> Void{
 func writeToFile(writeOutText: String, sourceFilePath: String, noSanitise: Bool) -> Void{
 //    let filename = getDocumentsDirectory().appendingPathComponent(sourceFilePath)
     print("writing")
-    let filename = URL(fileURLWithPath: NSHomeDirectory() + sourceFilePath)
+    let filename = URL(fileURLWithPath: NSHomeDirectory() + "/\(sourceFilePath)")
     print(writeOutText)
     do {
         try writeOutText.write(to: filename, atomically: true, encoding: String.Encoding.utf8)
@@ -46,7 +46,7 @@ func writeToFile(writeOutText: String, sourceFilePath: String, noSanitise: Bool)
 //Writes the text editor string into the specified file. File path is starting from document dir
 func readFromFile(sourceFilePath: String) -> String{
 //    let filename = getDocumentsDirectory().appendingPathComponent(sourceFilePath)
-    let filename = URL(fileURLWithPath: NSHomeDirectory() + sourceFilePath)
+    let filename = URL(fileURLWithPath: NSHomeDirectory() + "/\(sourceFilePath)")
     print("Reading \(filename)")
     var text = ""
     do {

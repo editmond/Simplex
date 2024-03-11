@@ -18,7 +18,7 @@ func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: Str
 //        print("\(shellCommand) response:\n\(shellResult ?? "")")
         var output = try? safeShell("ls")
         print(output)
-        output = try? safeShell("~/\(NonUIVariables.appFolder)/Build_Scripts/\(buildScriptName) \(NSHomeDirectory()+sourceFilePath)")
+        output = try? safeShell("~/\(NonUIVariables.appFolder)/Build_Scripts/\(buildScriptName) \(NSHomeDirectory()+"/"+sourceFilePath)")
         print(output)
         return ["", "\(output ?? "")"]
     case 1:
