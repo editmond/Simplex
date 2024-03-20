@@ -8,6 +8,8 @@
 import SwiftUI
 
 @main
+
+//This is the topmost level of the app. All views are below it in heirachy.
 struct SimplexApp: App {
     @Environment(\.openWindow) var openWindow
 //    @Environment(\.scenePhase) private var scenePhase

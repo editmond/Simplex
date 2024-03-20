@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NoDeprecateSettingsView: View{
+    @Environment(\.dismissWindow) private var dismissWindow
     
     //the global variables
     @EnvironmentObject var guiVars: GUIVariables
@@ -76,6 +77,9 @@ struct NoDeprecateSettingsView: View{
 
                     //destory objects ~~~ may not be necessary?
                     
+                    //dismiss the window
+                    dismissWindow(id: "settings")
+
                 } label: {
                     Text("Restore Default")
                 }
@@ -87,6 +91,9 @@ struct NoDeprecateSettingsView: View{
                     bufferEditorVars.copyContents(EditorObj: editorVars)
                     bufferSidebarVars.copyContents(SideObj: sidebarVars)
                     bufferPreviewerVars.copyContents(PreviewerObj: previewerVars)
+                   
+                    //dismiss the window
+                    dismissWindow(id: "settings")
 
                 } label: {
                     Text("Cancel")
@@ -108,6 +115,8 @@ struct NoDeprecateSettingsView: View{
                     //reload the data from files in case the source has changed
                     editorVars.loadFileText()
                     
+                    
+                    dismissWindow(id: "settings")
                 } label: {
                     Text("Apply")
                 }

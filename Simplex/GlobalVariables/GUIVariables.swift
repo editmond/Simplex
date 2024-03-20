@@ -7,6 +7,8 @@
 
 import Foundation
 import SwiftUI
+
+//The object that stores GUI related variables that views may need to access.
 class GUIVariables: ObservableObject{
 //    @Published var hasLoaded = false
     var settingsFile = "GUI_Settings.txt"
@@ -18,7 +20,7 @@ class GUIVariables: ObservableObject{
     @Published var backgroundSaturation: Double = 0.2
     @Published var backgroundBrightness: Double = 0.9
     
-    //returns a colour value based on the background set
+    //returns a colour value based on the background colour set
     func getBackgroundColour(brightnessMultiplier: Double, saturationMultiplier: Double) -> Color{
         
         var usedBackgroundHue = backgroundHue
@@ -51,6 +53,7 @@ class GUIVariables: ObservableObject{
         return Color(hue: usedBackgroundHue, saturation: usedBackgroundSat, brightness: usedBackgroundBright)
     }
     
+    //copies the contents of another GUIVariables object into the current object.
     func copyContents(GUIObj: GUIVariables){
         iconSize = GUIObj.iconSize
         
@@ -59,6 +62,7 @@ class GUIVariables: ObservableObject{
         backgroundBrightness = GUIObj.backgroundBrightness
     }
     
+    //writes the settings of the object into the settings file.
     func writeSettings(){
         //prepare an array for writing
         var formattedSettings: [String:[String]] = [:]
@@ -71,7 +75,8 @@ class GUIVariables: ObservableObject{
         //write the array into the settings file
         saveSettings(settingVars: formattedSettings, settingsFile: settingsFile)
     }
-
+    
+    //an alternate initialisation where settings a loaded from a file. This is neccessary as the settings work by also having default objects which should not load settings from a file.
     init(doLoad: Bool){
         if doLoad{
             let loadedSettings = loadSettings(settingsFile: settingsFile)
@@ -92,6 +97,8 @@ class GUIVariables: ObservableObject{
             backgroundBrightness = Double(temp[0]) ?? 0.9
         }
     }
+    
+    //just testing. It is the deinit function of the object, which gets called when the object is destroyed.
     deinit{
 //        writeToFile(writeOutText: "bye bye", sourceFilePath: "foo.txt")
     }

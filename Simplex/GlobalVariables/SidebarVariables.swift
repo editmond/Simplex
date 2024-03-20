@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//Contains the variables for the sidebar.
 class SidebarVariables: ObservableObject{
 //    @Published var hasLoaded = false
     var settingsFile = "Sidebar_Settings.txt"
@@ -23,6 +24,7 @@ class SidebarVariables: ObservableObject{
         LowerSidebarIcons = SideObj.LowerSidebarIcons
     }
     
+    //writes the variables into a file in the correct format.
     func writeSettings(){
         //prepare an array for writing
         var formattedSettings: [String:[String]] = [:]
@@ -35,6 +37,7 @@ class SidebarVariables: ObservableObject{
         saveSettings(settingVars: formattedSettings, settingsFile: settingsFile)
     }
     
+    //an alternate load.
     init(doLoad: Bool){
         if doLoad{
             let loadedSettings = loadSettings(settingsFile: settingsFile)
