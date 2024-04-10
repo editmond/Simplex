@@ -16,6 +16,9 @@ class PreviewerVariables: ObservableObject{
     //no need to save
     @Published var previewText: String = ""
     
+    //preview file check
+    @Published var previewCheck: Bool = true
+    
     func copyContents(PreviewerObj: PreviewerVariables){
         previewReadFile = PreviewerObj.previewReadFile
     }

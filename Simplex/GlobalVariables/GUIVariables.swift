@@ -15,6 +15,8 @@ class GUIVariables: ObservableObject{
     
     @Published var iconSize: CGFloat = 50
     
+    
+    @State var bgColor = Color(hue: 0.0, saturation: 0.2, brightness: 0.9)
     //the background set for colour
     @Published var backgroundHue: Double = 0.5
     @Published var backgroundSaturation: Double = 0.2
@@ -51,6 +53,35 @@ class GUIVariables: ObservableObject{
         }
         
         return Color(hue: usedBackgroundHue, saturation: usedBackgroundSat, brightness: usedBackgroundBright)
+    }
+    
+    func setBackgroundColor(backgroundColour: Color){
+        //turn the Color type into NSColor so that we can grab the components
+        let BackgroundNSColour = NSColor(backgroundColour)
+        
+        //applying the separate components into the appropriate variables
+        backgroundHue = BackgroundNSColour.hueComponent
+        backgroundBrightness = BackgroundNSColour.brightnessComponent
+        backgroundSaturation = BackgroundNSColour.saturationComponent
+        
+    }
+    
+    func loadBackgroundColour(settingsFile: String) -> Color{
+        let loadedSettings = loadSettings(settingsFile: settingsFile)
+        var tempBackgroundHue: Double
+        var tempBackgroundBrightness: Double
+        var tempBackgroundSaturation: Double
+        
+        var temp = loadedSettings["backgroundHue", default: ["0.5"]]
+        tempBackgroundHue = Double(temp[0]) ?? 0.5
+        
+        temp = loadedSettings["backgroundSat", default: ["0.2"]]
+        tempBackgroundSaturation = Double(temp[0]) ?? 0.2
+        
+        temp = loadedSettings["backgroundBright", default: ["0.9"]]
+        tempBackgroundBrightness = Double(temp[0]) ?? 0.9
+        
+        return Color(hue: tempBackgroundHue, saturation: tempBackgroundSaturation, brightness: tempBackgroundBrightness)
     }
     
     //copies the contents of another GUIVariables object into the current object.
@@ -95,6 +126,9 @@ class GUIVariables: ObservableObject{
             
             temp = loadedSettings["backgroundBright", default: ["0.9"]]
             backgroundBrightness = Double(temp[0]) ?? 0.9
+            
+            bgColor = Color(hue: backgroundHue, saturation: backgroundSaturation, brightness: backgroundBrightness)
+
         }
     }
     

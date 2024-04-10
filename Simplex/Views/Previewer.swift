@@ -13,7 +13,7 @@ struct Previewer: View {
     var body: some View {
         ScrollView{
             Text("file://\(NSHomeDirectory())/\(previewerVars.previewReadFile)")
-            AsyncImage(url: URL(string: "file://\(NSHomeDirectory())/\(previewerVars.previewReadFile)"))
+            AsyncImage(url: previewerVars.previewCheck ? URL(string: "file://\(NSHomeDirectory())/\(previewerVars.previewReadFile)"):URL(string: "file://\(NSHomeDirectory())/\(previewerVars.previewReadFile)"))
             //AsyncImage(url: URL(string: "file://\(NSHomeDirectory())/fun.ppm"))
             Text("Command Line Output")
                 .font(.headline)

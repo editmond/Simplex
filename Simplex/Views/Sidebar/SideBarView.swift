@@ -30,7 +30,8 @@ struct SideBar: View {
                             }
                             if (output[1] != ""){
                                 editorVars.previewText = output[1]
-                                writeToFile(writeOutText: editorVars.previewText, sourceFilePath: previewerVars.previewReadFile)
+                                previewerVars.previewCheck.toggle()
+//                                writeToFile(writeOutText: editorVars.previewText, sourceFilePath: previewerVars.previewReadFile)
                             }
                         }
             }
