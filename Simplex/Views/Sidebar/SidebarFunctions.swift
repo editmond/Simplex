@@ -22,7 +22,7 @@ func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: Str
         print(output)
         return ["", "\(output ?? "")"]
     case 1:
-        return ["files!", ""] // return the files window id
+        return ["files", ""] // return the files window id
         
     default:
         try? safeShell("say \(actionNum)") // CHANGE LATER - a stub
