@@ -49,6 +49,7 @@ class SidebarVariables: ObservableObject{
             UpperSideBarIcons = temp
             
             temp = loadedSettings["LowerSidebarIcons", default: ["music.note", "doc.text", "gearshape"]]
+            LowerSidebarIcons = temp
         }
     }
 }

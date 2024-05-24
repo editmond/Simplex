@@ -31,9 +31,9 @@ struct SideBar: View {
                     //pipe any output into the preview view.
                     if (output[1] != ""){
                         editorVars.previewText = output[1]
-                        previewerVars.previewCheck.toggle()
-//                                writeToFile(writeOutText: editorVars.previewText, sourceFilePath: previewerVars.previewReadFile)
+                        //                                writeToFile(writeOutText: editorVars.previewText, sourceFilePath: previewerVars.previewReadFile)
                     }
+                    previewerVars.previewID = UUID()
                     
                 } label:{
                     Image(systemName: icon)
@@ -43,31 +43,7 @@ struct SideBar: View {
                 .buttonStyle(BorderlessButtonStyle())
                 //attach a keyboard shortcut to each button.
                 .keyboardShortcut(KeyEquivalent(Character(UnicodeScalar(sideVars.UpperShortcuts[num])!)))
-                
-//                Image(systemName: icon)
-//                    .font(.system(size: guiVars.iconSize))
-//                    .foregroundStyle(.tint)
-//                    .onTapGesture{
-//                        //this runs the function connected to the button.
-//                        //output is in the form windowID, outputData
-//                        let output = UpperSidebarActor(actionNum: num, writeOutText: editorVars.fullText, sourceFilePath: editorVars.sourceFilePath, shellCommand: editorVars.shellCommand, shellOptions: editorVars.shellOptions, buildScriptName: editorVars.buildScriptName)
-//
-//                        //open a window if it is specified
-//                        if (output[0] != ""){
-//                            openWindow(id: output[0])
-//                        }
-//
-//                        //pipe any output into the preview view.
-//                        if (output[1] != ""){
-//                            editorVars.previewText = output[1]
-//                            previewerVars.previewCheck.toggle()
-////                                writeToFile(writeOutText: editorVars.previewText, sourceFilePath: previewerVars.previewReadFile)
-//                        }
-//                    }
-//                    //attach a keyboard shortcut to each button.
-//                    .keyboardShortcut(KeyEquivalent(Character(UnicodeScalar(sideVars.UpperShortcuts[num])!)))
             }
-            
             Spacer()
             
             let lowerReferenceNum = 0...sideVars.LowerSidebarIcons.count
@@ -91,6 +67,6 @@ struct SideBar: View {
     }
 }
 
-#Preview {
-    SideBar()
-}
+//#Preview {
+//    SideBar()
+//}
