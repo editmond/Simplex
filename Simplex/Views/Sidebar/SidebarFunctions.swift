@@ -16,9 +16,7 @@ func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: Str
 //        //CHANGE LATER - runs python3 in the source file
 //        let shellResult = try? safeShell("\(shellCommand) Documents/\(sourceFilePath)")
 //        print("\(shellCommand) response:\n\(shellResult ?? "")")
-        var output = try? safeShell("ls")
-        print(output)
-        output = try? safeShell("~/\(NonUIVariables.appFolder)/Build_Scripts/\(buildScriptName) \(NSHomeDirectory()+"/"+sourceFilePath)")
+        var output = try? safeShell("~/\(NonUIVariables.appFolder)/Build_Scripts/\(buildScriptName) \(NSHomeDirectory()+"/"+sourceFilePath)")
         print(output)
         return ["", "\(output ?? "")"]
     case 1:

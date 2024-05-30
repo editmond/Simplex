@@ -8,13 +8,12 @@
 import Foundation
 
 class PreviewerVariables: ObservableObject{
+    
+    //WRITTEN TO SETTINGS FILE
 //    @Published var hasLoaded = false
     var settingsFile = "Previewer_Settings.txt"
     
     @Published var previewReadFile: String = "output.txt"
-    
-    //no need to save
-    @Published var previewText: String = ""
     
     //the UUID for the preview view, this will be changed frequently to force update the view.
     @Published var previewID = UUID()
@@ -26,6 +25,11 @@ class PreviewerVariables: ObservableObject{
     @Published var imageFormats: [String] = ["ppm", "jpeg"]
     @Published var textFormats: [String] = ["txt"]
     
+    //NOT WRITTEN TO SETTINGS FILE
+    //the text in a file that is to be previewed
+    @Published var previewText: String = ""
+
+    
     func copyContents(PreviewerObj: PreviewerVariables){
         previewReadFile = PreviewerObj.previewReadFile
     }
@@ -34,12 +38,17 @@ class PreviewerVariables: ObservableObject{
         //get the extension
         let readFileArr = previewReadFile.components(separatedBy: ".")
         print(readFileArr.last)
-        print("asdfjlj")
+        previewText = ""
+        
         if textFormats.contains(readFileArr.last ?? "") {
+            //found text extension
             previewType = 1
+            
         } else if imageFormats.contains(readFileArr.last ?? "") {
+            //found image extension
             previewType = 2
         } else{
+            //unknown format
             previewType = 0
         }
 

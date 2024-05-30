@@ -21,8 +21,8 @@ class EditorVariables: ObservableObject{
     @Published var shellCommand: String = "python3"
     @Published var shellOptions: String = ""
     
-    //no need to save
-    @Published var previewText: String = ""
+    //no need to save this "setting"
+    @Published var shellOutput: String = ""
     
     func copyContents(EditorObj: EditorVariables){
         sourceFilePath = EditorObj.sourceFilePath

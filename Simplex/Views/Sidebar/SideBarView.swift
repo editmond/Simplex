@@ -30,8 +30,12 @@ struct SideBar: View {
                     
                     //pipe any output into the preview view.
                     if (output[1] != ""){
-                        editorVars.previewText = output[1]
-                        //                                writeToFile(writeOutText: editorVars.previewText, sourceFilePath: previewerVars.previewReadFile)
+                        editorVars.shellOutput = output[1]
+                        //                                writeToFile(writeOutText: editorVars.shellOutput, sourceFilePath: previewerVars.previewReadFile)
+                    }
+                    previewerVars.previewText = ""
+                    if (previewerVars.previewType == 1){
+                        previewerVars.previewText = readFromFile(sourceFilePath: previewerVars.previewReadFile)
                     }
                     previewerVars.previewID = UUID()
                     

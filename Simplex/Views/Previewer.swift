@@ -14,7 +14,7 @@ struct Previewer: View {
         ScrollView{
             Text("file://\(NSHomeDirectory())/\(previewerVars.previewReadFile)")
             if previewerVars.previewType == 1{
-                Text("someText")
+                Text(previewerVars.previewText)
             } else if previewerVars.previewType == 2{
                 AsyncImage(url: URL(string: "file://\(NSHomeDirectory())/\(previewerVars.previewReadFile)"))
                     .id(previewerVars.previewID)
@@ -24,7 +24,7 @@ struct Previewer: View {
             Text("Command Line Output")
                 .font(.headline)
                 .padding()
-            Text("\(editorVars.previewText)")
+            Text("\(editorVars.shellOutput)")
         }
     }
 }
