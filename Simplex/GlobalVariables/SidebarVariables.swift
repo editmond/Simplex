@@ -21,7 +21,7 @@ class SidebarVariables: ObservableObject{
     @Published var LowerShortcuts: [String] = ["m", ")", ","]
     
     //TEMPORARY variables for testing.
-    @Published var documentationUrl = "google.com"
+    @Published var documentationUrl = URL(string: "https://devdocs.io")
 
     func copyContents(SideObj: SidebarVariables){
         UpperSideBarIcons = SideObj.UpperSideBarIcons
