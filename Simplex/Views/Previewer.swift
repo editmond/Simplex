@@ -11,20 +11,28 @@ struct Previewer: View {
     @EnvironmentObject var editorVars: EditorVariables
     @EnvironmentObject var previewerVars: PreviewerVariables
     var body: some View {
-        ScrollView{
-            Text("file://\(NSHomeDirectory())/\(previewerVars.previewReadFile)")
+        VStack{
+            Text("Viewing file://\(NSHomeDirectory())/\(previewerVars.previewReadFile)")
+                .font(.headline)
+                .padding()
             if previewerVars.previewType == 1{
-                Text(previewerVars.previewText)
+                ScrollView{
+                    Text(previewerVars.previewText)
+                        .padding()
+                }
             } else if previewerVars.previewType == 2{
                 AsyncImage(url: URL(string: "file://\(NSHomeDirectory())/\(previewerVars.previewReadFile)"))
                     .id(previewerVars.previewID)
             } else if previewerVars.previewType == 0{
                 Text("Unsupported File Type")
             }
-            Text("Command Line Output")
-                .font(.headline)
-                .padding()
-            Text("\(editorVars.shellOutput)")
+            Divider()
+            ScrollView{
+                Text("Command Line Output")
+                    .font(.headline)
+                    .padding()
+                Text("\(editorVars.shellOutput)")
+            }
         }
     }
 }

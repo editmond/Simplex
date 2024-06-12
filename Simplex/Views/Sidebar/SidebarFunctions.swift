@@ -8,7 +8,7 @@
 import Foundation
 
 //This is the function that chooses which actions correpsond to which icon
-func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: String, shellCommand: String, shellOptions: String, buildScriptName: String) -> [String]{
+func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: String, shellCommand: String, shellOptions: String, buildScriptName: String) async -> [String]{
     switch actionNum{
     case 0: //Play icon
         writeToFile(writeOutText: writeOutText, sourceFilePath: sourceFilePath)
@@ -30,7 +30,7 @@ func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: Str
 }
 
 //return of string is used for id in openWindow(id: id)
-func LowerSidebarActor(actionNum: Int) -> String{
+func LowerSidebarActor(actionNum: Int) async -> String{
     switch actionNum{
     case 0:
         try? safeShell("say \(actionNum)") // CHANGE LATER - a stub

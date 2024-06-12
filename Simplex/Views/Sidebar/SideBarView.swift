@@ -14,35 +14,56 @@ struct SideBar: View {
     @EnvironmentObject var editorVars: EditorVariables
     @EnvironmentObject var previewerVars: PreviewerVariables
     
+    //A flag for each set of icons to determine when an indeterminate progress indicator should be displayed.
+    //in form [true, action num], where true is represented by 1 and false is represented by 0. Action num is the index of the button in progress.
+    @State var isUpperExecutingFunction = [0,0]
+    @State var isLowerExecutingFunction = [0,0]
+
     var body: some View {
         VStack(){
             
             //Dynamically adding the buttons from the list of icons in SharedStuff
             let referenceNum = 0...sideVars.UpperSideBarIcons.count
             ForEach(Array(zip(sideVars.UpperSideBarIcons, referenceNum)), id: \.0){ (icon, num) in
+                
+                
                 Button{
-                    let output = UpperSidebarActor(actionNum: num, writeOutText: editorVars.fullText, sourceFilePath: editorVars.sourceFilePath, shellCommand: editorVars.shellCommand, shellOptions: editorVars.shellOptions, buildScriptName: editorVars.buildScriptName)
                     
-                    //open a window if it is specified
-                    if (output[0] != ""){
-                        openWindow(id: output[0])
+                    isUpperExecutingFunction = [1,num]
+                    
+                    Task{
+                        
+                        let output = await UpperSidebarActor(actionNum: num, writeOutText: editorVars.fullText, sourceFilePath: editorVars.sourceFilePath, shellCommand: editorVars.shellCommand, shellOptions: editorVars.shellOptions, buildScriptName: editorVars.buildScriptName)
+                        
+                        //open a window if it is specified
+                        if (output[0] != ""){
+                            openWindow(id: output[0])
+                        }
+                        
+                        //pipe any output into the preview view.
+                        if (output[1] != ""){
+                            editorVars.shellOutput = output[1]
+                            //                                writeToFile(writeOutText: editorVars.shellOutput, sourceFilePath: previewerVars.previewReadFile)
+                        }
+                        previewerVars.previewText = ""
+                        if (previewerVars.previewType == 1){
+                            previewerVars.previewText = readFromFile(sourceFilePath: previewerVars.previewReadFile)
+                        }
+                        previewerVars.previewID = UUID()
+                        
+                        isUpperExecutingFunction[0] = 0
                     }
                     
-                    //pipe any output into the preview view.
-                    if (output[1] != ""){
-                        editorVars.shellOutput = output[1]
-                        //                                writeToFile(writeOutText: editorVars.shellOutput, sourceFilePath: previewerVars.previewReadFile)
-                    }
-                    previewerVars.previewText = ""
-                    if (previewerVars.previewType == 1){
-                        previewerVars.previewText = readFromFile(sourceFilePath: previewerVars.previewReadFile)
-                    }
-                    previewerVars.previewID = UUID()
                     
                 } label:{
-                    Image(systemName: icon)
-                        .font(.system(size: guiVars.iconSize))
-                        .foregroundStyle(.tint)
+                    if(isUpperExecutingFunction[0]==1 && isUpperExecutingFunction[1]==num){
+                        ProgressView()
+                    }
+                    else{
+                        Image(systemName: icon)
+                            .font(.system(size: guiVars.iconSize))
+                            .foregroundStyle(.tint)
+                    }
                 }
                 .buttonStyle(BorderlessButtonStyle())
                 //attach a keyboard shortcut to each button.
@@ -53,15 +74,26 @@ struct SideBar: View {
             let lowerReferenceNum = 0...sideVars.LowerSidebarIcons.count
             ForEach(Array(zip(sideVars.LowerSidebarIcons, lowerReferenceNum)), id: \.0){ (icon, num) in
                 Button{
-                    let windowID = LowerSidebarActor(actionNum: num)
-                    if (windowID != ""){
-                        openWindow(id: windowID)
+                    
+                    isLowerExecutingFunction = [1,num]
+
+                    Task {
+                        
+                        let windowID = await LowerSidebarActor(actionNum: num)
+                        if (windowID != ""){
+                            openWindow(id: windowID)
+                        }
+                        isLowerExecutingFunction = [0,num]
                     }
                     
                 } label:{
-                    Image(systemName: icon)
-                        .font(.system(size: guiVars.iconSize))
-                        .foregroundStyle(.tint)
+                    if (isLowerExecutingFunction[0] == 1 && isLowerExecutingFunction[1] == num){
+                        ProgressView()
+                    } else{
+                        Image(systemName: icon)
+                            .font(.system(size: guiVars.iconSize))
+                            .foregroundStyle(.tint)
+                    }
                 }
                 .buttonStyle(BorderlessButtonStyle())
                 //attach a keyboard shortcut to each button.

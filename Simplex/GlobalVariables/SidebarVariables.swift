@@ -19,6 +19,9 @@ class SidebarVariables: ObservableObject{
     //The icons in the bottom half of the sidebar. Only use system icons (for now)
     @Published var LowerSidebarIcons: [String] = ["music.note", "doc.text", "gearshape"]
     @Published var LowerShortcuts: [String] = ["m", ")", ","]
+    
+    //TEMPORARY variables for testing.
+    @Published var documentationUrl = "google.com"
 
     func copyContents(SideObj: SidebarVariables){
         UpperSideBarIcons = SideObj.UpperSideBarIcons
