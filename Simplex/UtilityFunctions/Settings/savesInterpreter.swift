@@ -27,7 +27,7 @@ func interpretSettings(fileString: String) -> [String: [String]]{ //the formatti
         let str: String = String(line.filter { !" \n\t\r".contains($0) })
         
         //splits into ["variable", "value,value,value"]
-        let sepVar = str.split(separator: ":")
+        let sepVar = str.split(separator: "@")
         //splits the second element of sepVar, which is all the values into another array, [value, value, value]
         let sepValues = sepVar[1].split(separator: ",")
         

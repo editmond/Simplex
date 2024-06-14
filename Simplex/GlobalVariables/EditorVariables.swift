@@ -21,6 +21,8 @@ class EditorVariables: ObservableObject{
     @Published var shellCommand: String = "python3"
     @Published var shellOptions: String = ""
     
+    @Published var documentationURL = URL(string:"https://devdocs.io")
+    
     //no need to save this "setting"
     @Published var shellOutput: String = ""
     
@@ -33,6 +35,11 @@ class EditorVariables: ObservableObject{
     }
     
     func writeSettings(){
+        //get the file extension of the file to be previewed.
+        let readFileArr = sourceFilePath.components(separatedBy: ".")
+        documentationURL = URL(string: "https://devdocs.io/#q=" + readFileArr.last!)
+        print(documentationURL)
+        
         //prepare an array for writing
         var formattedSettings: [String:[String]] = [:]
         
@@ -42,7 +49,9 @@ class EditorVariables: ObservableObject{
         formattedSettings["shellCommand"] = [shellCommand]
         formattedSettings["shellOptions"] = [shellOptions]
         
-        
+        formattedSettings["documentationURL"] = ["https://devdocs.io/#q=" + readFileArr.last!]
+
+        print(formattedSettings["documentationURL"])
         //write the array into the settings file
         saveSettings(settingVars: formattedSettings, settingsFile: settingsFile)
     }
@@ -69,6 +78,9 @@ class EditorVariables: ObservableObject{
             temp = loadedSettings["shellOptions", default: [""]]
             shellOptions = temp[0]
             
+            temp = loadedSettings["documentationURL", default: [""]]
+            documentationURL = URL(string: temp[0])
+
             loadFileText()
             fullText = readFromFile(sourceFilePath: sourceFilePath)
             print("Found in source file: "+fullText)

@@ -11,8 +11,9 @@ import WebKit
 struct DocumentationView: View {
     
     @Environment(\.openURL) private var openURL
-    @EnvironmentObject var sideVars: SidebarVariables
-
+    @EnvironmentObject var editorVars: EditorVariables
+    
+    @State private var selectedTab = "docView"
 //    init(){
 //        if let url = URL(string: "https://www.example.com") {
 //                        openURL(url)
@@ -20,8 +21,19 @@ struct DocumentationView: View {
 //    }
     var body: some View {
         VStack{
-            Text("Accessing DevDocs")
-            WebView(url: $sideVars.documentationUrl)
+            Spacer()
+            TabView(selection: $selectedTab) {
+                WebView(url: $editorVars.documentationURL)
+                    .tabItem{
+                        Label("Language Help", systemImage: "star")
+                    }
+                    .tag("webView")
+                Text(NSHomeDirectory())
+                    .tabItem{
+                        Label("Simplex Help", systemImage: "star")
+                    }
+                    .tag("docView")
+            }
         }
     }
 }

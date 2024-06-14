@@ -10,7 +10,7 @@ import Foundation
 func saveSettings(settingVars: [String:[String]], settingsFile: String){
     var outputString: String = ""
     for (varName,varValues) in settingVars{
-        var outputLine = varName + ": "
+        var outputLine = varName + "@ "
         for thing in varValues{
             outputLine += thing + ", "
         }

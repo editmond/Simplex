@@ -28,6 +28,7 @@
 		80BE4C482B664D97007BA727 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE4C472B664D97007BA727 /* GeneralSettingsView.swift */; };
 		80C7CC192B60D5530021CDDF /* fileExploring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7CC182B60D5530021CDDF /* fileExploring.swift */; };
 		80C7CC1B2B60DD040021CDDF /* createDirectories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7CC1A2B60DD040021CDDF /* createDirectories.swift */; };
+		80DFFEDB2C1BC033006BE9AE /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 80DFFEDA2C1BC033006BE9AE /* Documentation.docc */; };
 		80E5E48B2B1D4089002A4D54 /* SimplexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5E48A2B1D4089002A4D54 /* SimplexApp.swift */; };
 		80E5E48D2B1D4089002A4D54 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5E48C2B1D4089002A4D54 /* ContentView.swift */; };
 		80E5E48F2B1D408B002A4D54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80E5E48E2B1D408B002A4D54 /* Assets.xcassets */; };
@@ -47,7 +48,6 @@
 		80335CED2B5E2D85009E5188 /* EditorVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorVariables.swift; sourceTree = "<group>"; };
 		80335CEF2B5E2DB6009E5188 /* safeShell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = safeShell.swift; sourceTree = "<group>"; };
 		80335CF12B5E2DE0009E5188 /* SidebarVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarVariables.swift; sourceTree = "<group>"; };
-		80335CF52B5F7286009E5188 /* TestingArea.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestingArea.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		803E040D2B7EC68400465A8F /* folderCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = folderCheck.swift; sourceTree = "<group>"; };
 		80875DFB2B246F3200DD0994 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		80875DFD2B24769B00DD0994 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
@@ -64,6 +64,7 @@
 		80BE4C472B664D97007BA727 /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
 		80C7CC182B60D5530021CDDF /* fileExploring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fileExploring.swift; sourceTree = "<group>"; };
 		80C7CC1A2B60DD040021CDDF /* createDirectories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createDirectories.swift; sourceTree = "<group>"; };
+		80DFFEDA2C1BC033006BE9AE /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		80E5E4872B1D4089002A4D54 /* Simplex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E5E48A2B1D4089002A4D54 /* SimplexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplexApp.swift; sourceTree = "<group>"; };
 		80E5E48C2B1D4089002A4D54 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -140,7 +141,6 @@
 		80E5E47E2B1D4088002A4D54 = {
 			isa = PBXGroup;
 			children = (
-				80335CF52B5F7286009E5188 /* TestingArea.playground */,
 				80E5E4892B1D4089002A4D54 /* Simplex */,
 				80E5E4882B1D4089002A4D54 /* Products */,
 			);
@@ -158,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				80E5E48A2B1D4089002A4D54 /* SimplexApp.swift */,
+				80DFFEDA2C1BC033006BE9AE /* Documentation.docc */,
 				80335CEC2B5E2D43009E5188 /* GlobalVariables */,
 				80F3D4AE2B61DB1E0085F8CF /* UtilityFunctions */,
 				80F3D4B62B61F0D80085F8CF /* Views */,
@@ -304,6 +305,7 @@
 				808E616A2B240BDE0085E6FD /* GUIVariables.swift in Sources */,
 				80C7CC1B2B60DD040021CDDF /* createDirectories.swift in Sources */,
 				80875DFE2B24769B00DD0994 /* test.swift in Sources */,
+				80DFFEDB2C1BC033006BE9AE /* Documentation.docc in Sources */,
 				80BE4C442B664D58007BA727 /* GUISettingsView.swift in Sources */,
 				80E5E48B2B1D4089002A4D54 /* SimplexApp.swift in Sources */,
 				80335CF22B5E2DE0009E5188 /* SidebarVariables.swift in Sources */,
@@ -457,6 +459,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = edmond.Simplex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_DOCUMENTATION_COMPILER = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -484,6 +487,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = edmond.Simplex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_DOCUMENTATION_COMPILER = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
