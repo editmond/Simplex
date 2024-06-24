@@ -28,7 +28,7 @@ struct DocumentationView: View {
                         Label("Language Help", systemImage: "star")
                     }
                     .tag("webView")
-                Text(NSHomeDirectory())
+                Text("A website with simplex documentation will be displayed here.")
                     .tabItem{
                         Label("Simplex Help", systemImage: "star")
                     }
