@@ -14,6 +14,7 @@ struct DocumentationView: View {
     @EnvironmentObject var editorVars: EditorVariables
     
     @State private var selectedTab = "docView"
+    @State private var documentationURL = URL(string: "http://127.0.0.1:5500/Simplex/Views/Sidebar/simplexDoc.html")
 //    init(){
 //        if let url = URL(string: "https://www.example.com") {
 //                        openURL(url)
@@ -28,7 +29,8 @@ struct DocumentationView: View {
                         Label("Language Help", systemImage: "star")
                     }
                     .tag("webView")
-                Text("A website with simplex documentation will be displayed here.")
+//                Text("A website with simplex documentation will be displayed here.")
+                WebView(url: $documentationURL)
                     .tabItem{
                         Label("Simplex Help", systemImage: "star")
                     }
