@@ -19,6 +19,9 @@ struct FileExplorerView: View {
             Text("Home")
                 .padding(.bottom)
                 .font(.largeTitle)
+            Button("back"){
+                print("go back?")
+            }
             ScrollView{
                 LazyVGrid(columns: columns){
                     ForEach(availableItems, id: \.self){ item in
@@ -28,7 +31,11 @@ struct FileExplorerView: View {
                                 
                             }else{
                                 Button{
-                                    //does something
+                                    //if it is a file, replace the source code path with this one.
+                                    //if it is a directory, change available items.
+                                    if dirCheckedItem[0]{
+                                        availableItems = listDirectory(fromHomePath: item)
+                                    }
                                 }label:{
                                     if dirCheckedItem[0]{
                                         Image(systemName: "folder.fill")
