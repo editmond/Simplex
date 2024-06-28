@@ -10,6 +10,7 @@ import SwiftUI
 struct FileExplorerView: View {
     @State var availableItems: [String] = listDirectory()
     @State var iconSize:CGFloat = 70
+    @State var showHidden = false
     var columns:[GridItem] {
         [GridItem(.adaptive(minimum: 100, maximum: 500))]
     }
@@ -21,21 +22,40 @@ struct FileExplorerView: View {
             ScrollView{
                 LazyVGrid(columns: columns){
                     ForEach(availableItems, id: \.self){ item in
-                        var buttonClicked = false
+                        var dirCheckedItem = dirCheck(Filename: item)
                         VStack{
-                            Button{
-                                buttonClicked.toggle()
-                            }label:{
-                                Image(systemName: "folder.fill")
-                                    .font(.system(size: iconSize))
-                                    .foregroundStyle(.tint)
+                            if !showHidden && dirCheckedItem[1]{
+                                
+                            }else{
+                                Button{
+                                    //does something
+                                }label:{
+                                    if dirCheckedItem[0]{
+                                        Image(systemName: "folder.fill")
+                                            .font(.system(size: iconSize))
+                                            .foregroundStyle(.tint)
+                                        
+                                    } else{
+                                        Image(systemName: "doc.fill")
+                                            .font(.system(size: iconSize))
+                                            .foregroundStyle(.tint)
+                                    }
+                                }
+                                .buttonStyle(BorderlessButtonStyle())
                                 Text(item)
                             }
                         }
                     }
                 }
             }
-            Slider(value: $iconSize, in: 50...100) // a slider to adjust the icon sizes.
+            HStack{
+                Slider(value: $iconSize, in: 50...100) // a slider to adjust the icon sizes.
+                    .padding()
+                Toggle("Show hidden items", isOn: $showHidden)
+                    .toggleStyle(.checkbox)
+                    .padding()
+            }
+            .padding()
         }
     }
 }
