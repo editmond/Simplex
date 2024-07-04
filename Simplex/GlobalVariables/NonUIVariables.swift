@@ -9,4 +9,5 @@ import Foundation
 
 struct NonUIVariables{
     static let appFolder = "SimplexFiles"
+    
 }

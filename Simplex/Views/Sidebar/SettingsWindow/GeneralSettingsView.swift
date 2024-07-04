@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct GeneralSettingsView: View{
+    @Environment(\.openWindow) var openWindow // allows the view to open new windows
+    
     @EnvironmentObject var editorVars: EditorVariables //this view accesses the buffer object
     var body: some View{
         Grid{
@@ -21,7 +23,14 @@ struct GeneralSettingsView: View{
                     .padding()
             }
             GridRow{
-                Text("Some filler")
+                Button{
+                    
+                    //opens the file explorer window
+                    openWindow(id: "settingsSourceFile")
+                    
+                }label:{
+                    Text("Change")
+                }
             }
             GridRow{
                 Text("Some filler")
