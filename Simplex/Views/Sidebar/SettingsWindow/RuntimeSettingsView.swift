@@ -27,9 +27,6 @@ struct RuntimeSettingsView: View {
                     .disableAutocorrection(true)
                 
                 Button{
-                    //reset the variables before changing
-                    fileExplorerVars.concatenatedCurrentPath = ""
-                    fileExplorerVars.chosenFileName = ""
                     
                     //add context to the file explorer.
                     fileExplorerVars.originalString = editorVars.sourceFilePath
@@ -41,9 +38,9 @@ struct RuntimeSettingsView: View {
                     Text("Browse")
                 }
                 .padding()
-                .onChange(of: fileExplorerVars.concatenatedCurrentPath){ oldValue, newValue in
+                .onChange(of: fileExplorerVars.applyChange){ oldValue, newValue in
                     if fileExplorerVars.pathVarToChange == 0{
-                        editorVars.sourceFilePath = newValue
+                        editorVars.sourceFilePath = fileExplorerVars.concatenatedCurrentPath
                     }
                 }
                 
@@ -56,9 +53,6 @@ struct RuntimeSettingsView: View {
                     .disableAutocorrection(true)
                     .padding()
                 Button{
-                    //reset the variables before changing
-                    fileExplorerVars.concatenatedCurrentPath = ""
-                    fileExplorerVars.chosenFileName = ""
                     
                     //add context to the file explorer.
                     fileExplorerVars.originalString = editorVars.buildScriptName
@@ -72,9 +66,9 @@ struct RuntimeSettingsView: View {
                     Text("Browse")
                 }
                 .padding()
-                .onChange(of: fileExplorerVars.chosenFileName){ oldValue, newValue in
+                .onChange(of: fileExplorerVars.applyChange){ oldValue, newValue in
                     if fileExplorerVars.pathVarToChange == 1{
-                        editorVars.buildScriptName = newValue
+                        editorVars.buildScriptName = fileExplorerVars.chosenFileName
                     }
                 }
             }
@@ -87,9 +81,6 @@ struct RuntimeSettingsView: View {
                     .padding()
                 
                 Button{
-                    //reset the variables before changing
-                    fileExplorerVars.concatenatedCurrentPath = ""
-                    fileExplorerVars.chosenFileName = ""
                     
                     //add context to the file explorer.
                     fileExplorerVars.originalString = previewerVars.previewReadFile
@@ -103,9 +94,9 @@ struct RuntimeSettingsView: View {
                     Text("Browse")
                 }
                 .padding()
-                .onChange(of: fileExplorerVars.concatenatedCurrentPath){ oldValue, newValue in
+                .onChange(of: fileExplorerVars.applyChange){ oldValue, newValue in
                     if fileExplorerVars.pathVarToChange == 2{
-                        previewerVars.previewReadFile = newValue
+                        previewerVars.previewReadFile = fileExplorerVars.concatenatedCurrentPath
                     }
                 }
             }

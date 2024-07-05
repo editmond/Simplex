@@ -24,6 +24,8 @@ struct GeneralSettingsView: View{
                     .padding()
                 
                 Button{
+                    
+                    //gives cntext to the file exploer view.
                     fileExplorerVars.isOpenedFromSidebar = false
                     fileExplorerVars.pathVarToChange = 0
                     //opens the file explorer window
@@ -32,14 +34,14 @@ struct GeneralSettingsView: View{
                     Text("Browse")
                 }
                 .padding()
-                .onChange(of: fileExplorerVars.concatenatedCurrentPath){ oldValue, newValue in
+                .onChange(of: fileExplorerVars.applyChange){ oldValue, newValue in
                     if fileExplorerVars.pathVarToChange == 0{
-                        editorVars.sourceFilePath = newValue
+                        editorVars.sourceFilePath = fileExplorerVars.concatenatedCurrentPath
                     }
                 }
             }
             GridRow{
-                
+                Text("Some filler")
             }
             GridRow{
                 Text("Some filler")

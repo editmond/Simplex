@@ -96,6 +96,7 @@ struct FileExplorerView: View {
                     fileExplorerVars.chosenFileName = fileExplorerVars.originalString
                 }
                 Button("Open"){
+                    fileExplorerVars.applyChange.toggle()
                     if fileExplorerVars.isOpenedFromSidebar{
                         editorVars.sourceFilePath = bufferConcatenatedCurrentPath
                         editorVars.writeSettings()

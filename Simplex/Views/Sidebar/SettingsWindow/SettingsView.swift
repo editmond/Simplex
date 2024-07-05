@@ -35,9 +35,9 @@ struct NoDeprecateSettingsView: View{
         ZStack{
             NavigationSplitView{
                 List {
-//                    NavigationLink(destination: GeneralSettingsView()) {
-//                        Label("General", systemImage: "gear")
-//                    }
+                    NavigationLink(destination: GeneralSettingsView()) {
+                        Label("General", systemImage: "gear")
+                    }
                     NavigationLink(destination: GUISettingsView()) {
                         Label("GUI", systemImage: "paintbrush.pointed")
                     }

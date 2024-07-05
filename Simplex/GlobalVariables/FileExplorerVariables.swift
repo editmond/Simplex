@@ -14,4 +14,5 @@ class FileExplorerVariables: ObservableObject{
 
     @Published var pathVarToChange = 0 //0: source file path. 1: build script path. 2: preview file path.
     @Published var isOpenedFromSidebar = true
+    @Published var applyChange = false //just toggle to get changes to happen.
 }
