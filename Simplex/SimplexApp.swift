@@ -14,13 +14,18 @@ struct SimplexApp: App {
     @Environment(\.openWindow) var openWindow
 //    @Environment(\.scenePhase) private var scenePhase
     
+    //Creates the objects that will hold the global variables
     @StateObject var guiObject = GUIVariables(doLoad: true)
     @StateObject var sidebarObject = SidebarVariables(doLoad: true)
     @StateObject var editorObject = EditorVariables(doLoad: true)
     @StateObject var previewerObject = PreviewerVariables(doLoad: true)
+    @StateObject var fileExplorerObject = FileExplorerVariables()
+    
     //initialisation code
     init(){
         print("Initialising")
+        
+        //check for the required folders.
         folderCheck(folderName: NonUIVariables.appFolder)
         folderCheck(folderName: "\(NonUIVariables.appFolder)/Settings_Data")
         folderCheck(folderName: "\(NonUIVariables.appFolder)/Build_Scripts")
@@ -37,6 +42,7 @@ struct SimplexApp: App {
                 .environmentObject(sidebarObject)
                 .environmentObject(editorObject)
                 .environmentObject(previewerObject)
+                .environmentObject(fileExplorerObject)
         }
         
         //this window contains all the GUI for editing the app settings
@@ -50,6 +56,7 @@ struct SimplexApp: App {
             .environmentObject(sidebarObject)
             .environmentObject(editorObject)
             .environmentObject(previewerObject)
+            .environmentObject(fileExplorerObject)
         }
         .keyboardShortcut(",") //keyboard shortcut of "cmd"+"," opens the window
         
@@ -60,8 +67,8 @@ struct SimplexApp: App {
                 FileExplorerView()
             }
             .environmentObject(guiObject)
-            .environmentObject(sidebarObject)
             .environmentObject(editorObject)
+            .environmentObject(fileExplorerObject)
         }
         .keyboardShortcut("o")
         
@@ -72,7 +79,6 @@ struct SimplexApp: App {
                 DocumentationView()
             }
             .environmentObject(guiObject)
-            .environmentObject(sidebarObject)
             .environmentObject(editorObject)
         }
         .keyboardShortcut("d", modifiers: [.command, .shift])

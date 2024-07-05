@@ -9,22 +9,23 @@ import SwiftUI
 
 struct FileExplorerView: View {
     
+    //allows functions in this view to dismiss windows
+    @Environment(\.dismissWindow) private var dismissWindow
+
+    //assigning names for the objects
     @EnvironmentObject var editorVars: EditorVariables
     @EnvironmentObject var previewerVars: PreviewerVariables
-
+    @EnvironmentObject var fileExplorerVars: FileExplorerVariables
+    
+    //are not shared between views
     @State var availableItems: [String] = listDirectory()
     @State var iconSize:CGFloat = 70
     @State var showHidden = false
-    @State var currentPath:[String] = []
-    @State var concatenatedCurrentPath = ""
-    @State var chosenFileName = ""
-
-    @State var pathVarToChange = 0 //0: source file path. 1: build script path. 2: preview file path.
-//    @State var bufferEditorVars: EditorVariables = EditorVariables(doLoad:false)
-//    @State var bufferPreviewerVars: PreviewerVariables = PreviewerVariables(doLoad: false)
-    @State var isOpenedFromSidebar = true
-    @State var isFileSelected = false
     
+    //set of intermediate variables
+    @State var currentPath:[String] = [] //stores the current path in an array, manage it like a stack.
+    @State var bufferConcatenatedCurrentPath = "" //a buffer variable, may or may not be applied.
+    @State var bufferChosenFileName = "" //a buffer variable, may or may not be applied.
     
     var columns:[GridItem] {
         [GridItem(.adaptive(minimum: 100, maximum: 500))]
@@ -39,7 +40,7 @@ struct FileExplorerView: View {
                     currentPath.popLast()
                     availableItems = listDirectory(fromHomePath: catPathVariable(strArr: currentPath))
                 }.padding().frame(alignment: .leading)
-                Text("Selected: \(chosenFileName)")
+                Text("Selected: \(bufferChosenFileName)")
                     .padding()
                     .frame(alignment: .center)
             }
@@ -59,10 +60,10 @@ struct FileExplorerView: View {
                                     } else{
                                         currentPath.append(item)
                                         //if it is a file, replace the source code path with this one.
-                                        concatenatedCurrentPath = catPathVariable(strArr: currentPath)
+                                        bufferConcatenatedCurrentPath = catPathVariable(strArr: currentPath)
                                         
                                         //prime the variable for the next usage by removing the file, thus resetting it back to the current working directory.
-                                        chosenFileName = currentPath.popLast()!
+                                        bufferChosenFileName = currentPath.popLast()!
                                     }
                                 }label:{
                                     if dirCheckedItem[0]{
@@ -90,46 +91,29 @@ struct FileExplorerView: View {
                 Toggle("Show hidden items", isOn: $showHidden)
                     .toggleStyle(.checkbox)
                     .padding()
+                Button("Cancel"){
+                    fileExplorerVars.concatenatedCurrentPath = fileExplorerVars.originalString
+                    fileExplorerVars.chosenFileName = fileExplorerVars.originalString
+                }
                 Button("Open"){
-                    if isOpenedFromSidebar{
-                        editorVars.sourceFilePath = concatenatedCurrentPath
+                    if fileExplorerVars.isOpenedFromSidebar{
+                        editorVars.sourceFilePath = bufferConcatenatedCurrentPath
                         editorVars.writeSettings()
                         editorVars.loadFileText()
-                        print("not using buffered")
                     }else{
-//                        switch pathVarToChange{
-//                        case 0:
-//                            bufferEditorVars.sourceFilePath = concatenatedCurrentPath
-//                            bufferEditorVars.writeSettings()
-//                            bufferEditorVars.loadFileText()
-//                        case 1:
-//                            bufferEditorVars.buildScriptName = chosenFileName
-//                            bufferEditorVars.writeSettings()
-//                        case 2:
-//                            bufferPreviewerVars.previewReadFile = concatenatedCurrentPath
-//                            bufferPreviewerVars.writeSettings()
-//                        default:
-//                            print("Invalid path to change")
-//                        }
-                        isFileSelected = true
+                        fileExplorerVars.concatenatedCurrentPath = bufferConcatenatedCurrentPath
+                        fileExplorerVars.chosenFileName = bufferChosenFileName
                     }
                     
                     //reset the flag variable
-                    isOpenedFromSidebar = true
+                    fileExplorerVars.isOpenedFromSidebar = true
+                    
+                    //ensure this is run last as it closes this view
+                    dismissWindow(id: "files")
                 }
             }
             .padding()
         }
-    }
-    func fileSelectListener() async -> [String]{
-        while !isFileSelected{
-            //just wait for the user to choose.
-        }
-        //reset the flag
-        isFileSelected = false
-        
-        //return the file path and name of the file for processing.
-        return [concatenatedCurrentPath, chosenFileName]
     }
 }
 
