@@ -28,8 +28,10 @@ struct NoDeprecateSettingsView: View{
     let defaultSideObj = SidebarVariables(doLoad: false)
     var defaultPreviewerObj = PreviewerVariables(doLoad: false)
 
+    //some flags for managing the views.
     @State private var showingAlert = false
     @State private var doAction = false
+    @State private var isPresentingConfirmReset: Bool = false // for presenting confirmation dialogue when resetting defaults.
     
     var body: some View{
         ZStack{
@@ -53,35 +55,38 @@ struct NoDeprecateSettingsView: View{
             }
             HStack{
                 Button(){ //Restore Default settings
-                    
-                    //copy to the global objects
-                    guiVars.copyContents(GUIObj: defaultGuiObj)
-                    editorVars.copyContents(EditorObj: defaultEditorObj)
-                    sidebarVars.copyContents(SideObj: defaultSideObj)
-                    previewerVars.copyContents(PreviewerObj: defaultPreviewerObj)
-                    
-                    //copy to the buffer objects
-                    bufferGuiVars.copyContents(GUIObj: defaultGuiObj)
-                    bufferEditorVars.copyContents(EditorObj: defaultEditorObj)
-                    bufferSidebarVars.copyContents(SideObj: defaultSideObj)
-                    bufferPreviewerVars.copyContents(PreviewerObj: defaultPreviewerObj)
-                    
-                    //write the new settings
-                    guiVars.writeSettings()
-                    editorVars.writeSettings()
-                    sidebarVars.writeSettings()
-                    previewerVars.writeSettings()
-                    
-                    //reload the data from files in case the source has changed
-                    editorVars.loadFileText()
-
-                    //destory objects ~~~ may not be necessary?
-                    
-                    //dismiss the window
-                    dismissWindow(id: "settings")
+                    isPresentingConfirmReset = true
 
                 } label: {
                     Text("Restore Default")
+                } .confirmationDialog("Are you sure? Doing so will erase ALL prexisting settings to the default.",isPresented: $isPresentingConfirmReset) { // creates a popup asking for confirmation to reset to default.
+                    Button("Restore Default?", role: .destructive){
+                        //copy to the global objects
+                        guiVars.copyContents(GUIObj: defaultGuiObj)
+                        editorVars.copyContents(EditorObj: defaultEditorObj)
+                        sidebarVars.copyContents(SideObj: defaultSideObj)
+                        previewerVars.copyContents(PreviewerObj: defaultPreviewerObj)
+                        
+                        //copy to the buffer objects
+                        bufferGuiVars.copyContents(GUIObj: defaultGuiObj)
+                        bufferEditorVars.copyContents(EditorObj: defaultEditorObj)
+                        bufferSidebarVars.copyContents(SideObj: defaultSideObj)
+                        bufferPreviewerVars.copyContents(PreviewerObj: defaultPreviewerObj)
+                        
+                        //write the new settings
+                        guiVars.writeSettings()
+                        editorVars.writeSettings()
+                        sidebarVars.writeSettings()
+                        previewerVars.writeSettings()
+                        
+                        //reload the data from files in case the source has changed
+                        editorVars.loadFileText()
+
+                        //destory objects ~~~ may not be necessary?
+                        
+                        //dismiss the window
+                        dismissWindow(id: "settings")
+                    }
                 }
                 Spacer()
                 Button(){

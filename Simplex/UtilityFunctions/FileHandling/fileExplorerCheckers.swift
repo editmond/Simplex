@@ -18,8 +18,20 @@ func dirCheck(Filename: String) -> [Bool]{
     if count > 1 {
         type[0] = false
     } else{
+        print(Filename + "is a directory")
         type[0] = true
     }
     
     return type //format is: [isDir, isHidden]
 }
+
+func execCheck(Filename: String) -> Bool{
+    var isExec = false
+    let fm = FileManager.default
+    if fm.isExecutableFile(atPath: Filename){
+        isExec = true
+    }
+    
+    return isExec //format is: [isDir, isHidden]
+}
+

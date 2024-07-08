@@ -18,7 +18,7 @@ struct RuntimeSettingsView: View {
     
     var body: some View {
         Grid{
-            //the rest could be programmatically generated based on the required input
+            //DISREGARD - the rest could be programmatically generated based on the required input
             GridRow{
                 Text("Source File Path:")
                     .padding()
@@ -43,6 +43,7 @@ struct RuntimeSettingsView: View {
                         editorVars.sourceFilePath = fileExplorerVars.concatenatedCurrentPath
                     }
                 }
+                
                 
             }
             GridRow{

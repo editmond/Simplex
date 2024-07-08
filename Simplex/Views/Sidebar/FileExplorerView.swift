@@ -48,6 +48,7 @@ struct FileExplorerView: View {
                 LazyVGrid(columns: columns){
                     ForEach(availableItems, id: \.self){ item in
                         var dirCheckedItem = dirCheck(Filename: item)
+//                        var executableCheck = false
                         VStack{
                             if !showHidden && dirCheckedItem[1]{
                                 
@@ -66,19 +67,35 @@ struct FileExplorerView: View {
                                         bufferChosenFileName = currentPath.popLast()!
                                     }
                                 }label:{
+                                    let executableCheck = execCheck(Filename: catPathVariable(strArr: currentPath)+item)
+                                    let fm = FileManager.default
                                     if dirCheckedItem[0]{
-                                        Image(systemName: "folder.fill")
-                                            .font(.system(size: iconSize))
-                                            .foregroundStyle(.tint)
+                                        if fm.contents(atPath: catPathVariable(strArr: currentPath)+"/"+item) != nil{
+//                                        if URL(fileURLWithPath: catPathVariable(strArr: currentPath)).isFileURL{
+                                            Image(systemName: "doc.badge.gearshape.fill")
+                                                .font(.system(size: iconSize))
+                                                .foregroundStyle(.tint)
+                                        } else{
+                                            Image(systemName: "folder.fill")
+                                                .font(.system(size: iconSize))
+                                                .foregroundStyle(.tint)
+                                        }
                                         
                                     } else{
-                                        Image(systemName: "doc.fill")
-                                            .font(.system(size: iconSize))
-                                            .foregroundStyle(.tint)
+                                        if executableCheck{
+                                            Image(systemName: "doc.badge.gearshape.fill")
+                                                .font(.system(size: iconSize))
+                                                .foregroundStyle(.tint)
+                                        } else{
+                                            Image(systemName: "doc.fill")
+                                                .font(.system(size: iconSize))
+                                                .foregroundStyle(.tint)
+                                        }
                                     }
                                 }
                                 .buttonStyle(BorderlessButtonStyle())
-                                Text(item)
+//                                Text(item)
+                                Text(catPathVariable(strArr: currentPath)+item)
                             }
                         }
                     }
@@ -94,6 +111,9 @@ struct FileExplorerView: View {
                 Button("Cancel"){
                     fileExplorerVars.concatenatedCurrentPath = fileExplorerVars.originalString
                     fileExplorerVars.chosenFileName = fileExplorerVars.originalString
+                    
+                    //ensure this is run last as it closes this view
+                    dismissWindow(id: "files")
                 }
                 Button("Open"){
                     fileExplorerVars.applyChange.toggle()

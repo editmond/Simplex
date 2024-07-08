@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		800C5F0A2B5F8170000C7FFF /* textSanitising.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C5F092B5F8170000C7FFF /* textSanitising.swift */; };
 		800C5F0C2B5F83A4000C7FFF /* writeRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C5F0B2B5F83A4000C7FFF /* writeRead.swift */; };
-		801410BA2C2E536100C8352B /* isDirChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801410B92C2E536100C8352B /* isDirChecker.swift */; };
+		801410BA2C2E536100C8352B /* fileExplorerCheckers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801410B92C2E536100C8352B /* fileExplorerCheckers.swift */; };
 		80335CEE2B5E2D85009E5188 /* EditorVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80335CED2B5E2D85009E5188 /* EditorVariables.swift */; };
 		80335CF02B5E2DB6009E5188 /* safeShell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80335CEF2B5E2DB6009E5188 /* safeShell.swift */; };
 		80335CF22B5E2DE0009E5188 /* SidebarVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80335CF12B5E2DE0009E5188 /* SidebarVariables.swift */; };
@@ -47,7 +47,7 @@
 /* Begin PBXFileReference section */
 		800C5F092B5F8170000C7FFF /* textSanitising.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textSanitising.swift; sourceTree = "<group>"; };
 		800C5F0B2B5F83A4000C7FFF /* writeRead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = writeRead.swift; sourceTree = "<group>"; };
-		801410B92C2E536100C8352B /* isDirChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = isDirChecker.swift; sourceTree = "<group>"; };
+		801410B92C2E536100C8352B /* fileExplorerCheckers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fileExplorerCheckers.swift; sourceTree = "<group>"; };
 		801410BD2C2E56BC00C8352B /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		80335CED2B5E2D85009E5188 /* EditorVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorVariables.swift; sourceTree = "<group>"; };
 		80335CEF2B5E2DB6009E5188 /* safeShell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = safeShell.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 				80C7CC182B60D5530021CDDF /* fileExploring.swift */,
 				80C7CC1A2B60DD040021CDDF /* createDirectories.swift */,
 				80F3D4AF2B61DC9B0085F8CF /* createFile.swift */,
-				801410B92C2E536100C8352B /* isDirChecker.swift */,
+				801410B92C2E536100C8352B /* fileExplorerCheckers.swift */,
 			);
 			path = FileHandling;
 			sourceTree = "<group>";
@@ -293,7 +293,7 @@
 				80BE4C482B664D97007BA727 /* GeneralSettingsView.swift in Sources */,
 				80335CEE2B5E2D85009E5188 /* EditorVariables.swift in Sources */,
 				80BC69412B96F5FA00C9E1EC /* PreviewFunctions.swift in Sources */,
-				801410BA2C2E536100C8352B /* isDirChecker.swift in Sources */,
+				801410BA2C2E536100C8352B /* fileExplorerCheckers.swift in Sources */,
 				80F0F7052B4BC66500BD6279 /* SidebarFunctions.swift in Sources */,
 				80E5E48D2B1D4089002A4D54 /* ContentView.swift in Sources */,
 				80335CF02B5E2DB6009E5188 /* safeShell.swift in Sources */,
