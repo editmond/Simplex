@@ -32,18 +32,30 @@ struct FileExplorerView: View {
     }
     var body: some View {
         VStack{
-            Text("Home")
+            
+            Text("")
+            Text("Browsing: ~/"+catPathVariable(strArr: currentPath))
                 .padding(.bottom)
                 .font(.largeTitle)
-            HStack{
-                Button("back"){
+            HStack(){
+                Button(){
                     currentPath.popLast()
                     availableItems = listDirectory(fromHomePath: catPathVariable(strArr: currentPath))
-                }.padding().frame(alignment: .leading)
+                }label:{
+                    Image(systemName: "arrowshape.left.fill")
+                        .font(.system(size: 30))
+                        .foregroundStyle(.tint)
+                }
+                .padding()
+                .buttonStyle(BorderlessButtonStyle())
+                
                 Text("Selected: \(bufferChosenFileName)")
+                    .font(.system(size: 20))
                     .padding()
-                    .frame(alignment: .center)
+                Spacer()
             }
+            
+            //the view containing the visual representation of the selected directory.
             ScrollView{
                 LazyVGrid(columns: columns){
                     ForEach(availableItems, id: \.self){ item in
@@ -56,8 +68,13 @@ struct FileExplorerView: View {
                                 Button{
                                     //if it is a directory, change available items.
                                     if dirCheckedItem[0]{
-                                        currentPath.append(item+"/")
-                                        availableItems = listDirectory(fromHomePath: catPathVariable(strArr: currentPath) )
+                                        let executableCheck = execCheck(Filename: String(NSHomeDirectory())+"/"+catPathVariable(strArr: currentPath)+item)
+                                        if !executableCheck{
+                                            currentPath.append(item+"/")
+                                            availableItems = listDirectory(fromHomePath: catPathVariable(strArr: currentPath) )
+                                        } else{
+                                            bufferChosenFileName = ""
+                                        }
                                     } else{
                                         currentPath.append(item)
                                         //if it is a file, replace the source code path with this one.
@@ -67,11 +84,14 @@ struct FileExplorerView: View {
                                         bufferChosenFileName = currentPath.popLast()!
                                     }
                                 }label:{
-                                    let executableCheck = execCheck(Filename: catPathVariable(strArr: currentPath)+item)
                                     let fm = FileManager.default
                                     if dirCheckedItem[0]{
-                                        if fm.contents(atPath: catPathVariable(strArr: currentPath)+"/"+item) != nil{
+                                        let executableCheck = execCheck(Filename: String(NSHomeDirectory())+"/"+catPathVariable(strArr: currentPath)+item)
+                                        var isDir: UnsafeMutablePointer<ObjCBool>?
+//                                        if fm.contents(atPath: (catPathVariable(strArr: currentPath)+"/"+item)) {
+//                                        if fm.fileExists(atPath: (catPathVariable(strArr: currentPath)+"/"+item), isDirectory: isDir) && ((isDir?.pointee) != nil){
 //                                        if URL(fileURLWithPath: catPathVariable(strArr: currentPath)).isFileURL{
+                                        if executableCheck{
                                             Image(systemName: "doc.badge.gearshape.fill")
                                                 .font(.system(size: iconSize))
                                                 .foregroundStyle(.tint)
@@ -82,15 +102,9 @@ struct FileExplorerView: View {
                                         }
                                         
                                     } else{
-                                        if executableCheck{
-                                            Image(systemName: "doc.badge.gearshape.fill")
-                                                .font(.system(size: iconSize))
-                                                .foregroundStyle(.tint)
-                                        } else{
-                                            Image(systemName: "doc.fill")
-                                                .font(.system(size: iconSize))
-                                                .foregroundStyle(.tint)
-                                        }
+                                        Image(systemName: "doc.fill")
+                                            .font(.system(size: iconSize))
+                                            .foregroundStyle(.tint)
                                     }
                                 }
                                 .buttonStyle(BorderlessButtonStyle())

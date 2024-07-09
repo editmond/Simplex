@@ -34,7 +34,7 @@ struct NoDeprecateSettingsView: View{
     @State private var isPresentingConfirmReset: Bool = false // for presenting confirmation dialogue when resetting defaults.
     
     var body: some View{
-        ZStack{
+        VStack{
             NavigationSplitView{
                 List {
                     NavigationLink(destination: GeneralSettingsView()) {
@@ -53,6 +53,7 @@ struct NoDeprecateSettingsView: View{
             } detail: {
                 GeneralSettingsView()
             }
+            Divider()
             HStack{
                 Button(){ //Restore Default settings
                     isPresentingConfirmReset = true
@@ -126,7 +127,8 @@ struct NoDeprecateSettingsView: View{
                     Text("Apply")
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+//            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+            .frame(maxWidth: .infinity, maxHeight: 20, alignment: .bottomTrailing)
             .padding()
         }
         .environmentObject(bufferGuiVars)

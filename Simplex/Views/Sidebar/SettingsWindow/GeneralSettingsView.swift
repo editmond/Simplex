@@ -11,7 +11,10 @@ struct GeneralSettingsView: View{
     @Environment(\.openWindow) var openWindow // allows the view to open new windows
     
     @EnvironmentObject var editorVars: EditorVariables //this view accesses the buffer object
+    @EnvironmentObject var guiVars: GUIVariables //this view accesses the buffer object
     @EnvironmentObject var fileExplorerVars: FileExplorerVariables
+    
+    @State var bgColor = Color(hue: loadBackgroundHue(), saturation: loadBackgroundSaturation(), brightness: loadBackgroundBrightness())
     var body: some View{
         Grid{
             //the rest could be programmatically generated based on the required input
@@ -41,7 +44,10 @@ struct GeneralSettingsView: View{
                 }
             }
             GridRow{
-                Text("Some filler")
+                Text("Change background colour: ")
+                    .padding()
+                ColorPicker("", selection: $bgColor)
+                    .padding()
             }
             GridRow{
                 Text("Some filler")
