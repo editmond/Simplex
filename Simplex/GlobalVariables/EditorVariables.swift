@@ -38,7 +38,6 @@ class EditorVariables: ObservableObject{
         //get the file extension of the file to be previewed.
         let readFileArr = sourceFilePath.components(separatedBy: ".")
         documentationURL = URL(string: "https://devdocs.io/#q=" + readFileArr.last!)
-        print(documentationURL)
         
         //prepare an array for writing
         var formattedSettings: [String:[String]] = [:]
@@ -51,7 +50,6 @@ class EditorVariables: ObservableObject{
         
         formattedSettings["documentationURL"] = ["https://devdocs.io/#q=" + readFileArr.last!]
 
-        print(formattedSettings["documentationURL"])
         //write the array into the settings file
         saveSettings(settingVars: formattedSettings, settingsFile: settingsFile)
     }

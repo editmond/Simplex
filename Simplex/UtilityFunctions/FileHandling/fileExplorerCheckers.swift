@@ -9,7 +9,7 @@ import Foundation
 
 func dirCheck(Filename: String) -> [Bool]{
     var type: [Bool] = [true, false] //format is: [isDir, isHidden]
-    var nameSplit = Filename.components(separatedBy: ".")
+    let nameSplit = Filename.components(separatedBy: ".")
     var count = nameSplit.count
     if nameSplit[0] == ""{ //this seperates out hidden files.
         type[1] = true //set the hidden file flag to true.

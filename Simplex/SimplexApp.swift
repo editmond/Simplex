@@ -26,9 +26,9 @@ struct SimplexApp: App {
         print("Initialising")
         
         //check for the required folders.
-        folderCheck(folderName: NonUIVariables.appFolder)
-        folderCheck(folderName: "\(NonUIVariables.appFolder)/Settings_Data")
-        folderCheck(folderName: "\(NonUIVariables.appFolder)/Build_Scripts")
+        _ = folderCheck(folderName: NonUIVariables.appFolder)
+        _ = folderCheck(folderName: "\(NonUIVariables.appFolder)/Settings_Data")
+        _ = folderCheck(folderName: "\(NonUIVariables.appFolder)/Build_Scripts")
     }
     
     //the main scene
@@ -58,7 +58,7 @@ struct SimplexApp: App {
             .environmentObject(previewerObject)
             .environmentObject(fileExplorerObject)
         }
-        .keyboardShortcut(",") //keyboard shortcut of "cmd"+"," opens the window
+        .keyboardShortcut(",") //keyboard shortcut of "cmd"+"," opens the settings window.
         
         //this window will provide a GUI for users to browse files
         Window("Files", id: "files"){
@@ -70,7 +70,7 @@ struct SimplexApp: App {
             .environmentObject(editorObject)
             .environmentObject(fileExplorerObject)
         }
-        .keyboardShortcut("o")
+        .keyboardShortcut("o") //keyboard shortcut of "cmd"+"o" opens the file explorer in the mode that changes the currently editing file.
         
         //this window propvides an interface for browsing documentation
         Window("Documentation", id: "docs"){
@@ -81,19 +81,15 @@ struct SimplexApp: App {
             .environmentObject(guiObject)
             .environmentObject(editorObject)
         }
-        .keyboardShortcut("d", modifiers: [.command, .shift])
+        .keyboardShortcut("d", modifiers: [.command, .shift]) //opens the documentation window when cmd+shift+d is pressed
     }
 }
 
-struct MainView: View {
-    init(){
-        //?
-    }
+struct MainView: View { //this is the view that is displayed as the main window.
     var body: some View{
-        ZStack{
-            //dummyView()
+        ZStack{ //arranges the views on top of each other going from back-most to front-most
             Background()
-            ContentView()
+            ContentView() //this is the view that overlays the editor, sidebar and preview on the background
         }
         .accentColor(Color.black)
     }

@@ -38,7 +38,6 @@ class PreviewerVariables: ObservableObject{
         
         //get the file extension of the file to be previewed.
         let readFileArr = previewReadFile.components(separatedBy: ".")
-        print(readFileArr.last)
         previewText = ""
         
         if textFormats.contains(readFileArr.last ?? "") {

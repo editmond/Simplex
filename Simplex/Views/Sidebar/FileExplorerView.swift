@@ -39,7 +39,7 @@ struct FileExplorerView: View {
                 .font(.largeTitle)
             HStack(){
                 Button(){
-                    currentPath.popLast()
+                    _ = currentPath.popLast()
                     availableItems = listDirectory(fromHomePath: catPathVariable(strArr: currentPath))
                 }label:{
                     Image(systemName: "arrowshape.left.fill")
@@ -59,7 +59,7 @@ struct FileExplorerView: View {
             ScrollView{
                 LazyVGrid(columns: columns){
                     ForEach(availableItems, id: \.self){ item in
-                        var dirCheckedItem = dirCheck(Filename: item)
+                        let dirCheckedItem = dirCheck(Filename: item)
 //                        var executableCheck = false
                         VStack{
                             if !showHidden && dirCheckedItem[1]{
@@ -87,10 +87,6 @@ struct FileExplorerView: View {
                                     let fm = FileManager.default
                                     if dirCheckedItem[0]{
                                         let executableCheck = execCheck(Filename: String(NSHomeDirectory())+"/"+catPathVariable(strArr: currentPath)+item)
-                                        var isDir: UnsafeMutablePointer<ObjCBool>?
-//                                        if fm.contents(atPath: (catPathVariable(strArr: currentPath)+"/"+item)) {
-//                                        if fm.fileExists(atPath: (catPathVariable(strArr: currentPath)+"/"+item), isDirectory: isDir) && ((isDir?.pointee) != nil){
-//                                        if URL(fileURLWithPath: catPathVariable(strArr: currentPath)).isFileURL{
                                         if executableCheck{
                                             Image(systemName: "doc.badge.gearshape.fill")
                                                 .font(.system(size: iconSize))
