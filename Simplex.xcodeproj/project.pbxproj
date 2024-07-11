@@ -21,6 +21,9 @@
 		8098709C2B4F93FF00ECA693 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8098709B2B4F93FE00ECA693 /* SettingsView.swift */; };
 		80A0C84C2B913B69000DDE16 /* NonUIVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A0C84B2B913B69000DDE16 /* NonUIVariables.swift */; };
 		80B9B11A2B58E8A800ED418B /* FileExplorerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B9B1192B58E8A800ED418B /* FileExplorerView.swift */; };
+		80BB6C872C3E9E5E001274A2 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB6C862C3E9E5D001274A2 /* AudioPlayer.swift */; };
+		80BB6C902C3E9F96001274A2 /* Purple Dream by Ghostrifter Official - Chosic.txt in Resources */ = {isa = PBXBuildFile; fileRef = 80BB6C8F2C3E9F96001274A2 /* Purple Dream by Ghostrifter Official - Chosic.txt */; };
+		80BB6C922C3E9FA0001274A2 /* Ghostrifter-Official-Purple-Dream(chosic.com).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 80BB6C912C3E9FA0001274A2 /* Ghostrifter-Official-Purple-Dream(chosic.com).mp3 */; };
 		80BB83C42B9EEBB70021E777 /* PreviewerVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB83C32B9EEBB70021E777 /* PreviewerVariables.swift */; };
 		80BC69412B96F5FA00C9E1EC /* PreviewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BC69402B96F5FA00C9E1EC /* PreviewFunctions.swift */; };
 		80BE4C3F2B662C2C007BA727 /* DocumentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BE4C3E2B662C2C007BA727 /* DocumentationView.swift */; };
@@ -60,6 +63,9 @@
 		8098709B2B4F93FE00ECA693 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		80A0C84B2B913B69000DDE16 /* NonUIVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonUIVariables.swift; sourceTree = "<group>"; };
 		80B9B1192B58E8A800ED418B /* FileExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileExplorerView.swift; sourceTree = "<group>"; };
+		80BB6C862C3E9E5D001274A2 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		80BB6C8F2C3E9F96001274A2 /* Purple Dream by Ghostrifter Official - Chosic.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Purple Dream by Ghostrifter Official - Chosic.txt"; sourceTree = "<group>"; };
+		80BB6C912C3E9FA0001274A2 /* Ghostrifter-Official-Purple-Dream(chosic.com).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Ghostrifter-Official-Purple-Dream(chosic.com).mp3"; sourceTree = "<group>"; };
 		80BB83C32B9EEBB70021E777 /* PreviewerVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewerVariables.swift; sourceTree = "<group>"; };
 		80BC69402B96F5FA00C9E1EC /* PreviewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewFunctions.swift; sourceTree = "<group>"; };
 		80BE4C3E2B662C2C007BA727 /* DocumentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentationView.swift; sourceTree = "<group>"; };
@@ -112,6 +118,8 @@
 		8015FB8A2B33E2B60085A50C /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
+				80BB6C862C3E9E5D001274A2 /* AudioPlayer.swift */,
+				80BB6C882C3E9E75001274A2 /* Music */,
 				80E5E4992B1D417A002A4D54 /* SideBarView.swift */,
 				80F0F7042B4BC66500BD6279 /* SidebarFunctions.swift */,
 				80BE4C422B664D0D007BA727 /* SettingsWindow */,
@@ -132,6 +140,15 @@
 				8096D7542C3770A3008A5808 /* FileExplorerVariables.swift */,
 			);
 			path = GlobalVariables;
+			sourceTree = "<group>";
+		};
+		80BB6C882C3E9E75001274A2 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				80BB6C912C3E9FA0001274A2 /* Ghostrifter-Official-Purple-Dream(chosic.com).mp3 */,
+				80BB6C8F2C3E9F96001274A2 /* Purple Dream by Ghostrifter Official - Chosic.txt */,
+			);
+			path = Music;
 			sourceTree = "<group>";
 		};
 		80BE4C422B664D0D007BA727 /* SettingsWindow */ = {
@@ -278,6 +295,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80BB6C922C3E9FA0001274A2 /* Ghostrifter-Official-Purple-Dream(chosic.com).mp3 in Resources */,
+				80BB6C902C3E9F96001274A2 /* Purple Dream by Ghostrifter Official - Chosic.txt in Resources */,
 				80E5E4922B1D408B002A4D54 /* Preview Assets.xcassets in Resources */,
 				80E5E48F2B1D408B002A4D54 /* Assets.xcassets in Resources */,
 			);
@@ -317,6 +336,7 @@
 				80DFFEDB2C1BC033006BE9AE /* Documentation.docc in Sources */,
 				80BE4C442B664D58007BA727 /* GUISettingsView.swift in Sources */,
 				80E5E48B2B1D4089002A4D54 /* SimplexApp.swift in Sources */,
+				80BB6C872C3E9E5E001274A2 /* AudioPlayer.swift in Sources */,
 				80335CF22B5E2DE0009E5188 /* SidebarVariables.swift in Sources */,
 				800C5F0A2B5F8170000C7FFF /* textSanitising.swift in Sources */,
 				80C7CC192B60D5530021CDDF /* fileExploring.swift in Sources */,

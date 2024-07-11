@@ -82,6 +82,16 @@ struct SimplexApp: App {
             .environmentObject(editorObject)
         }
         .keyboardShortcut("d", modifiers: [.command, .shift]) //opens the documentation window when cmd+shift+d is pressed
+        
+        Window("Music", id: "music"){
+            ZStack{
+                Background()
+                AudioPlayer()
+            }
+            .environmentObject(guiObject)
+            .environmentObject(editorObject)
+        }
+        .keyboardShortcut("m", modifiers: [.command, .shift]) //opens the music window when cmd+shift+m is pressed
     }
 }
 

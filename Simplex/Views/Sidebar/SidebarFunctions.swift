@@ -13,17 +13,13 @@ func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: Str
     case 0: //Play icon
         writeToFile(writeOutText: writeOutText, sourceFilePath: sourceFilePath)
         
-//        //CHANGE LATER - runs python3 in the source file
-//        let shellResult = try? safeShell("\(shellCommand) Documents/\(sourceFilePath)")
-//        print("\(shellCommand) response:\n\(shellResult ?? "")")
         var output = try? safeShell("~/\(NonUIVariables.appFolder)/Build_Scripts/\(buildScriptName) \(NSHomeDirectory()+"/"+sourceFilePath)")
         return ["", "\(output ?? "")"]
     case 1:
         return ["files", ""] // return the files window id
         
     default:
-        try? safeShell("say \(actionNum)") // CHANGE LATER - a stub
-        
+        print("Unknown Button Pressed")
     }
     return ["", ""] //return nothing if no window id requried
 }
@@ -32,7 +28,7 @@ func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: Str
 func LowerSidebarActor(actionNum: Int) async -> String{
     switch actionNum{
     case 0:
-        try? safeShell("say \(actionNum)") // CHANGE LATER - a stub
+        return "music"
         
     case 1: //page icon
         return "docs" //the window id for documentation window
@@ -42,7 +38,7 @@ func LowerSidebarActor(actionNum: Int) async -> String{
         return "settings" //the window id for settings
         
     default:
-        try? safeShell("say \(actionNum)") // CHANGE LATER - a stub
+        print("Unknown Button Pressed")
     }
     return "" //return nothing if no window id is required
 }
