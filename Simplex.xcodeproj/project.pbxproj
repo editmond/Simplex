@@ -20,6 +20,8 @@
 		8096D7552C3770A4008A5808 /* FileExplorerVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8096D7542C3770A3008A5808 /* FileExplorerVariables.swift */; };
 		8098709C2B4F93FF00ECA693 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8098709B2B4F93FE00ECA693 /* SettingsView.swift */; };
 		80A0C84C2B913B69000DDE16 /* NonUIVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A0C84B2B913B69000DDE16 /* NonUIVariables.swift */; };
+		80A59FF12C3F694000FC512A /* Ghostrifter-Official-City-Lights(chosic.com).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 80A59FF02C3F694000FC512A /* Ghostrifter-Official-City-Lights(chosic.com).mp3 */; };
+		80A59FF32C3F694400FC512A /* City Lights [Lofi Study Music] by Ghostrifter Official - Chosic.txt in Resources */ = {isa = PBXBuildFile; fileRef = 80A59FF22C3F694400FC512A /* City Lights [Lofi Study Music] by Ghostrifter Official - Chosic.txt */; };
 		80B9B11A2B58E8A800ED418B /* FileExplorerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B9B1192B58E8A800ED418B /* FileExplorerView.swift */; };
 		80BB6C872C3E9E5E001274A2 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB6C862C3E9E5D001274A2 /* AudioPlayer.swift */; };
 		80BB6C902C3E9F96001274A2 /* Purple Dream by Ghostrifter Official - Chosic.txt in Resources */ = {isa = PBXBuildFile; fileRef = 80BB6C8F2C3E9F96001274A2 /* Purple Dream by Ghostrifter Official - Chosic.txt */; };
@@ -62,6 +64,8 @@
 		8096D7542C3770A3008A5808 /* FileExplorerVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileExplorerVariables.swift; sourceTree = "<group>"; };
 		8098709B2B4F93FE00ECA693 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		80A0C84B2B913B69000DDE16 /* NonUIVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonUIVariables.swift; sourceTree = "<group>"; };
+		80A59FF02C3F694000FC512A /* Ghostrifter-Official-City-Lights(chosic.com).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Ghostrifter-Official-City-Lights(chosic.com).mp3"; sourceTree = "<group>"; };
+		80A59FF22C3F694400FC512A /* City Lights [Lofi Study Music] by Ghostrifter Official - Chosic.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "City Lights [Lofi Study Music] by Ghostrifter Official - Chosic.txt"; sourceTree = "<group>"; };
 		80B9B1192B58E8A800ED418B /* FileExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileExplorerView.swift; sourceTree = "<group>"; };
 		80BB6C862C3E9E5D001274A2 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		80BB6C8F2C3E9F96001274A2 /* Purple Dream by Ghostrifter Official - Chosic.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Purple Dream by Ghostrifter Official - Chosic.txt"; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 			children = (
 				80BB6C912C3E9FA0001274A2 /* Ghostrifter-Official-Purple-Dream(chosic.com).mp3 */,
 				80BB6C8F2C3E9F96001274A2 /* Purple Dream by Ghostrifter Official - Chosic.txt */,
+				80A59FF02C3F694000FC512A /* Ghostrifter-Official-City-Lights(chosic.com).mp3 */,
+				80A59FF22C3F694400FC512A /* City Lights [Lofi Study Music] by Ghostrifter Official - Chosic.txt */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -295,9 +301,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80A59FF32C3F694400FC512A /* City Lights [Lofi Study Music] by Ghostrifter Official - Chosic.txt in Resources */,
 				80BB6C922C3E9FA0001274A2 /* Ghostrifter-Official-Purple-Dream(chosic.com).mp3 in Resources */,
 				80BB6C902C3E9F96001274A2 /* Purple Dream by Ghostrifter Official - Chosic.txt in Resources */,
 				80E5E4922B1D408B002A4D54 /* Preview Assets.xcassets in Resources */,
+				80A59FF12C3F694000FC512A /* Ghostrifter-Official-City-Lights(chosic.com).mp3 in Resources */,
 				80E5E48F2B1D408B002A4D54 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
