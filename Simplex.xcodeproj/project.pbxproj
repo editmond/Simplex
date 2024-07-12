@@ -36,6 +36,8 @@
 		80C7CC192B60D5530021CDDF /* fileExploring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7CC182B60D5530021CDDF /* fileExploring.swift */; };
 		80C7CC1B2B60DD040021CDDF /* createDirectories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7CC1A2B60DD040021CDDF /* createDirectories.swift */; };
 		80C876442C40B5FD00C195A1 /* AudioSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C876432C40B5FD00C195A1 /* AudioSettingsView.swift */; };
+		80C876462C40B96E00C195A1 /* AudioPlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C876452C40B96E00C195A1 /* AudioPlayerClass.swift */; };
+		80C876492C40B9B300C195A1 /* AudioControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C876482C40B9B300C195A1 /* AudioControls.swift */; };
 		80DFFEDB2C1BC033006BE9AE /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 80DFFEDA2C1BC033006BE9AE /* Documentation.docc */; };
 		80E5E48B2B1D4089002A4D54 /* SimplexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5E48A2B1D4089002A4D54 /* SimplexApp.swift */; };
 		80E5E48D2B1D4089002A4D54 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5E48C2B1D4089002A4D54 /* ContentView.swift */; };
@@ -81,6 +83,8 @@
 		80C7CC182B60D5530021CDDF /* fileExploring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fileExploring.swift; sourceTree = "<group>"; };
 		80C7CC1A2B60DD040021CDDF /* createDirectories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createDirectories.swift; sourceTree = "<group>"; };
 		80C876432C40B5FD00C195A1 /* AudioSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSettingsView.swift; sourceTree = "<group>"; };
+		80C876452C40B96E00C195A1 /* AudioPlayerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerClass.swift; sourceTree = "<group>"; };
+		80C876482C40B9B300C195A1 /* AudioControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioControls.swift; sourceTree = "<group>"; };
 		80DFFEDA2C1BC033006BE9AE /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		80E5E4872B1D4089002A4D54 /* Simplex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E5E48A2B1D4089002A4D54 /* SimplexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplexApp.swift; sourceTree = "<group>"; };
@@ -124,7 +128,7 @@
 		8015FB8A2B33E2B60085A50C /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
-				80BB6C862C3E9E5D001274A2 /* AudioPlayer.swift */,
+				80C876472C40B9A100C195A1 /* AudioPlayer */,
 				80BB6C882C3E9E75001274A2 /* Music */,
 				80E5E4992B1D417A002A4D54 /* SideBarView.swift */,
 				80F0F7042B4BC66500BD6279 /* SidebarFunctions.swift */,
@@ -144,6 +148,7 @@
 				80BB83C32B9EEBB70021E777 /* PreviewerVariables.swift */,
 				80A0C84B2B913B69000DDE16 /* NonUIVariables.swift */,
 				8096D7542C3770A3008A5808 /* FileExplorerVariables.swift */,
+				80C876452C40B96E00C195A1 /* AudioPlayerClass.swift */,
 			);
 			path = GlobalVariables;
 			sourceTree = "<group>";
@@ -169,6 +174,15 @@
 				80C876432C40B5FD00C195A1 /* AudioSettingsView.swift */,
 			);
 			path = SettingsWindow;
+			sourceTree = "<group>";
+		};
+		80C876472C40B9A100C195A1 /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				80BB6C862C3E9E5D001274A2 /* AudioPlayer.swift */,
+				80C876482C40B9B300C195A1 /* AudioControls.swift */,
+			);
+			path = AudioPlayer;
 			sourceTree = "<group>";
 		};
 		80E5E47E2B1D4088002A4D54 = {
@@ -340,6 +354,7 @@
 				80BE4C462B664D76007BA727 /* RuntimeSettingsView.swift in Sources */,
 				800C5F0C2B5F83A4000C7FFF /* writeRead.swift in Sources */,
 				8098709C2B4F93FF00ECA693 /* SettingsView.swift in Sources */,
+				80C876492C40B9B300C195A1 /* AudioControls.swift in Sources */,
 				80F3D4B22B61DF150085F8CF /* savesInterpreter.swift in Sources */,
 				80A0C84C2B913B69000DDE16 /* NonUIVariables.swift in Sources */,
 				808E616A2B240BDE0085E6FD /* GUIVariables.swift in Sources */,
@@ -354,6 +369,7 @@
 				80C7CC192B60D5530021CDDF /* fileExploring.swift in Sources */,
 				80E5E49E2B1D4190002A4D54 /* Previewer.swift in Sources */,
 				80F3D4B42B61EA940085F8CF /* loadSettings.swift in Sources */,
+				80C876462C40B96E00C195A1 /* AudioPlayerClass.swift in Sources */,
 				8096D7552C3770A4008A5808 /* FileExplorerVariables.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

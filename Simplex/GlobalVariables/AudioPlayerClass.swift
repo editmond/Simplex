@@ -1,65 +1,12 @@
 //
-//  AudioPlayer.swift
+//  AudioPlayerClass.swift
 //  Simplex
 //
-//  Created by Edmond Cheng on 10/7/2024.
+//  Created by Edmond Cheng on 12/7/2024.
 //
 
-import SwiftUI
+import Foundation
 import AVFoundation
-struct AudioPlayer: View {
-    @EnvironmentObject var playerObject: AudioPlayerClass
-    
-    var body: some View {
-        VStack{
-            Text(playerObject.credits)
-                .padding()
-            
-            if !playerObject.isPlaying{
-                Button{
-                    playerObject.playMusic()
-                    playerObject.isPlaying = true
-                }label:{
-                    Image(systemName: "play")
-                        .font(.system(size: 100))
-                        .foregroundStyle(.tint)
-                }
-                .buttonStyle(BorderlessButtonStyle())
-            } else{
-                Button{
-                    playerObject.pauseMusic()
-                }label:{
-                    Image(systemName: "pause")
-                        .font(.system(size: 100))
-                        .foregroundStyle(.tint)
-                }
-                .buttonStyle(BorderlessButtonStyle())
-            }
-            
-            if playerObject.isPlaying{
-                Slider(value: $playerObject.playbackProgress, in: 0...(playerObject.player.duration))
-                    .padding()
-                    .onTapGesture {
-                        playerObject.pauseMusic()
-                    }
-            } else{
-                Slider(value: $playerObject.player.currentTime, in: 0...(playerObject.player.duration))
-                    .padding()
-            }
-            
-            Divider()
-            HStack{
-                Text("Volume: ")
-                    .bold()
-                    .padding()
-                Spacer()
-                Slider(value: $playerObject.player.volume, in: 0...1)
-                    .padding()
-            }
-        }
-    }
-}
-
 class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
     var player = AVAudioPlayer()
     
@@ -130,8 +77,4 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
         loadMusic()
         playMusic()
     }
-}
-
-#Preview {
-    AudioPlayer()
 }
