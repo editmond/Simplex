@@ -21,7 +21,8 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
     @Published var credits: String = ""
     @Published var playbackProgress: Double = 0
     @Published var isPlaying = false
-    
+    @Published var stringedTimeProgress = ["", ""]
+    @Published var stringedTimeRemainder = ["", ""]
     override init(){
         super.init()
         loadMusic()
@@ -56,7 +57,8 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
         player.play()
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true){ timer in
             self.playbackProgress = self.player.currentTime
-            
+            self.stringedTimeProgress = self.convertToStringTime(raw: self.player.currentTime)
+            self.stringedTimeRemainder = self.convertToStringTime(raw: self.player.duration-self.player.currentTime)
             if !self.isPlaying{
                 timer.invalidate()
             }
@@ -72,6 +74,15 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
     func stopMusic(){
         player.stop()
         isPlaying = false
+    }
+    
+    func convertToStringTime(raw: Double) -> [String]{
+        var minutes = floor(raw/60)
+        var seconds = round(raw - minutes*60)
+        if seconds >= 10{
+            return ["\(Int(minutes))","\(Int(seconds))"]
+        }
+        return ["\(Int(minutes))","0\(Int(seconds))"]
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {

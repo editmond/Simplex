@@ -16,18 +16,7 @@ struct AudioPlayer: View {
                 .padding()
             
             AudioControls()
-            
-            if playerObject.isPlaying{
-                Slider(value: $playerObject.playbackProgress, in: 0...(playerObject.player.duration))
-                    .padding()
-                    .onTapGesture {
-                        playerObject.pauseMusic()
-                    }
-            } else{
-                Slider(value: $playerObject.player.currentTime, in: 0...(playerObject.player.duration))
-                    .padding()
-            }
-            
+            SeekerView()
             Divider()
             HStack{
                 Text("Volume: ")
@@ -41,7 +30,28 @@ struct AudioPlayer: View {
     }
 }
 
-
+struct SeekerView: View{
+    @EnvironmentObject var playerObject: AudioPlayerClass
+    var body: some View{
+        HStack{
+            Text("\(playerObject.stringedTimeProgress[0]):\(playerObject.stringedTimeProgress[1])")
+                .padding()
+            if playerObject.isPlaying{
+                Slider(value: $playerObject.playbackProgress, in: 0...(playerObject.player.duration))
+                    .padding()
+                    .onTapGesture {
+                        playerObject.pauseMusic()
+                    }
+            } else{
+                Slider(value: $playerObject.player.currentTime, in: 0...(playerObject.player.duration))
+                    .padding()
+            }
+            Text("-\(playerObject.stringedTimeRemainder[0]):\(playerObject.stringedTimeRemainder[1])")
+                .padding()
+        }
+    }
+    
+}
 
 #Preview {
     AudioPlayer()
