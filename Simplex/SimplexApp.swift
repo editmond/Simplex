@@ -20,6 +20,7 @@ struct SimplexApp: App {
     @StateObject var editorObject = EditorVariables(doLoad: true)
     @StateObject var previewerObject = PreviewerVariables(doLoad: true)
     @StateObject var fileExplorerObject = FileExplorerVariables()
+    @StateObject var musicObject = AudioPlayerClass()
     
     //initialisation code
     init(){
@@ -89,7 +90,7 @@ struct SimplexApp: App {
                 AudioPlayer()
             }
             .environmentObject(guiObject)
-            .environmentObject(editorObject)
+            .environmentObject(musicObject)
         }
         .keyboardShortcut("m", modifiers: [.command, .shift]) //opens the music window when cmd+shift+m is pressed
     }

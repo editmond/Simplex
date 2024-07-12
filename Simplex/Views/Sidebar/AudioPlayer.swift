@@ -7,73 +7,128 @@
 
 import SwiftUI
 import AVFoundation
-var playerObject = AudioPlayerClass()
-var flag: Bool = false
 struct AudioPlayer: View {
-    @State var isPlaying = false
-
-    init(){
-        playerObject.loadMusic()
-    }
+    @EnvironmentObject var playerObject: AudioPlayerClass
     
     var body: some View {
-        if !isPlaying{
-            Button{
-                playerObject.playMusic()
-                isPlaying = true
-            }label:{
-                Image(systemName: "play")
-                    .font(.system(size: 100))
-                    .foregroundStyle(.tint)
+        VStack{
+            Text(playerObject.credits)
+                .padding()
+            
+            if !playerObject.isPlaying{
+                Button{
+                    playerObject.playMusic()
+                    playerObject.isPlaying = true
+                }label:{
+                    Image(systemName: "play")
+                        .font(.system(size: 100))
+                        .foregroundStyle(.tint)
+                }
+                .buttonStyle(BorderlessButtonStyle())
+            } else{
+                Button{
+                    playerObject.pauseMusic()
+                }label:{
+                    Image(systemName: "pause")
+                        .font(.system(size: 100))
+                        .foregroundStyle(.tint)
+                }
+                .buttonStyle(BorderlessButtonStyle())
             }
-            .buttonStyle(BorderlessButtonStyle())
-        } else{
-            Button{
-                playerObject.player.pause()
-                isPlaying = false
-            }label:{
-                Image(systemName: "pause")
-                    .font(.system(size: 100))
-                    .foregroundStyle(.tint)
+            
+            if playerObject.isPlaying{
+                Slider(value: $playerObject.playbackProgress, in: 0...(playerObject.player.duration))
+                    .padding()
+                    .onTapGesture {
+                        playerObject.pauseMusic()
+                    }
+            } else{
+                Slider(value: $playerObject.player.currentTime, in: 0...(playerObject.player.duration))
+                    .padding()
             }
-            .buttonStyle(BorderlessButtonStyle())
+            
+            Divider()
+            HStack{
+                Text("Volume: ")
+                    .bold()
+                    .padding()
+                Spacer()
+                Slider(value: $playerObject.player.volume, in: 0...1)
+                    .padding()
+            }
         }
     }
 }
 
-class AudioPlayerClass: NSObject, AVAudioPlayerDelegate{
+class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
     var player = AVAudioPlayer()
-    var path = Bundle.main.path(forResource: "Ghostrifter-Official-Purple-Dream(chosic.com).mp3", ofType:nil)!
+    
+    var musicQueue: [String] = ["Ghostrifter-Official-Purple-Dream(chosic.com).mp3",
+                           "Ghostrifter-Official-City-Lights(chosic.com).mp3"]
+    var creditsQueue: [String] = ["Purple Dream by Ghostrifter Official - Chosic.txt",
+                                  "City Lights [Lofi Study Music] by Ghostrifter Official - Chosic.txt"]
+    var queueIndex = 0
+    
+    var musicPath = Bundle.main.path(forResource: "Ghostrifter-Official-Purple-Dream(chosic.com).mp3", ofType:nil)!
+    var creditsPath = Bundle.main.path(forResource: "Purple Dream by Ghostrifter Official - Chosic.txt", ofType:nil)!
+    @Published var credits: String = ""
+    @Published var playbackProgress: Double = 0
+    @Published var isPlaying = false
     
     override init(){
         super.init()
+        loadMusic()
     }
     
     func loadMusic(){
-        let url = URL(fileURLWithPath: path)
+        musicPath = Bundle.main.path(forResource: musicQueue[queueIndex], ofType:nil)!
+        creditsPath = Bundle.main.path(forResource: creditsQueue[queueIndex], ofType:nil)!
+        let url = URL(fileURLWithPath: musicPath)
         do {
-            playerObject.player = try AVAudioPlayer(contentsOf: url)
+            player = try AVAudioPlayer(contentsOf: url)
         } catch {
             // couldn't load file :(
             print("Couldn't load file")
+        }
+        do{
+            credits = try String(contentsOfFile: creditsPath)
+        } catch{
+            print("credits could not be found.")
         }
         player.delegate = self
     }
     
     func playMusic(){
+        player.prepareToPlay()
         player.play()
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true){ timer in
+            self.playbackProgress = self.player.currentTime
+            
+            if !self.isPlaying{
+                timer.invalidate()
+            }
+        }
+        isPlaying = true
+    }
+    
+    func pauseMusic(){
+        player.pause()
+        isPlaying = false
     }
     
     func stopMusic(){
         player.stop()
+        isPlaying = false
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        print("The song ended")
-        path = Bundle.main.path(forResource: "Ghostrifter-Official-City-Lights(chosic.com).mp3", ofType:nil)!
+        isPlaying = false
+        queueIndex += 1
+        if queueIndex == musicQueue.count{
+            queueIndex = 0
+        }
         loadMusic()
         playMusic()
-        print("Playing next")
     }
 }
 
