@@ -84,7 +84,6 @@ struct FileExplorerView: View {
                                         bufferChosenFileName = currentPath.popLast()!
                                     }
                                 }label:{
-                                    let fm = FileManager.default
                                     if dirCheckedItem[0]{
                                         let executableCheck = execCheck(Filename: String(NSHomeDirectory())+"/"+catPathVariable(strArr: currentPath)+item)
                                         if executableCheck{

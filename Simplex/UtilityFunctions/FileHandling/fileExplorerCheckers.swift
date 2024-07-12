@@ -27,7 +27,7 @@ func dirCheck(Filename: String) -> [Bool]{
 
 func execCheck(Filename: String) -> Bool{
     var isExec = false
-    var longLs = try? safeShell("ls -l \(Filename)")
+    let longLs = try? safeShell("ls -l \(Filename)")
     print(longLs!.prefix(1))
     if longLs!.prefix(1) == "-"{ //if it is a file, the output will always begin with "-"
         isExec = true

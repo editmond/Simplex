@@ -28,6 +28,12 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
     }
     
     func loadMusic(){
+        if queueIndex == musicQueue.count{
+            queueIndex = 0
+        }
+        if queueIndex < 0{
+            queueIndex = musicQueue.count - 1
+        }
         musicPath = Bundle.main.path(forResource: musicQueue[queueIndex], ofType:nil)!
         creditsPath = Bundle.main.path(forResource: creditsQueue[queueIndex], ofType:nil)!
         let url = URL(fileURLWithPath: musicPath)
@@ -71,9 +77,6 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         isPlaying = false
         queueIndex += 1
-        if queueIndex == musicQueue.count{
-            queueIndex = 0
-        }
         loadMusic()
         playMusic()
     }

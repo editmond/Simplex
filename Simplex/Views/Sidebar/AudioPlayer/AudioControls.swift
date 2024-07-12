@@ -12,6 +12,30 @@ struct AudioControls: View {
     
     var body: some View {
         HStack{
+            //jump to previous in queue
+            Button{
+                playerObject.stopMusic()
+                playerObject.queueIndex -= 1
+                playerObject.loadMusic()
+                playerObject.playMusic()
+            }label:{
+                Image(systemName: "backward.end")
+                    .font(.system(size: 50))
+                    .foregroundStyle(.tint)
+            }
+            .buttonStyle(BorderlessButtonStyle())
+            
+            //jump backward 15 seconds
+            Button{
+                playerObject.player.currentTime -= 15
+            }label:{
+                Image(systemName: "gobackward.15")
+                    .font(.system(size: 50))
+                    .foregroundStyle(.tint)
+            }
+            .buttonStyle(BorderlessButtonStyle())
+
+            //The pause-unpuase button
             if !playerObject.isPlaying{
                 Button{
                     playerObject.playMusic()
@@ -22,6 +46,7 @@ struct AudioControls: View {
                         .foregroundStyle(.tint)
                 }
                 .buttonStyle(BorderlessButtonStyle())
+                .padding()
             } else{
                 Button{
                     playerObject.pauseMusic()
@@ -32,6 +57,33 @@ struct AudioControls: View {
                 }
                 .buttonStyle(BorderlessButtonStyle())
             }
+            
+            //jump forward 15 seconds
+            Button{
+                if playerObject.player.currentTime + 15 > playerObject.player.duration{
+                    playerObject.player.currentTime = playerObject.player.duration - 1
+                } else{
+                    playerObject.player.currentTime += 15
+                }
+            }label:{
+                Image(systemName: "goforward.15")
+                    .font(.system(size: 50))
+                    .foregroundStyle(.tint)
+            }
+            .buttonStyle(BorderlessButtonStyle())
+
+            //jump to next in queue
+            Button{
+                playerObject.stopMusic()
+                playerObject.queueIndex += 1
+                playerObject.loadMusic()
+                playerObject.playMusic()
+            }label:{
+                Image(systemName: "forward.end")
+                    .font(.system(size: 50))
+                    .foregroundStyle(.tint)
+            }
+            .buttonStyle(BorderlessButtonStyle())
         }
     }
 }
