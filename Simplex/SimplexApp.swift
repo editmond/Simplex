@@ -58,6 +58,7 @@ struct SimplexApp: App {
             .environmentObject(editorObject)
             .environmentObject(previewerObject)
             .environmentObject(fileExplorerObject)
+            .environmentObject(musicObject)
         }
         .keyboardShortcut(",") //keyboard shortcut of "cmd"+"," opens the settings window.
         
@@ -84,6 +85,7 @@ struct SimplexApp: App {
         }
         .keyboardShortcut("d", modifiers: [.command, .shift]) //opens the documentation window when cmd+shift+d is pressed
         
+        //this window provides the music player view.
         Window("Music", id: "music"){
             ZStack{
                 Background()

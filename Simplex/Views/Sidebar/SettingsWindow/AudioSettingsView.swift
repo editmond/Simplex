@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct AudioSettingsView: View {
+    
+    @EnvironmentObject var playerObject: AudioPlayerClass
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            HStack{
+                Text("Volume: ")
+                    .bold()
+                    .padding()
+                Spacer()
+                Slider(value: $playerObject.retainedVolume, in: 0...1)
+                    .padding()
+            }
+        }
+        .navigationTitle("Settings")
     }
 }
 

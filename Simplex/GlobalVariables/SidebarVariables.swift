@@ -9,7 +9,6 @@ import SwiftUI
 
 //Contains the variables for the sidebar.
 class SidebarVariables: ObservableObject{
-//    @Published var hasLoaded = false
     var settingsFile = "Sidebar_Settings.txt"
     
     //The icons in the top half of the sidebar. Only use system icons (for now)
@@ -20,9 +19,7 @@ class SidebarVariables: ObservableObject{
     @Published var LowerSidebarIcons: [String] = ["music.note", "doc.text", "gearshape"]
     @Published var LowerShortcuts: [String] = ["m", ")", ","]
     
-    //TEMPORARY variables for testing.
-    @Published var documentationUrl = URL(string: "https://devdocs.io")
-
+    //this copies data from an object of the same class.
     func copyContents(SideObj: SidebarVariables){
         UpperSideBarIcons = SideObj.UpperSideBarIcons
         

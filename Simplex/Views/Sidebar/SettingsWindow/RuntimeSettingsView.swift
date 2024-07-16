@@ -22,7 +22,7 @@ struct RuntimeSettingsView: View {
             GridRow{
                 Text("Source File Path:")
                     .padding()
-                Text("~/")
+//                Text("~/")
                 TextField("Source File Path", text: $editorVars.sourceFilePath)
                     .disableAutocorrection(true)
                 
@@ -49,8 +49,8 @@ struct RuntimeSettingsView: View {
             GridRow{
                 Text("Build Script Path:")
                     .padding()
-                Text("~/SimplexFiles/Build_Scripts")
-                TextField("Build Script Path", text: $editorVars.buildScriptName)
+//                Text("~/SimplexFiles/Build_Scripts")
+                TextField("Build Script Path (Must be in ~/Simplex/Build_Scripts)", text: $editorVars.buildScriptName)
                     .disableAutocorrection(true)
                     .padding()
                 Button{
@@ -76,7 +76,7 @@ struct RuntimeSettingsView: View {
             GridRow{
                 Text("Preview File Path:")
                     .padding()
-                Text("~/")
+//                Text("~/")
                 TextField("Preview File Path", text: $previewerVars.previewReadFile)
                     .disableAutocorrection(true)
                     .padding()

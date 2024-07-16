@@ -8,6 +8,8 @@
 import Foundation
 import AVFoundation
 class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
+    var settingsFile = "Audio_Settings.txt"
+    
     var player = AVAudioPlayer()
     
     var musicQueue: [String] = ["Ghostrifter-Official-Purple-Dream(chosic.com).mp3",
@@ -18,11 +20,16 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
     
     var musicPath = Bundle.main.path(forResource: "Ghostrifter-Official-Purple-Dream(chosic.com).mp3", ofType:nil)!
     var creditsPath = Bundle.main.path(forResource: "Purple Dream by Ghostrifter Official - Chosic.txt", ofType:nil)!
+    
+    //should only be accessed by the audio player.
     @Published var credits: String = ""
     @Published var playbackProgress: Double = 0
     @Published var isPlaying = false
     @Published var stringedTimeProgress = ["", ""]
     @Published var stringedTimeRemainder = ["", ""]
+    
+    @Published var retainedVolume: Float = 1.0
+    
     override init(){
         super.init()
         loadMusic()
@@ -50,6 +57,7 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
             print("credits could not be found.")
         }
         player.delegate = self
+        player.volume = retainedVolume
     }
     
     func playMusic(){
@@ -59,6 +67,7 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
             self.playbackProgress = self.player.currentTime
             self.stringedTimeProgress = self.convertToStringTime(raw: self.player.currentTime)
             self.stringedTimeRemainder = self.convertToStringTime(raw: self.player.duration-self.player.currentTime)
+            self.retainedVolume = self.player.volume
             if !self.isPlaying{
                 timer.invalidate()
             }
@@ -77,8 +86,8 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
     }
     
     func convertToStringTime(raw: Double) -> [String]{
-        var minutes = floor(raw/60)
-        var seconds = round(raw - minutes*60)
+        let minutes = floor(raw/60)
+        let seconds = round(raw - minutes*60)
         if seconds >= 10{
             return ["\(Int(minutes))","\(Int(seconds))"]
         }
@@ -90,5 +99,17 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
         queueIndex += 1
         loadMusic()
         playMusic()
+    }
+    
+    //writes the settings of the object into the settings file.
+    func writeSettings(){
+        //prepare an array for writing
+        var formattedSettings: [String:[String]] = [:]
+        formattedSettings["musicQueue"] = musicQueue
+        formattedSettings["creditsQueue"] = creditsQueue
+        
+        
+        //write the array into the settings file
+        saveSettings(settingVars: formattedSettings, settingsFile: settingsFile)
     }
 }

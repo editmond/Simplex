@@ -16,6 +16,5 @@ func createMyDir(dirPath: String) -> Bool{
     } catch {
         return false
     }
-//    return outputString
     return true
 }

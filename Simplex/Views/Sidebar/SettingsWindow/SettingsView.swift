@@ -46,10 +46,9 @@ struct NoDeprecateSettingsView: View{
                     NavigationLink(destination: RuntimeSettingsView()) {
                         Label("Runtime", systemImage: "hammer")
                     }
-//                    NavigationLink(destination: RuntimeSettingsView()) {
-//                        Label("Audio", systemImage: "headphones")
-//                    }
-
+                    NavigationLink(destination: AudioSettingsView()) {
+                        Label("Audio", systemImage: "headphones")
+                    }
                 }
                 .navigationTitle("Settings")
                 

@@ -10,31 +10,20 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var guiVars: GUIVariables
     var body: some View {
-        HStack{ // All elements of the main window are arranged horizontally from each other
-            
-            SideBar()
-            Divider()
-            
-            MyTextEditor()
-            Divider()
-            
-            Previewer()
-            Divider()
-            
-//            //This is a test of the editable GUI variables concept. is temporary
-//            VStack{
-//                Button(){
-//                    guiVars.backgroundHue += 0.01
-//                } label: {
-//                    Image(systemName: "plus")
-//                }
-//                Button(){
-//                    guiVars.backgroundHue -= 0.01
-//                } label: {
-//                    Image(systemName: "minus")
-//                }
-//            }
-        }.padding()
+        VStack(){
+            HStack{ // All elements of the main window are arranged horizontally from each other
+                
+                SideBar()
+                Divider()
+                
+                MyTextEditor()
+                Divider()
+                
+                Previewer()
+                Divider()
+
+            }.padding()
+        }
     }
 }
 

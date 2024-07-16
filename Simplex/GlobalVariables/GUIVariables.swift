@@ -10,7 +10,6 @@ import SwiftUI
 
 //The object that stores GUI related variables that views may need to access.
 class GUIVariables: ObservableObject{
-//    @Published var hasLoaded = false
     var settingsFile = "GUI_Settings.txt"
     
     @Published var iconSize: CGFloat = 50
@@ -72,6 +71,7 @@ class GUIVariables: ObservableObject{
         var tempBackgroundBrightness: Double
         var tempBackgroundSaturation: Double
         
+        //converts the colour variables to a doubles.
         var temp = loadedSettings["backgroundHue", default: ["0.5"]]
         tempBackgroundHue = Double(temp[0]) ?? 0.5
         
@@ -114,7 +114,6 @@ class GUIVariables: ObservableObject{
             
             print("GUI Settings found: \n\(loadedSettings)")
             
-            //        print("\(loadedSettings["backgroundHue", default: ["0.5"]])")
             var temp = loadedSettings["iconSize", default: ["50"]]
             iconSize = CGFloat(Int(temp[0]) ?? 50)
             
@@ -131,15 +130,6 @@ class GUIVariables: ObservableObject{
 
         }
     }
-    
-    //just testing. It is the deinit function of the object, which gets called when the object is destroyed.
-    deinit{
-//        writeToFile(writeOutText: "bye bye", sourceFilePath: "foo.txt")
-    }
-   
-    //UNUSED Background colour variable
-    //@Published var backgroundColour: Color = Color(hue: 240/360, saturation: 0.2, brightness: 0.9)
-    
 }
 
 

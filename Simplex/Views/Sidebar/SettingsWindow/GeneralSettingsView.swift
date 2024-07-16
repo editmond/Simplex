@@ -19,47 +19,41 @@ struct GeneralSettingsView: View{
         Grid{
             //the rest could be programmatically generated based on the required input
             GridRow{
-                Text("Source File Path:")
-                    .padding()
-                Text("~/")
-                TextField("Source File Path", text: $editorVars.sourceFilePath)
-                    .disableAutocorrection(true)
-                    .padding()
-                
-                Button{
+                HStack{
+                    Text("Source File Path:")
+                        .padding()
+                    //                Text("~/")
+                    TextField("Source File Path", text: $editorVars.sourceFilePath)
+                        .disableAutocorrection(true)
+                        .padding()
                     
-                    //gives cntext to the file exploer view.
-                    fileExplorerVars.isOpenedFromSidebar = false
-                    fileExplorerVars.pathVarToChange = 0
-                    //opens the file explorer window
-                    openWindow(id: "files")
-                }label:{
-                    Text("Browse")
-                }
-                .padding()
-                .onChange(of: fileExplorerVars.applyChange){ oldValue, newValue in
-                    if fileExplorerVars.pathVarToChange == 0{
-                        editorVars.sourceFilePath = fileExplorerVars.concatenatedCurrentPath
+                    Button{
+                        
+                        //gives cntext to the file exploer view.
+                        fileExplorerVars.isOpenedFromSidebar = false
+                        fileExplorerVars.pathVarToChange = 0
+                        //opens the file explorer window
+                        openWindow(id: "files")
+                    }label:{
+                        Text("Browse")
                     }
+                    .padding()
+                    .onChange(of: fileExplorerVars.applyChange){ oldValue, newValue in
+                        if fileExplorerVars.pathVarToChange == 0{
+                            editorVars.sourceFilePath = fileExplorerVars.concatenatedCurrentPath
+                        }
+                    }
+                    Spacer()
                 }
             }
             GridRow{
-                Text("Change background colour: ")
-                    .padding()
-                ColorPicker("", selection: $bgColor)
-                    .padding()
-            }
-            GridRow{
-                Text("Some filler")
-            }
-            GridRow{
-                Text("Some filler")
-            }
-            GridRow{
-                Text("Some filler")
-            }
-            GridRow{
-                Text("Some filler")
+                HStack{
+                    Text("Change background colour: ")
+                        .padding()
+                    ColorPicker("", selection: $bgColor)
+                        .padding()
+                    Spacer()
+                }
             }
             Spacer()
         }
