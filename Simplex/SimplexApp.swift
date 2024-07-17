@@ -19,8 +19,8 @@ struct SimplexApp: App {
     @StateObject var sidebarObject = SidebarVariables(doLoad: true)
     @StateObject var editorObject = EditorVariables(doLoad: true)
     @StateObject var previewerObject = PreviewerVariables(doLoad: true)
+    @StateObject var musicObject = AudioPlayerClass(doLoad: true)
     @StateObject var fileExplorerObject = FileExplorerVariables()
-    @StateObject var musicObject = AudioPlayerClass()
     
     //initialisation code
     init(){

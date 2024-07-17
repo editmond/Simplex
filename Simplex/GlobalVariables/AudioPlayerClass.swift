@@ -14,12 +14,12 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
     
     var musicQueue: [String] = ["Ghostrifter-Official-Purple-Dream(chosic.com).mp3",
                            "Ghostrifter-Official-City-Lights(chosic.com).mp3"]
-    var creditsQueue: [String] = ["Purple Dream by Ghostrifter Official - Chosic.txt",
-                                  "City Lights [Lofi Study Music] by Ghostrifter Official - Chosic.txt"]
+    var creditsQueue: [String] = ["Credits1",
+                                  "Credits2"]
     var queueIndex = 0
     
     var musicPath = Bundle.main.path(forResource: "Ghostrifter-Official-Purple-Dream(chosic.com).mp3", ofType:nil)!
-    var creditsPath = Bundle.main.path(forResource: "Purple Dream by Ghostrifter Official - Chosic.txt", ofType:nil)!
+    var creditsPath = Bundle.main.path(forResource: "Credits1", ofType:nil)!
     
     //should only be accessed by the audio player.
     @Published var credits: String = ""
@@ -57,6 +57,7 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
             print("credits could not be found.")
         }
         player.delegate = self
+        
         player.volume = retainedVolume
     }
     
@@ -101,15 +102,54 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
         playMusic()
     }
     
+    //The following methods are for allowing changing settings and loading them from file.
+    
+    //copies the contents of another AudioPlayerClass object into the current object.
+    func copyContents(AudioObj: AudioPlayerClass){
+        retainedVolume = AudioObj.retainedVolume
+        queueIndex = AudioObj.queueIndex
+        
+        musicQueue = AudioObj.musicQueue
+        creditsQueue = AudioObj.creditsQueue
+    }
+    
     //writes the settings of the object into the settings file.
     func writeSettings(){
+        
         //prepare an array for writing
         var formattedSettings: [String:[String]] = [:]
         formattedSettings["musicQueue"] = musicQueue
         formattedSettings["creditsQueue"] = creditsQueue
         
-        
+        formattedSettings["retainedVolume"] = [String(retainedVolume)]
+        formattedSettings["queueIndex"] = [String(queueIndex)]
+
         //write the array into the settings file
         saveSettings(settingVars: formattedSettings, settingsFile: settingsFile)
+    }
+    
+    init(doLoad: Bool){
+        
+        super.init()
+        
+        loadMusic()
+        
+        if doLoad{
+            let loadedSettings = loadSettings(settingsFile: settingsFile)
+            
+            print("Audio Settings found: \n\(loadedSettings)")
+            
+            var temp = loadedSettings["musicQueue", default: [""]]
+            musicQueue = temp
+            
+            temp = loadedSettings["creditsQueue", default: [""]]
+            creditsQueue = temp
+            
+            temp = loadedSettings["retainedVolume", default: [""]]
+            retainedVolume = Float(temp[0]) ?? 1.0
+
+            temp = loadedSettings["queueIndex", default: [""]]
+            queueIndex = Int(temp[0]) ?? 1
+        }
     }
 }

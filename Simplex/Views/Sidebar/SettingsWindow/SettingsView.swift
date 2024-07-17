@@ -15,18 +15,21 @@ struct NoDeprecateSettingsView: View{
     @EnvironmentObject var editorVars: EditorVariables
     @EnvironmentObject var sidebarVars: SidebarVariables
     @EnvironmentObject var previewerVars: PreviewerVariables
+    @EnvironmentObject var audioPlayerObj: AudioPlayerClass
     
     //the buffer for the globabl variables
     @StateObject var bufferGuiVars = GUIVariables(doLoad: true)
     @StateObject var bufferEditorVars = EditorVariables(doLoad: true)
     @StateObject var bufferSidebarVars = SidebarVariables(doLoad: true)
     @StateObject var bufferPreviewerVars = PreviewerVariables(doLoad: true)
+    @StateObject var bufferAudioPlayerObj = AudioPlayerClass(doLoad: true)
     
     //the default objects
     let defaultGuiObj = GUIVariables(doLoad: false)
     let defaultEditorObj = EditorVariables(doLoad: false)
     let defaultSideObj = SidebarVariables(doLoad: false)
     var defaultPreviewerObj = PreviewerVariables(doLoad: false)
+    let defaultAudioPlayerObj = AudioPlayerClass(doLoad: false)
 
     //some flags for managing the views.
     @State private var showingAlert = false
@@ -69,18 +72,21 @@ struct NoDeprecateSettingsView: View{
                         editorVars.copyContents(EditorObj: defaultEditorObj)
                         sidebarVars.copyContents(SideObj: defaultSideObj)
                         previewerVars.copyContents(PreviewerObj: defaultPreviewerObj)
+                        audioPlayerObj.copyContents(AudioObj: defaultAudioPlayerObj)
                         
                         //copy to the buffer objects
                         bufferGuiVars.copyContents(GUIObj: defaultGuiObj)
                         bufferEditorVars.copyContents(EditorObj: defaultEditorObj)
                         bufferSidebarVars.copyContents(SideObj: defaultSideObj)
                         bufferPreviewerVars.copyContents(PreviewerObj: defaultPreviewerObj)
+                        bufferAudioPlayerObj.copyContents(AudioObj: defaultAudioPlayerObj)
                         
                         //write the new settings
                         guiVars.writeSettings()
                         editorVars.writeSettings()
                         sidebarVars.writeSettings()
                         previewerVars.writeSettings()
+                        audioPlayerObj.writeSettings()
                         
                         //reload the data from files in case the source has changed
                         editorVars.loadFileText()
@@ -99,6 +105,7 @@ struct NoDeprecateSettingsView: View{
                     bufferEditorVars.copyContents(EditorObj: editorVars)
                     bufferSidebarVars.copyContents(SideObj: sidebarVars)
                     bufferPreviewerVars.copyContents(PreviewerObj: previewerVars)
+                    bufferAudioPlayerObj.copyContents(AudioObj: audioPlayerObj)
                    
                     //dismiss the window
                     dismissWindow(id: "settings")
@@ -113,12 +120,14 @@ struct NoDeprecateSettingsView: View{
                     editorVars.copyContents(EditorObj: bufferEditorVars)
                     sidebarVars.copyContents(SideObj: bufferSidebarVars)
                     previewerVars.copyContents(PreviewerObj: bufferPreviewerVars)
+                    audioPlayerObj.copyContents(AudioObj: bufferAudioPlayerObj)
                     
                     //write the new settings
                     guiVars.writeSettings()
                     editorVars.writeSettings()
                     sidebarVars.writeSettings()
                     previewerVars.writeSettings()
+                    audioPlayerObj.writeSettings()
                     
                     //reload the data from files in case the source has changed
                     editorVars.loadFileText()
@@ -137,6 +146,7 @@ struct NoDeprecateSettingsView: View{
         .environmentObject(bufferEditorVars)
         .environmentObject(bufferSidebarVars)
         .environmentObject(bufferPreviewerVars)
+        .environmentObject(bufferAudioPlayerObj)
     }
 }
         

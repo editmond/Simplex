@@ -20,6 +20,7 @@ struct AudioSettingsView: View {
                 Spacer()
                 Slider(value: $playerObject.retainedVolume, in: 0...1)
                     .padding()
+                Text("\(playerObject.retainedVolume)")
             }
         }
         .navigationTitle("Settings")

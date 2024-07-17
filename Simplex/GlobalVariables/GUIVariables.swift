@@ -84,6 +84,8 @@ class GUIVariables: ObservableObject{
         return Color(hue: tempBackgroundHue, saturation: tempBackgroundSaturation, brightness: tempBackgroundBrightness)
     }
     
+    //The following methods are for allowing changing settings and loading them from file.
+    
     //copies the contents of another GUIVariables object into the current object.
     func copyContents(GUIObj: GUIVariables){
         iconSize = GUIObj.iconSize
