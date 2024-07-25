@@ -23,7 +23,7 @@ struct AudioPlayer: View {
                     .bold()
                     .padding()
                 Spacer()
-                Slider(value: $playerObject.player.volume, in: 0...1)
+                Slider(value: $playerObject.retainedVolume, in: 0...1)
                     .padding()
             }
         }

@@ -59,7 +59,7 @@ struct RuntimeSettingsView: View {
                     fileExplorerVars.originalString = editorVars.buildScriptName
                     fileExplorerVars.isOpenedFromSidebar = false
                     fileExplorerVars.pathVarToChange = 1
-                    
+
                     //opens the file explorer window
                     openWindow(id: "files")
                     
@@ -70,6 +70,7 @@ struct RuntimeSettingsView: View {
                 .onChange(of: fileExplorerVars.applyChange){ oldValue, newValue in
                     if fileExplorerVars.pathVarToChange == 1{
                         editorVars.buildScriptName = fileExplorerVars.chosenFileName
+//                        editorVars.buildScriptName = fileExplorerVars.concatenatedCurrentPath
                     }
                 }
             }

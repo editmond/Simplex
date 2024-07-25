@@ -14,7 +14,7 @@ struct DocumentationView: View {
     @EnvironmentObject var editorVars: EditorVariables
     
     @State private var selectedTab = "docView"
-    @State private var documentationURL = URL(string: "http://127.0.0.1:5500/Simplex/Views/Sidebar/simplexDoc.html")
+    @State private var documentationURL = URL(string: "http://localhost/simplexDoc.html")
 //    init(){
 //        if let url = URL(string: "https://www.example.com") {
 //                        openURL(url)

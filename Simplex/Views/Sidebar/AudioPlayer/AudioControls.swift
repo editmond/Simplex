@@ -27,6 +27,7 @@ struct AudioControls: View {
             
             //jump backward 15 seconds
             Button{
+//                playerObject.player.currentTime -= playerObject.skipBackwardAmount
                 playerObject.player.currentTime -= 15
             }label:{
                 Image(systemName: "gobackward.15")
@@ -59,18 +60,7 @@ struct AudioControls: View {
             }
             
             //jump forward 15 seconds
-            Button{
-                if playerObject.player.currentTime + 15 > playerObject.player.duration{
-                    playerObject.player.currentTime = playerObject.player.duration - 1
-                } else{
-                    playerObject.player.currentTime += 15
-                }
-            }label:{
-                Image(systemName: "goforward.15")
-                    .font(.system(size: 50))
-                    .foregroundStyle(.tint)
-            }
-            .buttonStyle(BorderlessButtonStyle())
+            SkipForward()
 
             //jump to next in queue
             Button{
@@ -85,6 +75,25 @@ struct AudioControls: View {
             }
             .buttonStyle(BorderlessButtonStyle())
         }
+    }
+}
+
+struct SkipForward: View{
+    @EnvironmentObject var playerObject: AudioPlayerClass
+    var body: some View {
+        Button{
+            if playerObject.player.currentTime + 15 > playerObject.player.duration{
+                playerObject.player.currentTime = playerObject.player.duration - 1
+            } else{
+//                    playerObject.player.currentTime += playerObject.skipForwardAmount
+                playerObject.player.currentTime += 15
+            }
+        }label:{
+            Image(systemName: "goforward.15")
+                .font(.system(size: 50))
+                .foregroundStyle(.tint)
+        }
+        .buttonStyle(BorderlessButtonStyle())
     }
 }
 

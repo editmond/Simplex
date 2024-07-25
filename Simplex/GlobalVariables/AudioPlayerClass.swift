@@ -7,6 +7,12 @@
 
 import Foundation
 import AVFoundation
+
+enum skipAmount: String, CaseIterable, Identifiable {
+    case five, ten, fifteen, thirty, fourtyFive, sixty, seventyFive, ninety
+    var id: Self { self }
+}
+
 class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
     var settingsFile = "Audio_Settings.txt"
     
@@ -29,6 +35,9 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
     @Published var stringedTimeRemainder = ["", ""]
     
     @Published var retainedVolume: Float = 1.0
+    
+    @Published var skipForwardAmount: skipAmount = .thirty
+    @Published var skipBackwardAmount: skipAmount = .thirty
     
     override init(){
         super.init()
@@ -68,7 +77,8 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
             self.playbackProgress = self.player.currentTime
             self.stringedTimeProgress = self.convertToStringTime(raw: self.player.currentTime)
             self.stringedTimeRemainder = self.convertToStringTime(raw: self.player.duration-self.player.currentTime)
-            self.retainedVolume = self.player.volume
+//            self.retainedVolume = self.player.volume
+            self.player.volume = self.retainedVolume
             if !self.isPlaying{
                 timer.invalidate()
             }
@@ -111,6 +121,10 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
         
         musicQueue = AudioObj.musicQueue
         creditsQueue = AudioObj.creditsQueue
+        skipForwardAmount = AudioObj.skipForwardAmount
+        skipBackwardAmount = AudioObj.skipBackwardAmount
+        
+        player.volume = retainedVolume
     }
     
     //writes the settings of the object into the settings file.
@@ -132,8 +146,6 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
         
         super.init()
         
-        loadMusic()
-        
         if doLoad{
             let loadedSettings = loadSettings(settingsFile: settingsFile)
             
@@ -151,5 +163,7 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
             temp = loadedSettings["queueIndex", default: [""]]
             queueIndex = Int(temp[0]) ?? 1
         }
+        
+        loadMusic()
     }
 }
