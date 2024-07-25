@@ -30,9 +30,40 @@ struct AudioControls: View {
 //                playerObject.player.currentTime -= playerObject.skipBackwardAmount
                 playerObject.player.currentTime -= 15
             }label:{
-                Image(systemName: "gobackward.15")
-                    .font(.system(size: 50))
-                    .foregroundStyle(.tint)
+                switch playerObject.skipBackwardAmount{
+                case .five:
+                    Image(systemName: "gobackward.5")
+                        .font(.system(size: 50))
+                        .foregroundStyle(.tint)
+                case .ten:
+                    Image(systemName: "gobackward.10")
+                        .font(.system(size: 50))
+                        .foregroundStyle(.tint)
+                case .fifteen:
+                    Image(systemName: "gobackward.15")
+                        .font(.system(size: 50))
+                        .foregroundStyle(.tint)
+                case .thirty:
+                    Image(systemName: "gobackward.30")
+                        .font(.system(size: 50))
+                        .foregroundStyle(.tint)
+                case .fourtyFive:
+                    Image(systemName: "gobackward.45")
+                        .font(.system(size: 50))
+                        .foregroundStyle(.tint)
+                case .sixty:
+                    Image(systemName: "gobackward.60")
+                        .font(.system(size: 50))
+                        .foregroundStyle(.tint)
+                case .seventyFive:
+                    Image(systemName: "gobackward.75")
+                        .font(.system(size: 50))
+                        .foregroundStyle(.tint)
+                case .ninety:
+                    Image(systemName: "gobackward.90")
+                        .font(.system(size: 50))
+                        .foregroundStyle(.tint)
+                }
             }
             .buttonStyle(BorderlessButtonStyle())
 
@@ -89,9 +120,40 @@ struct SkipForward: View{
                 playerObject.player.currentTime += 15
             }
         }label:{
-            Image(systemName: "goforward.15")
-                .font(.system(size: 50))
-                .foregroundStyle(.tint)
+            switch playerObject.skipForwardAmount{
+            case .five:
+                Image(systemName: "goforward.5")
+                    .font(.system(size: 50))
+                    .foregroundStyle(.tint)
+            case .ten:
+                Image(systemName: "goforward.10")
+                    .font(.system(size: 50))
+                    .foregroundStyle(.tint)
+            case .fifteen:
+                Image(systemName: "goforward.15")
+                    .font(.system(size: 50))
+                    .foregroundStyle(.tint)
+            case .thirty:
+                Image(systemName: "goforward.30")
+                    .font(.system(size: 50))
+                    .foregroundStyle(.tint)
+            case .fourtyFive:
+                Image(systemName: "goforward.45")
+                    .font(.system(size: 50))
+                    .foregroundStyle(.tint)
+            case .sixty:
+                Image(systemName: "goforward.60")
+                    .font(.system(size: 50))
+                    .foregroundStyle(.tint)
+            case .seventyFive:
+                Image(systemName: "goforward.75")
+                    .font(.system(size: 50))
+                    .foregroundStyle(.tint)
+            case .ninety:
+                Image(systemName: "goforward.90")
+                    .font(.system(size: 50))
+                    .foregroundStyle(.tint)
+            }
         }
         .buttonStyle(BorderlessButtonStyle())
     }
