@@ -30,7 +30,8 @@ struct SideBar: View {
                 Button{
                     
                     isUpperExecutingFunction = [1,num]
-                    
+                    editorVars.shellOutput = ""
+
                     Task{
                         
                         let output = await UpperSidebarActor(actionNum: num, writeOutText: editorVars.fullText, sourceFilePath: editorVars.sourceFilePath, shellCommand: editorVars.shellCommand, shellOptions: editorVars.shellOptions, buildScriptName: editorVars.buildScriptName)

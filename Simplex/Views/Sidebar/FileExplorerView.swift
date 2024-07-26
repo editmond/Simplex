@@ -11,7 +11,7 @@ struct FileExplorerView: View {
     
     //allows functions in this view to dismiss windows
     @Environment(\.dismissWindow) private var dismissWindow
-
+    
     //assigning names for the objects
     @EnvironmentObject var editorVars: EditorVariables
     @EnvironmentObject var previewerVars: PreviewerVariables
@@ -21,6 +21,7 @@ struct FileExplorerView: View {
     @State var availableItems: [String] = listDirectory()
     @State var iconSize:CGFloat = 70
     @State var showHidden = false
+    @State var isPresentingConfirmOpen = false
     
     //set of intermediate variables
     @State var currentPath:[String] = [] //stores the current path in an array, manage it like a stack.
@@ -60,7 +61,7 @@ struct FileExplorerView: View {
                 LazyVGrid(columns: columns){
                     ForEach(availableItems, id: \.self){ item in
                         let dirCheckedItem = dirCheck(Filename: item)
-//                        var executableCheck = false
+                        //                        var executableCheck = false
                         VStack{
                             if !showHidden && dirCheckedItem[1]{
                                 
@@ -103,7 +104,7 @@ struct FileExplorerView: View {
                                     }
                                 }
                                 .buttonStyle(BorderlessButtonStyle())
-//                                Text(item)
+                                //                                Text(item)
                                 Text(catPathVariable(strArr: currentPath)+item)
                             }
                         }
@@ -125,32 +126,68 @@ struct FileExplorerView: View {
                     dismissWindow(id: "files")
                 }
                 Button("Open"){
-                    fileExplorerVars.applyChange.toggle()
-                    if fileExplorerVars.isOpenedFromSidebar{
-                        editorVars.sourceFilePath = bufferConcatenatedCurrentPath
-                        editorVars.writeSettings()
-                        editorVars.loadFileText()
-                    }else{
-                        fileExplorerVars.concatenatedCurrentPath = bufferConcatenatedCurrentPath
-                        fileExplorerVars.chosenFileName = bufferChosenFileName
+                    var doOpen = true
+                    print("\(currentPath) size: \(currentPath.count)")
+                    if (fileExplorerVars.pathVarToChange == 1){
+                        if (currentPath.count > 1){
+                            if (currentPath[1] != "Build_Scripts/"){
+                                isPresentingConfirmOpen = true
+                                doOpen = false
+                            }
+                        } else{
+                            isPresentingConfirmOpen = true
+                            doOpen = false
+                        }
                     }
-                    
-                    //reset the flag variable
-                    fileExplorerVars.isOpenedFromSidebar = true
-                    
-                    //ensure this is run last as it closes this view
-                    dismissWindow(id: "files")
+                    if doOpen{
+                        fileExplorerVars.applyChange.toggle()
+                        if fileExplorerVars.isOpenedFromSidebar{
+                            editorVars.sourceFilePath = bufferConcatenatedCurrentPath
+                            editorVars.writeSettings()
+                            editorVars.loadFileText()
+                        }else{
+                            fileExplorerVars.concatenatedCurrentPath = bufferConcatenatedCurrentPath
+                            fileExplorerVars.chosenFileName = bufferChosenFileName
+                        }
+                        
+                        //reset the flag variable
+                        fileExplorerVars.isOpenedFromSidebar = true
+                        
+                        //ensure this is run last as it closes this view
+                        dismissWindow(id: "files")
+                    }
+                }.confirmationDialog("Are you sure? Simplex cannot gain permission to run scripts outside of ~/\(NonUIVariables.appFolder)/Build_Scripts/",isPresented: $isPresentingConfirmOpen) {
+                    Button("Cancel", role: .cancel){
+                        
+                    }
+                    Button("I want it not to work!", role: .destructive){
+                        fileExplorerVars.applyChange.toggle()
+                        if fileExplorerVars.isOpenedFromSidebar{
+                            editorVars.sourceFilePath = bufferConcatenatedCurrentPath
+                            editorVars.writeSettings()
+                            editorVars.loadFileText()
+                        }else{
+                            fileExplorerVars.concatenatedCurrentPath = bufferConcatenatedCurrentPath
+                            fileExplorerVars.chosenFileName = bufferChosenFileName
+                        }
+                        
+                        //reset the flag variable
+                        fileExplorerVars.isOpenedFromSidebar = true
+                        
+                        //ensure this is run last as it closes this view
+                        dismissWindow(id: "files")
+                    }
                 }
+                .padding()
             }
-            .padding()
         }
     }
-}
-
-func catPathVariable(strArr: [String]) -> String{
-    var combinedStr = ""
-    for element in strArr{
-        combinedStr = combinedStr + element
+    
+    func catPathVariable(strArr: [String]) -> String{
+        var combinedStr = ""
+        for element in strArr{
+            combinedStr = combinedStr + element
+        }
+        return combinedStr
     }
-    return combinedStr
 }

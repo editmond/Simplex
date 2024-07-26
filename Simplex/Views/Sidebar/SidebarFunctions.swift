@@ -11,6 +11,7 @@ import Foundation
 func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: String, shellCommand: String, shellOptions: String, buildScriptName: String) async -> [String]{
     switch actionNum{
     case 0: //Play icon
+        
         writeToFile(writeOutText: writeOutText, sourceFilePath: sourceFilePath)
         
         let output = try? safeShell("~/\(NonUIVariables.appFolder)/Build_Scripts/\(buildScriptName) \(NSHomeDirectory()+"/"+sourceFilePath)")
