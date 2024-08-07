@@ -49,7 +49,8 @@ struct FileExplorerView: View {
                 }
                 .padding()
                 .buttonStyle(BorderlessButtonStyle())
-                
+                .accessibilityLabel("Go Back")
+
                 Text("Selected: \(bufferChosenFileName)")
                     .font(.system(size: 20))
                     .padding()
@@ -104,6 +105,7 @@ struct FileExplorerView: View {
                                     }
                                 }
                                 .buttonStyle(BorderlessButtonStyle())
+                                .accessibilityLabel(item)
                                 //                                Text(item)
 //                                Text(catPathVariable(strArr: currentPath)+item)
                                 Text(item)

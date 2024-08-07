@@ -7,6 +7,7 @@
 
 import Foundation
 
+//checks for the existence of a folder
 func folderCheck(folderName: String) -> Bool{
     let homeItems = listDirectory()
     if !homeItems.contains(folderName){

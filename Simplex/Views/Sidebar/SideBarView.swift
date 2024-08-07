@@ -69,6 +69,8 @@ struct SideBar: View {
                 .buttonStyle(BorderlessButtonStyle())
                 //attach a keyboard shortcut to each button.
                 .keyboardShortcut(KeyEquivalent(Character(UnicodeScalar(sideVars.UpperShortcuts[num])!)))
+                .help(sideVars.UpperTooltip[num])
+                .accessibilityLabel(sideVars.UpperTooltip[num])
             }
             Spacer()
             
@@ -99,6 +101,8 @@ struct SideBar: View {
                 .buttonStyle(BorderlessButtonStyle())
                 //attach a keyboard shortcut to each button.
                 .keyboardShortcut(KeyEquivalent(Character(UnicodeScalar(sideVars.LowerShortcuts[num])!)))
+                .help(sideVars.LowerTooltip[num])
+                .accessibilityLabel(sideVars.LowerTooltip[num])
             }
         }
     }

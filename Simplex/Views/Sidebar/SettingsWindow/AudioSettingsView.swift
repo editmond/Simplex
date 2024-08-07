@@ -21,6 +21,7 @@ struct AudioSettingsView: View {
                 Slider(value: $playerObject.retainedVolume, in: 0...1)
                     .padding()
                 Text("\(playerObject.retainedVolume)")
+                    .padding()
             }
             Picker("Skip Forward Amount", selection: $playerObject.skipForwardAmount){
                 Text("5").tag(skipAmount.five)

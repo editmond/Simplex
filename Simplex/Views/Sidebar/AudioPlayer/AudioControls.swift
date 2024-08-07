@@ -27,8 +27,26 @@ struct AudioControls: View {
             
             //jump backward 15 seconds
             Button{
-//                playerObject.player.currentTime -= playerObject.skipBackwardAmount
-                playerObject.player.currentTime -= 15
+                var skipValue:Double = 30
+                switch playerObject.skipBackwardAmount{
+                case .five:
+                    skipValue = 5
+                case .ten:
+                    skipValue = 10
+                case .fifteen:
+                    skipValue = 15
+                case .thirty:
+                    skipValue = 30
+                case .fourtyFive:
+                    skipValue = 45
+                case .sixty:
+                    skipValue = 60
+                case .seventyFive:
+                    skipValue = 75
+                case .ninety:
+                    skipValue = 90
+                }
+                playerObject.player.currentTime -= skipValue
             }label:{
                 switch playerObject.skipBackwardAmount{
                 case .five:
@@ -113,11 +131,31 @@ struct SkipForward: View{
     @EnvironmentObject var playerObject: AudioPlayerClass
     var body: some View {
         Button{
-            if playerObject.player.currentTime + 15 > playerObject.player.duration{
+            var skipValue:Double = 30
+            switch playerObject.skipForwardAmount{
+            case .five:
+                skipValue = 5
+            case .ten:
+                skipValue = 10
+            case .fifteen:
+                skipValue = 15
+            case .thirty:
+                skipValue = 30
+            case .fourtyFive:
+                skipValue = 45
+            case .sixty:
+                skipValue = 60
+            case .seventyFive:
+                skipValue = 75
+            case .ninety:
+                skipValue = 90
+            }
+
+            if playerObject.player.currentTime + skipValue > playerObject.player.duration{
                 playerObject.player.currentTime = playerObject.player.duration - 1
             } else{
 //                    playerObject.player.currentTime += playerObject.skipForwardAmount
-                playerObject.player.currentTime += 15
+                playerObject.player.currentTime += skipValue
             }
         }label:{
             switch playerObject.skipForwardAmount{

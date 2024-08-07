@@ -19,7 +19,9 @@ func UpperSidebarActor(actionNum: Int, writeOutText: String, sourceFilePath: Str
         return ["", "\(output ?? "")"]
     case 1:
         return ["files", ""] // return the files window id
-        
+    case 2:
+        writeToFile(writeOutText: writeOutText, sourceFilePath: sourceFilePath)
+        return ["", ""]
     default:
         print("Unknown Button Pressed")
     }
