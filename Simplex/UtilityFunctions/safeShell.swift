@@ -22,7 +22,7 @@ func safeShell(_ command: String) throws -> String {
     try task.run() //<--updated
     
     let data = pipe.fileHandleForReading.readDataToEndOfFile()
-    let output = (try? String(data: data, encoding: .utf8)) ?? "Something went wrong. Most likely non-standard input"
+    let output = (try? String(data: data, encoding: .utf8)) ?? "Something went wrong. Most likely non-UTF8 file names"
     
     return output
 }
