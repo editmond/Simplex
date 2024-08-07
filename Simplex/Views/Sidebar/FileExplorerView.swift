@@ -105,7 +105,8 @@ struct FileExplorerView: View {
                                 }
                                 .buttonStyle(BorderlessButtonStyle())
                                 //                                Text(item)
-                                Text(catPathVariable(strArr: currentPath)+item)
+//                                Text(catPathVariable(strArr: currentPath)+item)
+                                Text(item)
                             }
                         }
                     }

@@ -22,7 +22,7 @@ class PreviewerVariables: ObservableObject{
     @Published var previewType = 0
     
     //Supported file formats
-    @Published var imageFormats: [String] = ["ppm", "jpeg"]
+    @Published var imageFormats: [String] = ["ppm", "jpeg, png"]
     @Published var textFormats: [String] = ["txt"]
     
     //NOT WRITTEN TO SETTINGS FILE
@@ -78,7 +78,7 @@ class PreviewerVariables: ObservableObject{
             temp = loadedSettings["previewType", default: ["0"]]
             previewType = Int(temp[0]) ?? 0
             
-            temp = loadedSettings["imageFormats", default: ["ppm", "jpeg"]]
+            temp = loadedSettings["imageFormats", default: ["ppm", "jpeg, png"]]
             imageFormats = temp
             
             temp = loadedSettings["textFormats", default: ["txt"]]

@@ -13,13 +13,15 @@ struct AudioSettingsView: View {
     
     var body: some View {
         VStack{
-            Text("Volume: ")
-                .bold()
-                .padding()
-            Spacer()
-            Slider(value: $playerObject.retainedVolume, in: 0...1)
-                .padding()
-            Text("\(playerObject.retainedVolume)")
+            HStack{
+                Text("Volume: ")
+                    .bold()
+                    .padding()
+                Spacer()
+                Slider(value: $playerObject.retainedVolume, in: 0...1)
+                    .padding()
+                Text("\(playerObject.retainedVolume)")
+            }
             Picker("Skip Forward Amount", selection: $playerObject.skipForwardAmount){
                 Text("5").tag(skipAmount.five)
                 Text("10").tag(skipAmount.ten)
@@ -29,7 +31,8 @@ struct AudioSettingsView: View {
                 Text("60").tag(skipAmount.sixty)
                 Text("75").tag(skipAmount.seventyFive)
                 Text("90").tag(skipAmount.ninety)
-            }
+            }.padding()
+            
             Picker("Skip Backward Amount", selection: $playerObject.skipBackwardAmount){
                 Text("5").tag(skipAmount.five)
                 Text("10").tag(skipAmount.ten)
@@ -39,7 +42,7 @@ struct AudioSettingsView: View {
                 Text("60").tag(skipAmount.sixty)
                 Text("75").tag(skipAmount.seventyFive)
                 Text("90").tag(skipAmount.ninety)
-            }
+            }.padding()
         }
         .navigationTitle("Settings")
     }
