@@ -151,16 +151,18 @@ class AudioPlayerClass: NSObject, AVAudioPlayerDelegate, ObservableObject{
             
             print("Audio Settings found: \n\(loadedSettings)")
             
-            var temp = loadedSettings["musicQueue", default: [""]]
+            var temp = loadedSettings["musicQueue", default: ["Ghostrifter-Official-Purple-Dream(chosic.com).mp3",
+                                                              "Ghostrifter-Official-City-Lights(chosic.com).mp3"]]
             musicQueue = temp
             
-            temp = loadedSettings["creditsQueue", default: [""]]
+            temp = loadedSettings["creditsQueue", default: ["Credits1",
+                                                            "Credits2"]]
             creditsQueue = temp
             
-            temp = loadedSettings["retainedVolume", default: [""]]
+            temp = loadedSettings["retainedVolume", default: ["1.0"]]
             retainedVolume = Float(temp[0]) ?? 1.0
 
-            temp = loadedSettings["queueIndex", default: [""]]
+            temp = loadedSettings["queueIndex", default: ["0"]]
             queueIndex = Int(temp[0]) ?? 1
         }
         

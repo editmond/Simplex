@@ -37,7 +37,7 @@
 		80C876442C40B5FD00C195A1 /* AudioSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C876432C40B5FD00C195A1 /* AudioSettingsView.swift */; };
 		80C876462C40B96E00C195A1 /* AudioPlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C876452C40B96E00C195A1 /* AudioPlayerClass.swift */; };
 		80C876492C40B9B300C195A1 /* AudioControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C876482C40B9B300C195A1 /* AudioControls.swift */; };
-		80DFFEDB2C1BC033006BE9AE /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 80DFFEDA2C1BC033006BE9AE /* Documentation.docc */; };
+		80DFFEDB2C1BC033006BE9AE /* TestDocumentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 80DFFEDA2C1BC033006BE9AE /* TestDocumentation.docc */; };
 		80E5E48B2B1D4089002A4D54 /* SimplexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5E48A2B1D4089002A4D54 /* SimplexApp.swift */; };
 		80E5E48D2B1D4089002A4D54 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5E48C2B1D4089002A4D54 /* ContentView.swift */; };
 		80E5E48F2B1D408B002A4D54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80E5E48E2B1D408B002A4D54 /* Assets.xcassets */; };
@@ -54,6 +54,9 @@
 /* Begin PBXFileReference section */
 		800C5F092B5F8170000C7FFF /* textSanitising.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textSanitising.swift; sourceTree = "<group>"; };
 		800C5F0B2B5F83A4000C7FFF /* writeRead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = writeRead.swift; sourceTree = "<group>"; };
+		800E90592D362C9C00CA87F2 /* SimplexDocument.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SimplexDocument.pdf; sourceTree = "<group>"; };
+		800E905A2D362CBB00CA87F2 /* SoftwareSyllabus_2010.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SoftwareSyllabus_2010.pdf; sourceTree = "<group>"; };
+		800E905B2D362CC300CA87F2 /* SDDSpecifications.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SDDSpecifications.pdf; sourceTree = "<group>"; };
 		801410B92C2E536100C8352B /* fileExplorerCheckers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fileExplorerCheckers.swift; sourceTree = "<group>"; };
 		801410BD2C2E56BC00C8352B /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		80335CED2B5E2D85009E5188 /* EditorVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorVariables.swift; sourceTree = "<group>"; };
@@ -83,7 +86,7 @@
 		80C876432C40B5FD00C195A1 /* AudioSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSettingsView.swift; sourceTree = "<group>"; };
 		80C876452C40B96E00C195A1 /* AudioPlayerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerClass.swift; sourceTree = "<group>"; };
 		80C876482C40B9B300C195A1 /* AudioControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioControls.swift; sourceTree = "<group>"; };
-		80DFFEDA2C1BC033006BE9AE /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
+		80DFFEDA2C1BC033006BE9AE /* TestDocumentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = TestDocumentation.docc; sourceTree = "<group>"; };
 		80E5E4872B1D4089002A4D54 /* Simplex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E5E48A2B1D4089002A4D54 /* SimplexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplexApp.swift; sourceTree = "<group>"; };
 		80E5E48C2B1D4089002A4D54 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,6 +124,16 @@
 				801410B92C2E536100C8352B /* fileExplorerCheckers.swift */,
 			);
 			path = FileHandling;
+			sourceTree = "<group>";
+		};
+		800E90582D362C6600CA87F2 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				800E905B2D362CC300CA87F2 /* SDDSpecifications.pdf */,
+				800E905A2D362CBB00CA87F2 /* SoftwareSyllabus_2010.pdf */,
+				800E90592D362C9C00CA87F2 /* SimplexDocument.pdf */,
+			);
+			path = Documentation;
 			sourceTree = "<group>";
 		};
 		8015FB8A2B33E2B60085A50C /* Sidebar */ = {
@@ -186,6 +199,7 @@
 		80E5E47E2B1D4088002A4D54 = {
 			isa = PBXGroup;
 			children = (
+				800E90582D362C6600CA87F2 /* Documentation */,
 				801410BD2C2E56BC00C8352B /* MyPlayground.playground */,
 				80E5E4892B1D4089002A4D54 /* Simplex */,
 				80E5E4882B1D4089002A4D54 /* Products */,
@@ -204,7 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				80E5E48A2B1D4089002A4D54 /* SimplexApp.swift */,
-				80DFFEDA2C1BC033006BE9AE /* Documentation.docc */,
+				80DFFEDA2C1BC033006BE9AE /* TestDocumentation.docc */,
 				80335CEC2B5E2D43009E5188 /* GlobalVariables */,
 				80F3D4AE2B61DB1E0085F8CF /* UtilityFunctions */,
 				80F3D4B62B61F0D80085F8CF /* Views */,
@@ -356,7 +370,7 @@
 				808E616A2B240BDE0085E6FD /* GUIVariables.swift in Sources */,
 				80C7CC1B2B60DD040021CDDF /* createDirectories.swift in Sources */,
 				80875DFE2B24769B00DD0994 /* test.swift in Sources */,
-				80DFFEDB2C1BC033006BE9AE /* Documentation.docc in Sources */,
+				80DFFEDB2C1BC033006BE9AE /* TestDocumentation.docc in Sources */,
 				80BE4C442B664D58007BA727 /* GUISettingsView.swift in Sources */,
 				80E5E48B2B1D4089002A4D54 /* SimplexApp.swift in Sources */,
 				80BB6C872C3E9E5E001274A2 /* AudioPlayer.swift in Sources */,
