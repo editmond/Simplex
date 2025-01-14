@@ -10,3 +10,7 @@ This meant that not only was a working prototype required, but documentation tha
 Documentation and the design process can be found in the documentation folder.
 The syllabus, documentation and the design process can be found in the documentation folder of this repository.
 The course was discontinued after the 2024 class.
+
+How to run: an executable version of the app should be available in the Builds folder. Try it out with some example files from the simplex examples folder.
+
+Note: running code will require that compilers/interpreters for your specifc languages are already downloaded.
