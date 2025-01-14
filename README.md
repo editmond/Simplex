@@ -1,7 +1,7 @@
 # Simplex
 What is Simplex?
-The Simplex application aims to be an intuitive graphical text editor with some fea-
-tures of an IDE. It will be able to directly alter source files and compile or run them with
+The Simplex application aims to be an intuitive graphical text editor with some features of an IDE. 
+It will be able to directly alter source files and compile or run them with
 a simple user input.
 
 Why was this made?
